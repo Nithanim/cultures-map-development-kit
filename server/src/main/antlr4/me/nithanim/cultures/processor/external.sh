@@ -1,0 +1,1 @@
+java -cp ~/Downloads/antlr-4.7.2-complete.jar:.antlr/ org.antlr.v4.gui.TestRig CulturesIni fullfile -trace -diagnostics /mount/data/games/weltwunder/dosdevices/c:/GOG\ Games/8th\ Wonder\ of\ the\ World/data/maps/Baeume/map.ini

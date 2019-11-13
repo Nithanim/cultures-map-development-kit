@@ -1,0 +1,139 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"scopeName": "source.cultures-ini",
+    "patterns": [{ "include": "#line" }],
+    "foldingStartMarker": "^\\[[a-zA-Z\\-_]+\\]",
+    "foldingStopMarker": "result",
+	"repository": {
+        "comment": {
+            "patterns": [
+                {
+                    "match": "//.*$",
+                    "name": "comment"
+                }
+            ]
+        },
+        "line": {
+            "patterns": [
+                { "include": "#lineCategory" }, {"include":"#lineCommand"}, { "include": "#commandInclude" }
+            ]
+        },
+        "lineCategory": {
+            "patterns": [
+                { "include": "#category" },{ "include": "#comment" }
+            ]
+        },
+        "category": {
+            "patterns": [
+                {
+                    "name": "support.class",
+                    "match": "^\\[[a-zA-Z\\-_]+\\]"
+                }
+            ]
+        },
+        "lineCommand": {
+            "patterns": [
+                {"include": "#commandDebug"},
+                { "include": "#commandDefault" }
+            ]
+        },
+        "commandDefault": {
+            "patterns": [
+                {
+                    "begin": "^(?=[a-zA-Z_]+)",
+                    "end": "$",
+                    "patterns": [
+                        { "include": "#command" }, { "include": "#type" }, { "include": "#number" }, { "include": "#comment" }
+                    ]
+                }
+            ]
+        },
+        "command": {
+            "patterns": [
+                {
+                    "name": "support.function",
+                    "match": "^[a-z]+"
+                }
+            ]
+        },
+        "type": {
+            "patterns": [
+                {
+                    "name": "type",
+                    "begin": "\"",
+                    "end": "\""
+                }
+            ]
+        },
+        "number": {
+            "patterns": [
+                {
+                    "name": "constant.numeric",
+                    "match": "\\d+"
+                }
+            ]
+        },
+        "commandInclude": {
+            "patterns": [
+                {
+                    "begin": "^(?=\\#include)",
+                    "end": "$",
+                    "patterns": [
+                        {"include": "#include"},
+                        {"include": "#path"}
+                    ]
+                }
+            ]
+        },
+        "include": {
+            "patterns": [
+                {
+                    "name": "storage.modifier.import",
+                    "match": "^\\#include"
+                }
+            ]
+        },
+        "path": {
+            "patterns": [
+                {
+                    "name": "string.other.link",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {"include": "#pathvariable"}
+                    ]
+                }
+            ]
+        },
+        "pathvariable": {
+            "patterns": [
+                {
+                    "name": "variable",
+                    "match": "\\$[a-z]+\\$"
+                }
+            ]
+        },
+        "commandDebug": {
+            "patterns": [
+                {
+                    "begin": "^(?=debuginfo)",
+                    "end": "$",
+                    "patterns": [
+                        { "include": "#command" },
+                        {"include": "#string"},
+                        { "include": "#comment" }
+                    ]
+                }
+            ]
+        },
+        "string": {
+            "patterns": [
+                {
+                    "name": "string",
+                    "begin": "\"",
+                    "end": "\""
+                }
+            ]
+        }
+    }
+}

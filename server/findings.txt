@@ -1,0 +1,6 @@
+* Defines can be used as placeholder for any parameter (strings and numbers and also types). Does not work for the base command.
+* Parsing starts with map.ini and includes are processed directly while parsing.
+* Lookup of defines is not deferred and crashes game if unresolved
+* Because of the include handling and non-deferrable defines, they must be available beforehand
+* Defines can also be used in strings.ini in text folder
+* The strings.ini seem to have a separate define table (defines in map.ini cannot be used and defines in strings.ini cannot be used in map.ini either)

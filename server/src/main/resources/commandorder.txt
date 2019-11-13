@@ -1,0 +1,20 @@
+
+
+
+
+
+// playerid
+forbidgood
+forbidjob
+forbidhouse
+
+
+sethouse
+setvehicle
+
+
+
+AI_Disable
+HAI_Disable
+AI_UnitLimit
+AI_MaxUnitLimit
