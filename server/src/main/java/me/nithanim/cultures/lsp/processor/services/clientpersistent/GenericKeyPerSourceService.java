@@ -18,18 +18,18 @@ import me.nithanim.cultures.lsp.processor.util.SourceFile;
 @ReturnValuesAreNonnullByDefault
 @ParametersAreNonnullByDefault
 public abstract class GenericKeyPerSourceService<
-    KEY_TYPE extends Enum, DATA_TYPE extends GenericKeyPerSourceService.Origination> {
-  private Map<SourceFile, Set<Key>> keys = new HashMap<>();
-  private Map<Key, List<DATA_TYPE>> things = new HashMap<>();
+    KEY_TYPE extends Enum<?>, DATA_TYPE extends GenericKeyPerSourceService.Origination> {
+  private final Map<SourceFile, Set<Key>> keys = new HashMap<>();
+  private final Map<Key, List<DATA_TYPE>> things = new HashMap<>();
 
   /** Marks source files where we update something so we need to send the dater for it. */
-  private Set<SourceFile> dirty = new HashSet<>();
+  private final Set<SourceFile> dirty = new HashSet<>();
 
   /**
    * Stores for which files we sent date so we know if we can just overwrite it or need to delete it
    * if we have empty data.
    */
-  private Set<SourceFile> sent = new HashSet<>();
+  private final Set<SourceFile> sent = new HashSet<>();
 
   @Nullable
   public List<DATA_TYPE> getAll(SourceFile sourceFile) {
@@ -43,9 +43,6 @@ public abstract class GenericKeyPerSourceService<
 
   /**
    * Updates
-   *
-   * @param type
-   * @param things
    */
   public void update(KEY_TYPE type, List<DATA_TYPE> things) {
     delete(type); // new would overwrite old but if there are none they would never be removed

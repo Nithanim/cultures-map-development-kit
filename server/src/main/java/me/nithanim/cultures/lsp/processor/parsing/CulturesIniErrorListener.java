@@ -14,7 +14,7 @@ import org.eclipse.lsp4j.Range;
 
 @AllArgsConstructor
 public class CulturesIniErrorListener extends BaseErrorListener {
-  private SourceFile sourceFile;
+  private final SourceFile sourceFile;
   private final DiagnosticsCollector diagnostics;
 
   @Override

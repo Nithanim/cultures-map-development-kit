@@ -25,7 +25,7 @@ import org.springframework.util.StreamUtils;
 public class LanguageServerCommandService {
   public static final String COMMAND_EXTRACT_MAP = "culures-ini.extract-c2m";
   public static final String COMMAND_PACKAGE = "cultures-ini.package-map";
-  private static Map<String, BiConsumer<LanguageServerCommandService, ExecuteCommandParams>> map;
+  private static final Map<String, BiConsumer<LanguageServerCommandService, ExecuteCommandParams>> map;
 
   @Autowired private WorkspaceService workspaceService;
   private LanguageClient client;

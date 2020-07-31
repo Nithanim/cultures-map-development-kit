@@ -7,12 +7,12 @@ import lombok.Value;
 import me.nithanim.cultures.lsp.processor.util.Origin;
 
 @Value
-public final class CulturesIniCommand implements CulturesIniLine {
-  private final CulturesIniCommandType commandType;
-  private final Origin originAll;
-  private final Origin originBaseCommand;
-  private final List<Parameter> parameters;
-  private final boolean invalid;
+public class CulturesIniCommand implements CulturesIniLine {
+  CulturesIniCommandType commandType;
+  Origin originAll;
+  Origin originBaseCommand;
+  List<Parameter> parameters;
+  boolean invalid;
 
   public CulturesIniCommand(
       CulturesIniCommandType commandType,
@@ -48,10 +48,10 @@ public final class CulturesIniCommand implements CulturesIniLine {
   }
 
   @Value
-  public static final class Parameter {
-    private final String value;
-    private final Type type;
-    private final Origin origin;
+  public static class Parameter {
+    String value;
+    Type type;
+    Origin origin;
 
     public int getValueAsInt() {
       return Integer.parseInt(value);
@@ -75,7 +75,7 @@ public final class CulturesIniCommand implements CulturesIniLine {
     private CulturesIniCommandType commandType;
     private Origin originAll;
     private Origin originBaseCommand;
-    private List<Parameter> parameters = new ArrayList<>();
+    private final List<Parameter> parameters = new ArrayList<>();
 
     ParsedCulturesIniCommandBuilder() {}
 

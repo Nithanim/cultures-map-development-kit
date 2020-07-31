@@ -102,12 +102,7 @@ abstract class FullTextDocumentService implements TextDocumentService {
     throw new UnsupportedOperationException();
   }
 
-  /**
-   * Can show additional information over some thing. Like references/last changed/...
-   *
-   * @param params
-   * @return
-   */
+  /** Can show additional information over some thing. Like references/last changed/... */
   @Override
   public CompletableFuture<List<? extends CodeLens>> codeLens(CodeLensParams params) {
     logger.info("Req CodeLens for " + params.getTextDocument().getUri());

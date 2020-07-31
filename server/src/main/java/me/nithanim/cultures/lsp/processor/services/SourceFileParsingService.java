@@ -28,22 +28,22 @@ public class SourceFileParsingService {
     String sourceName = sf.getUri().getPath().getFileName().toString();
 
     CodePointCharStream stream = CharStreams.fromReader(new StringReader(c), sourceName);
-    DiagnosticsCollector diagonstics = new DiagnosticsCollector();
+    DiagnosticsCollector diagnostics = new DiagnosticsCollector();
     CulturesIniLexer lexer = new CulturesIniLexer(stream);
 
     lexer.removeErrorListeners();
-    lexer.addErrorListener(new CulturesIniErrorListener(sf, diagonstics));
+    lexer.addErrorListener(new CulturesIniErrorListener(sf, diagnostics));
 
     CulturesIniParser parser = new CulturesIniParser(new CommonTokenStream(lexer));
     parser.removeErrorListeners();
-    parser.addErrorListener(new CulturesIniErrorListener(sf, diagonstics));
+    parser.addErrorListener(new CulturesIniErrorListener(sf, diagnostics));
     CulturesIniParser.FullfileContext fullFile = parser.fullfile();
 
-    CulturesIniParserListener parserListener = new CulturesIniParserListener(sf, diagonstics);
+    CulturesIniParserListener parserListener = new CulturesIniParserListener(sf, diagnostics);
     ParseTreeWalker.DEFAULT.walk(parserListener, fullFile);
 
     List<? extends CulturesIniLine> cils = parserListener.getLines();
-    return new ParsingResult(sf, cils, diagonstics.getDiagnostics());
+    return new ParsingResult(sf, cils, diagnostics.getDiagnostics());
   }
 
   @Value

@@ -9,7 +9,7 @@ public class StringsFile {
   private Map<Integer, StringDefinition> idToStringMap;
 
   @Value
-  public class StringDefinition {
+  public static class StringDefinition {
     int id;
     String language;
     Origin origin;

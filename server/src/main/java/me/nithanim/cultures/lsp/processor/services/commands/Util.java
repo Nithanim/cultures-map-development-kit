@@ -10,7 +10,7 @@ import me.nithanim.cultures.lsp.processor.lines.CulturesIniLine;
 
 @UtilityClass
 class Util {
-  public static List<? extends CulturesIniCommand> filterByCategory(
+  public List<? extends CulturesIniCommand> filterByCategory(
       List<? extends CulturesIniLine> commands, CulturesIniCategoryType cat) {
     return commands.stream()
         .filter(l -> l instanceof CulturesIniCommand)
@@ -19,7 +19,7 @@ class Util {
         .collect(Collectors.toList());
   }
 
-  public static List<? extends CulturesIniCommand> filterByCategory(
+  public List<? extends CulturesIniCommand> filterByCategory(
       List<? extends CulturesIniLine> commands, EnumSet<CulturesIniCategoryType> cats) {
     return commands.stream()
         .filter(l -> l instanceof CulturesIniCommand)

@@ -126,12 +126,7 @@ public class DefinitionEnvironment {
     return result;
   }
 
-  /**
-   * Workaround method if we need the content of includes but they have not been touched before.
-   *
-   * @param sourceFile
-   * @return
-   */
+  /** Workaround method if we need the content of includes but they have not been touched before. */
   private List<? extends CulturesIniLine> getLinesAndInitIfNeeded(SourceFile sourceFile) {
     List<? extends CulturesIniLine> l = sourceFileToLines.get(sourceFile);
     if (l == null) {

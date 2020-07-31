@@ -231,12 +231,12 @@ public enum CulturesIniCommandType {
   @Getter private final boolean special;
   private final CulturesIniCategoryType category;
   /** List of expected parameters */
-  private final List<? extends ParameterInfo> parameterTypes;
+  private final List<? extends ParameterInfo<?>> parameterTypes;
 
   private final int paramMin;
   private final int paramMax;
 
-  CulturesIniCommandType(CulturesIniCategoryType category, ParameterInfo... parameterTypes) {
+  CulturesIniCommandType(CulturesIniCategoryType category, ParameterInfo<?>... parameterTypes) {
     this(false, category, parameterTypes.length, parameterTypes.length, parameterTypes);
   }
 
@@ -244,7 +244,7 @@ public enum CulturesIniCommandType {
       CulturesIniCategoryType category,
       int paramMin,
       int paramMax,
-      ParameterInfo... parameterTypes) {
+      ParameterInfo<?>... parameterTypes) {
     this(false, category, parameterTypes.length, parameterTypes.length, parameterTypes);
   }
 
@@ -257,7 +257,7 @@ public enum CulturesIniCommandType {
       CulturesIniCategoryType category,
       int paramMin,
       int paramMax,
-      ParameterInfo... parameterTypes) {
+      ParameterInfo<?>... parameterTypes) {
     this.category = category;
     this.paramMax = paramMax;
     this.parameterTypes = Arrays.asList(parameterTypes);
@@ -269,7 +269,7 @@ public enum CulturesIniCommandType {
     return category;
   }
 
-  public List<? extends ParameterInfo> getParameterInfo() {
+  public List<? extends ParameterInfo<?>> getParameterInfo() {
     return parameterTypes;
   }
 
@@ -277,22 +277,13 @@ public enum CulturesIniCommandType {
     return parameterTypes.get(i);
   }
 
-  /**
-   * Sets the parameter as number.
-   *
-   * @return
-   */
-  private static ParameterInfo pn() {
+  /** Sets the parameter as number. */
+  private static ParameterInfo<Integer> pn() {
     return new NumberParameterInfo("Number");
   }
 
-  /**
-   * Sets the parameter as number.
-   *
-   * @param name
-   * @return
-   */
-  private static ParameterInfo pn(String name) {
+  /** Sets the parameter as number. */
+  private static ParameterInfo<Integer> pn(String name) {
     return new NumberParameterInfo(name);
   }
 
@@ -302,9 +293,8 @@ public enum CulturesIniCommandType {
    * @param name the parameter name
    * @param min the minimum number (inclusive)
    * @param max the maximum number (inclusive)
-   * @return
    */
-  private static ParameterInfo pbn(String name, int min, int max) {
+  private static ParameterInfo<Integer> pbn(String name, int min, int max) {
     return new BoundedNumberParameterInfo(name, min, max);
   }
 
@@ -313,52 +303,38 @@ public enum CulturesIniCommandType {
    *
    * @param name the parameter name
    * @param numbers the numbers that are accepted
-   * @return
    */
-  private static ParameterInfo psn(String name, int... numbers) {
+  private static ParameterInfo<Integer> psn(String name, int... numbers) {
     return new SpecificNumberParameterInfo(name, NUMBER, numbers);
   }
 
-  private static ParameterInfo pt(String name) {
+  private static ParameterInfo<String> pt(String name) {
     return new TypeParameterInfo(name);
   }
 
-  /**
-   * Sets the parameter as string.
-   *
-   * @param name
-   * @return
-   */
-  private static ParameterInfo ps(String name) {
+  /** Sets the parameter as string. */
+  private static ParameterInfo<String> ps(String name) {
     return new StringParameterInfo(name);
   }
 
-  private static ParameterInfo pplayerA() {
+  private static ParameterInfo<Integer> pplayerA() {
     return pbn("Player this", 0, 20);
   }
 
-  private static ParameterInfo pplayerB() {
+  private static ParameterInfo<Integer> pplayerB() {
     return pbn("Player other", 0, 20);
   }
 
-  private static ParameterInfo pplayer() {
+  private static ParameterInfo<Integer> pplayer() {
     return pbn("Player", 0, 20);
   }
 
-  /**
-   * Minimum supported parameters
-   *
-   * @return
-   */
+  /** Minimum supported parameters */
   public int getParamMin() {
     return paramMin;
   }
 
-  /**
-   * Maximum supported parameters
-   *
-   * @return
-   */
+  /** Maximum supported parameters */
   public int getParamMax() {
     return paramMax;
   }
@@ -368,7 +344,7 @@ public enum CulturesIniCommandType {
    *
    * @param <T>
    */
-  public static interface ParameterInfo<T> {
+  public interface ParameterInfo<T> {
     String getName();
 
     CulturesIniCommand.Parameter.Type getType();
