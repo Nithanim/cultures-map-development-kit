@@ -6,10 +6,10 @@ import org.springframework.context.ApplicationEvent;
 
 @Value
 public class SourceFileChangedEvent extends ApplicationEvent {
-    SourceFile sourceFile;
+  SourceFile sourceFile;
 
-    public SourceFileChangedEvent(Object source, SourceFile sourceFile) {
-        super(source);
-        this.sourceFile = sourceFile;
-    }
+  public SourceFileChangedEvent(Object source, SourceFile sourceFile) {
+    super(source);
+    this.sourceFile = sourceFile;
+  }
 }

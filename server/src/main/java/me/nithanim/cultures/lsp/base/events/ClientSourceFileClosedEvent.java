@@ -5,10 +5,10 @@ import org.springframework.context.ApplicationEvent;
 
 @Value
 public class ClientSourceFileClosedEvent extends ApplicationEvent {
-    String uri;
+  String uri;
 
-    public ClientSourceFileClosedEvent(Object source, String uri) {
-        super(source);
-        this.uri = uri;
-    }
+  public ClientSourceFileClosedEvent(Object source, String uri) {
+    super(source);
+    this.uri = uri;
+  }
 }

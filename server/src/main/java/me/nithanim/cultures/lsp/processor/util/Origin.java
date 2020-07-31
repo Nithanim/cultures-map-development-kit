@@ -6,8 +6,6 @@ import org.eclipse.lsp4j.Range;
 
 @Value
 public class Origin {
-    @NonNull
-    SourceFile sourceFile;
-    @NonNull
-    Range range;
+  @NonNull SourceFile sourceFile;
+  @NonNull Range range;
 }

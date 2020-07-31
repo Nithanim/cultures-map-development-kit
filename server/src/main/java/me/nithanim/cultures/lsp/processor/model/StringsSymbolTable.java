@@ -1,14 +1,12 @@
 package me.nithanim.cultures.lsp.processor.model;
 
-
+import java.util.List;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
 
-import java.util.List;
-
 public interface StringsSymbolTable {
-    void getStrings(int id);
+  void getStrings(int id);
 
-    void getString(int id, String lang);
+  void getString(int id, String lang);
 
-    void replaceLanguage(List<CulturesIniCommand> commands);
+  void replaceLanguage(List<CulturesIniCommand> commands);
 }

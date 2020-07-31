@@ -6,10 +6,10 @@ import org.springframework.context.ApplicationEvent;
 
 @Value
 public class SourceFileDeletedEvent extends ApplicationEvent {
-    SourceFile sourceFile;
+  SourceFile sourceFile;
 
-    public SourceFileDeletedEvent(Object source, SourceFile sourceFile) {
-        super(source);
-        this.sourceFile = sourceFile;
-    }
+  public SourceFileDeletedEvent(Object source, SourceFile sourceFile) {
+    super(source);
+    this.sourceFile = sourceFile;
+  }
 }

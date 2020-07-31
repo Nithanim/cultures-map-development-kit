@@ -7,16 +7,16 @@ import org.eclipse.lsp4j.Command;
 
 @Value
 public class MyCodeLens implements GenericKeyPerSourceService.Origination {
-    Origin origin;
-    CodeLens codeLens;
+  Origin origin;
+  CodeLens codeLens;
 
-    public static MyCodeLens of(Origin o, String text) {
-        Command c = new Command();
-        c.setCommand("");
-        c.setTitle(text);
-        CodeLens cl = new CodeLens();
-        cl.setCommand(c);
-        cl.setRange(o.getRange());
-        return new MyCodeLens(o, cl);
-    }
+  public static MyCodeLens of(Origin o, String text) {
+    Command c = new Command();
+    c.setCommand("");
+    c.setTitle(text);
+    CodeLens cl = new CodeLens();
+    cl.setCommand(c);
+    cl.setRange(o.getRange());
+    return new MyCodeLens(o, cl);
+  }
 }
