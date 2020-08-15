@@ -14,76 +14,16 @@ import * as vscode from "vscode";
 import { workspace, Disposable, ExtensionContext } from 'vscode';
 import { LanguageClient, LanguageClientOptions, SettingMonitor, StreamInfo } from 'vscode-languageclient';
 import { prototype } from "mocha";
+import { ServerOptions } from "https";
 
 const isDevMode = () => process.env.DEV_MODE === "true";
 
 //https://stackoverflow.com/questions/53594657/how-to-build-language-server-protocol-in-vscode-by-using-java-code-in-server-sid
 
 export function activate(context: ExtensionContext) {
-
-	function createServer(): Promise<StreamInfo> {
-		return new Promise((resolve, reject) => {
-
-			var server = net.createServer((socket) => {
-				console.log("Creating server");
-
-				resolve({
-					reader: socket,
-					writer: socket
-				});
-
-				socket.on('end', () => console.log("Disconnected"));
-			}).on('error', (err) => {
-				// handle errors here
-				throw err;
-			});
-
-			//let javaExecutablePath = findJavaExecutable('java');
-
-			let port = isDevMode() ? 9826 : undefined;
-			
-			server.listen(port, () => {
-				if(isDevMode()) {
-					return; // In dev we do not spawn the server
-				}
-				// Start the child java process
-				let options = { cwd: workspace.rootPath };
-
-				let serverPath = path.resolve(context.extensionPath, "server");
-				let javaExecutable = addOsSpecificSuffix(path.resolve(serverPath, "jre", "bin", "java"));
-				let jarPath = path.resolve(serverPath, "server.jar");
-
-				
-
-				let args = [
-					'-Xmx50m',
-					'-Xshare:off',
-					'-XX:+UseSerialGC',
-					'-XX:MaxRAM=200M',
-					'-jar',
-					jarPath,
-					"--languageserver.port=" + server.address()["port"]
-				]
-
-				let process = child_process.spawn(javaExecutable, args, options);
-				process.on("error", (err: Error) => {
-					console.log(err);
-				})
-
-				// Send raw output to a file
-				if (!fs.existsSync(context.storagePath))
-					fs.mkdirSync(context.storagePath);
-
-				let logFile = context.storagePath + '/vscode-languageserver-java-example.log';
-				let logStream = fs.createWriteStream(logFile, { flags: 'w' });
-
-				process.stdout.pipe(logStream);
-				process.stderr.pipe(logStream);
-
-				console.log(`Storing log in '${logFile}'`);
-			});
-		});
-	}; //END SERVER FUNCTION
+	function creServ(): Promise<StreamInfo> {
+		return createServer(context.extensionPath, context.storagePath);
+	}
 
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
@@ -98,11 +38,79 @@ export function activate(context: ExtensionContext) {
 	};
 
 	// Create the language client and start the client.
-	let disposable = new LanguageClient('culturesDevelopmentKit', 'Cultures Development Kit', createServer, clientOptions).start();
+	let disposable = new LanguageClient('culturesDevelopmentKit', 'Cultures Development Kit', creServ, clientOptions).start();
 
 	// Push the disposable to the context's subscriptions so that the 
 	// client can be deactivated on extension deactivation
 	context.subscriptions.push(disposable);
+}
+
+function createServer(extensionPath: string, storagePath: string): Promise<StreamInfo> {
+	return new Promise((resolve, reject) => {
+
+		var server = net.createServer((socket) => {
+			console.log("Creating server");
+
+			resolve({
+				reader: socket,
+				writer: socket
+			});
+
+			socket.on('end', () => console.log("Disconnected"));
+		}).on('error', (err) => {
+			// handle errors here
+			throw err;
+		});
+
+		//let javaExecutablePath = findJavaExecutable('java');
+
+		let port = isDevMode() ? 9826 : undefined;
+		
+		server.listen(port, () => {
+			return onServerConnect(server, extensionPath, storagePath);
+		});
+	});
+}
+
+
+function onServerConnect(server: net.Server, extensionPath: string, storagePath: string) {
+	if (isDevMode()) {
+		return; // In dev we do not spawn the server
+	}
+	// Start the child java process
+	let options = {cwd: workspace.rootPath};
+
+	let serverPath = path.resolve(extensionPath, "server");
+	let javaExecutable = addOsSpecificSuffix(path.resolve(serverPath, "jre", "bin", "java"));
+	let jarPath = path.resolve(serverPath, "server.jar");
+
+
+	let args = [
+		'-Xmx50m',
+		'-Xshare:off',
+		'-XX:+UseSerialGC',
+		'-XX:MaxRAM=200M',
+		'-jar',
+		jarPath,
+		"--languageserver.port=" + server.address()["port"]
+	]
+
+	let process = child_process.spawn(javaExecutable, args, options);
+	process.on("error", (err: Error) => {
+		console.log(err);
+	})
+
+	// Send raw output to a file
+	if (!fs.existsSync(storagePath))
+		fs.mkdirSync(storagePath);
+
+	let logFile = storagePath + '/vscode-languageserver-java-example.log';
+	let logStream = fs.createWriteStream(logFile, {flags: 'w'});
+
+	process.stdout.pipe(logStream);
+	process.stderr.pipe(logStream);
+
+	console.log(`Storing log in '${logFile}'`);
 }
 
 // MIT Licensed code from: https://github.com/georgewfraser/vscode-javac
@@ -130,39 +138,6 @@ function findJavaExecutable(binname: string) {
 			}
 		}
 	}
-
-
-	/* https://github.com/lannonbr/vscode-js-annotations/blob/master/src/extension.ts
-	// Update when a file opens
-	vscode.window.onDidChangeActiveTextEditor((editor) => {
-		run(ctx, editor);
-	  });
-	
-	  // Update when a file saves
-	  vscode.workspace.onWillSaveTextDocument((event) => {
-		const openEditor = vscode.window.visibleTextEditors.filter((editor) => editor.document.uri === event.document.uri)[0];
-	
-		run(ctx, openEditor);
-	  });
-	
-	  vscode.workspace.onDidChangeTextDocument((event) => {
-		if (timeoutId) {
-		  clearTimeout(timeoutId);
-		}
-	
-		timeoutId = setTimeout(() => {
-		  const openEditor = vscode.window.visibleTextEditors.filter((editor) => editor.document.uri === event.document.uri)[0];
-		  run(ctx, openEditor);
-		}, 100);
-	  });
-	
-	  // Update if the config was changed
-	  vscode.workspace.onDidChangeConfiguration((event) => {
-		if (event.affectsConfiguration("jsannotations")) {
-		  run(ctx, vscode.window.activeTextEditor);
-		}
-	});*/
-
 
 	return null;
 }
