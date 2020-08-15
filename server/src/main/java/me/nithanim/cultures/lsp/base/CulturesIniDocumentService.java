@@ -13,6 +13,7 @@ import org.eclipse.lsp4j.CompletionItem;
 import org.eclipse.lsp4j.CompletionItemKind;
 import org.eclipse.lsp4j.CompletionList;
 import org.eclipse.lsp4j.CompletionParams;
+import org.eclipse.lsp4j.DefinitionParams;
 import org.eclipse.lsp4j.DocumentLink;
 import org.eclipse.lsp4j.DocumentLinkParams;
 import org.eclipse.lsp4j.FoldingRange;
@@ -35,8 +36,8 @@ public class CulturesIniDocumentService extends FullTextDocumentService {
 
   @Override
   public CompletableFuture<Either<List<CompletionItem>, CompletionList>> completion(
-      CompletionParams position) {
-    logger.info("Req Completion for " + position.getTextDocument().getUri());
+      CompletionParams params) {
+    logger.info("Req Completion for " + params.getTextDocument().getUri());
     CompletionItem ci = new CompletionItem();
     ci.setLabel("TextCompletion");
     ci.setKind(CompletionItemKind.Interface);
@@ -48,8 +49,8 @@ public class CulturesIniDocumentService extends FullTextDocumentService {
 
   @Override
   public CompletableFuture<Either<List<? extends Location>, List<? extends LocationLink>>>
-      definition(TextDocumentPositionParams position) {
-    logger.info("Req Definition for " + position.getTextDocument().getUri());
+      definition(DefinitionParams params) {
+    logger.info("Req Definition for " + params.getTextDocument().getUri());
     // Location defLoc = culturesModel.findDefinition(position.getTextDocument().getSourceFile(),
     // position.getPosition());
     List<Location> l = new ArrayList<>();

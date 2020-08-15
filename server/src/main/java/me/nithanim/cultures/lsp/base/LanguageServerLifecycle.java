@@ -1,8 +1,6 @@
 package me.nithanim.cultures.lsp.base;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.Socket;
 import java.util.concurrent.Future;
 import lombok.RequiredArgsConstructor;
@@ -35,23 +33,31 @@ public class LanguageServerLifecycle {
   public LanguageClient languageClient(@Value("${languageserver.port:9826}") int port)
       throws IOException {
     logger.info("Connecting to clients server socket on port " + port);
-    Socket socket = new Socket("localhost", port);
+    Socket socket = null;
+    try {
+      socket = new Socket("localhost", port);
+    } catch (IOException e) {
+      throw new IOException("Unable to connect to the language server client!");
+    }
 
-    InputStream in = socket.getInputStream();
-    OutputStream out = socket.getOutputStream();
+    CulturesIniLanguageServer server = createCulturesLanguageServer();
 
-    CulturesIniLanguageServer server = new CulturesIniLanguageServer();
-    autowireCapableBeanFactory.autowireBean(server);
-    autowireCapableBeanFactory.autowire(
-        CulturesIniLanguageServer.class, AutowireCapableBeanFactory.AUTOWIRE_BY_TYPE, true);
-    configurableBeanFactory.registerSingleton("culturesIniLanguageServer", server);
-
-    Launcher<LanguageClient> launcher = LSPLauncher.createServerLauncher(server, in, out);
+    Launcher<LanguageClient> launcher =
+        LSPLauncher.createServerLauncher(server, socket.getInputStream(), socket.getOutputStream());
     LanguageClient client = launcher.getRemoteProxy();
     server.connect(client);
 
     future = launcher.startListening();
     return client;
+  }
+
+  private CulturesIniLanguageServer createCulturesLanguageServer() {
+    CulturesIniLanguageServer server = new CulturesIniLanguageServer();
+    autowireCapableBeanFactory.autowireBean(server);
+    autowireCapableBeanFactory.autowire(
+        CulturesIniLanguageServer.class, AutowireCapableBeanFactory.AUTOWIRE_BY_TYPE, true);
+    configurableBeanFactory.registerSingleton("culturesIniLanguageServer", server);
+    return server;
   }
 
   @EventListener

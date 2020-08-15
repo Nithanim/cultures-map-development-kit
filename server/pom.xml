@@ -9,7 +9,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
+        <version>2.3.1.RELEASE</version>
         <relativePath/>
     </parent>
     <dependencies>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.eclipse.lsp4j</groupId>
             <artifactId>org.eclipse.lsp4j</artifactId>
-            <version>0.7.2</version>
+            <version>0.9.0</version>
             <exclusions>
                 <exclusion>
                     <artifactId>jsr305</artifactId>
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.8</version>
+            <version>1.18.12</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -57,13 +57,29 @@
             <groupId>me.nithanim.cultures.format</groupId>
             <artifactId>lib</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>me.nithanim.cultures.format</groupId>
             <artifactId>cif</artifactId>
             <version>0.0.2-SNAPSHOT</version>
-            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.199</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-codegen-maven</artifactId>
+            <version>${jooq.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -77,6 +93,90 @@
                         <goals>
                             <goal>antlr4</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>src/main/resources/create_database.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <driver>${db.driver}</driver>
+                            <url>${db.url-gen}</url>
+                            <username>${db.username}</username>
+                            <password>${db.password}</password>
+                            <srcFiles>
+                                <srcFile>src/main/resources/create_database.sql</srcFile>
+                            </srcFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>1.4.200</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <jdbc>
+                                <driver>${db.driver}</driver>
+                                <url>${db.url-gen}</url>
+                                <user>${db.username}</user>
+                                <password>${db.password}</password>
+                            </jdbc>
+                            <generator>
+                                <target>
+                                    <packageName>me.nithanim.cultures.lsp.db</packageName>
+                                    <directory>${project.build.directory}/generated-sources/jooq</directory>
+                                </target>
+                                <database>
+                                    <forcedTypes>
+                                        <forcedType>
+                                            <!--<name>OTHER</name>-->
+                                            <includeExpression>PUBLIC.CODELENS.DATA</includeExpression><!-- WHY is this needed and not matched by user-type? -->
+                                            <!--<includeTypes>other</includeTypes>-->
+                                            <userType>me.nithanim.cultures.lsp.processor.services.clientpersistent.MyCodeLense</userType>
+                                            <binding>me.nithanim.cultures.lsp.config.MyCodeLensBinding</binding>
+                                        </forcedType>
+                                    </forcedTypes>
+                                </database>
+                            </generator>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -149,5 +249,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <jooq.version>3.14.0-SNAPSHOT</jooq.version>
     </properties>
 </project>

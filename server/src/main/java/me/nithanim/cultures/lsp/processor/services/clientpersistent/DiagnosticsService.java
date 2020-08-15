@@ -1,6 +1,5 @@
 package me.nithanim.cultures.lsp.processor.services.clientpersistent;
 
-import edu.umd.cs.findbugs.annotations.Nullable;
 import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +20,6 @@ public class DiagnosticsService
     extends GenericKeyPerSourceService<DiagnosticsService.Type, MyDiagnostic> {
   @Autowired private LanguageClient client;
 
-  @Nullable
   public List<MyDiagnostic> getAllDiagnostics(SourceFile sourceFile) {
     return getAll(sourceFile);
   }

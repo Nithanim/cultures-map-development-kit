@@ -12,7 +12,7 @@ import me.nithanim.cultures.lsp.processor.lines.CulturesIniLine;
 import me.nithanim.cultures.lsp.processor.model.DefinitionEnvironment;
 import me.nithanim.cultures.lsp.processor.services.WorkspaceService;
 import me.nithanim.cultures.lsp.processor.services.clientpersistent.CodeLensService;
-import me.nithanim.cultures.lsp.processor.services.clientpersistent.MyCodeLens;
+import me.nithanim.cultures.lsp.processor.services.clientpersistent.MyCodeLense;
 import me.nithanim.cultures.lsp.processor.util.Origin;
 import org.eclipse.lsp4j.CodeLens;
 import org.eclipse.lsp4j.Command;
@@ -30,7 +30,7 @@ public class CodeInsightService {
 
   @EventListener
   public void onSourceFileParsed(SourceFileParsedEvent evt) {
-    List<MyCodeLens> staticobjects = new ArrayList<>();
+    List<MyCodeLense> staticobjects = new ArrayList<>();
     ArrayList<Mission> missions = new ArrayList<>();
     int c = 0;
     List<? extends CulturesIniLine> allLines = definitionEnvironment.getAllLinesRaw();
@@ -45,7 +45,7 @@ public class CodeInsightService {
         CulturesIniCommand cmd = (CulturesIniCommand) l;
         switch (cmd.getCommandType().getCategory()) {
           case STATICOBJECTS:
-            MyCodeLens socl = staticobjectsCommandsService.handle(cmd);
+            MyCodeLense socl = staticobjectsCommandsService.handle(cmd);
             if (socl != null) {
               staticobjects.add(socl);
             }
@@ -59,10 +59,10 @@ public class CodeInsightService {
     codeLensService.update(CodeLensService.Type.SETHUMAN, staticobjects);
   }
 
-  private MyCodeLens createCodeLens(Mission m) {
+  private MyCodeLense createCodeLens(Mission m) {
     CodeLens o =
         new CodeLens(m.getOrigin().getRange(), new Command("Mission id " + m.getId(), ""), null);
-    return new MyCodeLens(m.getOrigin(), o);
+    return new MyCodeLense(m.getOrigin(), o);
   }
 
   @Value

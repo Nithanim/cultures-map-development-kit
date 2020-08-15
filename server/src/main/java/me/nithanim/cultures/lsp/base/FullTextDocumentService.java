@@ -9,7 +9,7 @@ import me.nithanim.cultures.lsp.base.events.ClientSourceFileClosedEvent;
 import me.nithanim.cultures.lsp.base.events.ClientSourceFileOpenedEvent;
 import me.nithanim.cultures.lsp.base.events.ClientSourceFileSavedEvent;
 import me.nithanim.cultures.lsp.processor.services.clientpersistent.CodeLensService;
-import me.nithanim.cultures.lsp.processor.services.clientpersistent.MyCodeLens;
+import me.nithanim.cultures.lsp.processor.services.clientpersistent.MyCodeLense;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
 import me.nithanim.cultures.lsp.processor.util.Uri;
 import org.eclipse.lsp4j.CodeAction;
@@ -18,25 +18,28 @@ import org.eclipse.lsp4j.CodeLens;
 import org.eclipse.lsp4j.CodeLensParams;
 import org.eclipse.lsp4j.Command;
 import org.eclipse.lsp4j.CompletionItem;
+import org.eclipse.lsp4j.DefinitionParams;
 import org.eclipse.lsp4j.DidChangeTextDocumentParams;
 import org.eclipse.lsp4j.DidCloseTextDocumentParams;
 import org.eclipse.lsp4j.DidOpenTextDocumentParams;
 import org.eclipse.lsp4j.DidSaveTextDocumentParams;
 import org.eclipse.lsp4j.DocumentFormattingParams;
 import org.eclipse.lsp4j.DocumentHighlight;
+import org.eclipse.lsp4j.DocumentHighlightParams;
 import org.eclipse.lsp4j.DocumentOnTypeFormattingParams;
 import org.eclipse.lsp4j.DocumentRangeFormattingParams;
 import org.eclipse.lsp4j.DocumentSymbol;
 import org.eclipse.lsp4j.DocumentSymbolParams;
 import org.eclipse.lsp4j.Hover;
+import org.eclipse.lsp4j.HoverParams;
 import org.eclipse.lsp4j.Location;
 import org.eclipse.lsp4j.LocationLink;
 import org.eclipse.lsp4j.ReferenceParams;
 import org.eclipse.lsp4j.RenameParams;
 import org.eclipse.lsp4j.SignatureHelp;
+import org.eclipse.lsp4j.SignatureHelpParams;
 import org.eclipse.lsp4j.SymbolInformation;
 import org.eclipse.lsp4j.TextDocumentContentChangeEvent;
-import org.eclipse.lsp4j.TextDocumentPositionParams;
 import org.eclipse.lsp4j.TextEdit;
 import org.eclipse.lsp4j.WorkspaceEdit;
 import org.eclipse.lsp4j.jsonrpc.messages.Either;
@@ -59,20 +62,20 @@ abstract class FullTextDocumentService implements TextDocumentService {
   }
 
   @Override
-  public CompletableFuture<Hover> hover(TextDocumentPositionParams position) {
-    logger.info("Req Hover for " + position.getTextDocument().getUri());
+  public CompletableFuture<Hover> hover(HoverParams params) {
+    logger.info("Req Hover for " + params.getTextDocument().getUri());
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public CompletableFuture<SignatureHelp> signatureHelp(TextDocumentPositionParams position) {
+  public CompletableFuture<SignatureHelp> signatureHelp(SignatureHelpParams params) {
     throw new UnsupportedOperationException();
   }
 
   @Override
   public CompletableFuture<Either<List<? extends Location>, List<? extends LocationLink>>>
-      definition(TextDocumentPositionParams position) {
-    logger.info("Req Definition for " + position.getTextDocument().getUri());
+      definition(DefinitionParams params) {
+    logger.info("Req Definition for " + params.getTextDocument().getUri());
     throw new UnsupportedOperationException();
   }
 
@@ -84,8 +87,8 @@ abstract class FullTextDocumentService implements TextDocumentService {
 
   @Override
   public CompletableFuture<List<? extends DocumentHighlight>> documentHighlight(
-      TextDocumentPositionParams position) {
-    logger.info("Req Highlight for " + position.getTextDocument().getUri());
+          DocumentHighlightParams params) {
+    logger.info("Req Highlight for " + params.getTextDocument().getUri());
     throw new UnsupportedOperationException();
   }
 
@@ -108,14 +111,8 @@ abstract class FullTextDocumentService implements TextDocumentService {
     logger.info("Req CodeLens for " + params.getTextDocument().getUri());
     SourceFile sourceFile = new SourceFile(Uri.of(params.getTextDocument().getUri()));
 
-    List<CodeLens> result;
-    List<MyCodeLens> ir = codeLensService.getAll(sourceFile);
-    if (ir == null) {
-      result = null;
-    } else {
-      result = ir.stream().map(i -> i.getCodeLens()).collect(Collectors.toList());
-    }
-
+    List<MyCodeLense> ir = codeLensService.getAll(sourceFile);
+    List<CodeLens> result = ir.stream().map(i -> i.getCodeLens()).collect(Collectors.toList());
     return CompletableFuture.completedFuture(result);
   }
 

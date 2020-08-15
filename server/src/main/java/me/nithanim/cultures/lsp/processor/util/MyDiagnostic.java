@@ -5,14 +5,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
-import me.nithanim.cultures.lsp.processor.services.clientpersistent.GenericKeyPerSourceService;
+import me.nithanim.cultures.lsp.processor.services.clientpersistent.Origination;
 import org.eclipse.lsp4j.Diagnostic;
 import org.eclipse.lsp4j.DiagnosticSeverity;
 
 @Getter
 @EqualsAndHashCode
 @ToString
-public class MyDiagnostic implements GenericKeyPerSourceService.Origination {
+public class MyDiagnostic implements Origination {
   @NonNull final Origin origin;
   final DiagnosticSeverity severity;
   String code;

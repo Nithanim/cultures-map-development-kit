@@ -1,6 +1,5 @@
 package me.nithanim.cultures.lsp.processor.services.clientpersistent;
 
-import edu.umd.cs.findbugs.annotations.Nullable;
 import edu.umd.cs.findbugs.annotations.ReturnValuesAreNonnullByDefault;
 import java.util.Collection;
 import java.util.Collections;
@@ -12,13 +11,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import javax.annotation.ParametersAreNonnullByDefault;
 import lombok.Value;
-import me.nithanim.cultures.lsp.processor.util.Origin;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
 
 @ReturnValuesAreNonnullByDefault
 @ParametersAreNonnullByDefault
 public abstract class GenericKeyPerSourceService<
-    KEY_TYPE extends Enum<?>, DATA_TYPE extends GenericKeyPerSourceService.Origination> {
+    KEY_TYPE extends Enum<?>, DATA_TYPE extends Origination> {
   private final Map<SourceFile, Set<Key>> keys = new HashMap<>();
   private final Map<Key, List<DATA_TYPE>> things = new HashMap<>();
 
@@ -31,13 +29,12 @@ public abstract class GenericKeyPerSourceService<
    */
   private final Set<SourceFile> sent = new HashSet<>();
 
-  @Nullable
   public List<DATA_TYPE> getAll(SourceFile sourceFile) {
     Set<Key> keys = this.keys.get(sourceFile);
     if (keys != null) {
       return keys.stream().flatMap(k -> things.get(k).stream()).collect(Collectors.toList());
     } else {
-      return null;
+      return Collections.emptyList();
     }
   }
 
@@ -112,7 +109,4 @@ public abstract class GenericKeyPerSourceService<
     KEY_TYPE type;
   }
 
-  public interface Origination {
-    Origin getOrigin();
-  }
 }

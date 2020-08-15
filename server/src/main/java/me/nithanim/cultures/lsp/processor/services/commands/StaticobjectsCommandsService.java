@@ -4,16 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommandType;
-import me.nithanim.cultures.lsp.processor.services.clientpersistent.CodeLensService;
-import me.nithanim.cultures.lsp.processor.services.clientpersistent.MyCodeLens;
-import org.springframework.beans.factory.annotation.Autowired;
+import me.nithanim.cultures.lsp.processor.services.clientpersistent.MyCodeLense;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StaticobjectsCommandsService {
-  @Autowired private CodeLensService codeLensService;
-
-  public MyCodeLens handle(CulturesIniCommand cmd) {
+  public MyCodeLense handle(CulturesIniCommand cmd) {
     if (cmd.getCommandType() == CulturesIniCommandType.SETHUMAN) {
       return handleHuman(cmd);
     } else {
@@ -21,7 +17,7 @@ public class StaticobjectsCommandsService {
     }
   }
 
-  private MyCodeLens handleHuman(CulturesIniCommand cmd) {
+  private MyCodeLense handleHuman(CulturesIniCommand cmd) {
     if (cmd.getParameters().size() < 7) {
       return null;
     }
@@ -49,7 +45,7 @@ public class StaticobjectsCommandsService {
     c(0b1000000000000000000, behaviour, "NoAge", trans);
     c(0b10000000000000000000, behaviour, "Hero", trans);
 
-    return MyCodeLens.of(
+    return MyCodeLense.of(
         cmd.getParameter(6).getOrigin(), "Behaviours: [" + String.join(", ", trans) + "]");
   }
 
