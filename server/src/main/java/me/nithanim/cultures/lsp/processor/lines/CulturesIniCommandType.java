@@ -14,6 +14,7 @@ import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.A
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.ALLOWEDTHINGS;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.LOGICCONTROL;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_HUMANGRAPHICS;
+import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_HUMANNAMES;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_MAPNAME;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_MAPTYPE;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_MUSIC;
@@ -128,6 +129,7 @@ public enum CulturesIniCommandType {
       pn("PosY"),
       pn("Id"),
       pn("Behavior")),
+  SETNAME(MISC_HUMANNAMES, pn("Human Id"), pn("String Id")),
   SETEXPIERENCE(STATICOBJECTS, pbn("Type", 1, 78), pn("Amount")),
   ATTACHTOHOUSE(STATICOBJECTS, pn("PosX"), pn("PosY"), psn("House attachment type", 1, 2, 4)),
   SETPRODUCEGOOD(STATICOBJECTS, pt("Good type")),
