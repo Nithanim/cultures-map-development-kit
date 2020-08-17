@@ -8,4 +8,9 @@ public class CulturesIniInclude implements CulturesIniLine {
   Origin originAll;
   Origin originPath;
   String path;
+
+  @Override
+  public String printLine() {
+    return "#include \"" + path + "\"";
+  }
 }

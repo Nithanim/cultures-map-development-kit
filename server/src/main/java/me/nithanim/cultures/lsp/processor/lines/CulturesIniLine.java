@@ -4,4 +4,6 @@ import me.nithanim.cultures.lsp.processor.util.Origin;
 
 public interface CulturesIniLine {
   Origin getOriginAll();
+
+  String printLine();
 }

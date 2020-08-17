@@ -8,4 +8,13 @@ import me.nithanim.cultures.lsp.processor.util.Origin;
 public class CulturesIniCategory implements CulturesIniLine {
   @Nullable CulturesIniCategoryType type;
   Origin originAll;
+
+  @Override
+  public String printLine() {
+    if (type == null) {
+      return "";
+    } else {
+      return "[" + type.getRealname() + "]";
+    }
+  }
 }

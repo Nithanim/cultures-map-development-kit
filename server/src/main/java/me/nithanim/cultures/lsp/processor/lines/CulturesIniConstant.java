@@ -68,4 +68,9 @@ public class CulturesIniConstant implements CulturesIniLine {
   public boolean isInteger() {
     return valueString == null;
   }
+
+  @Override
+  public String printLine() {
+    return "#" + getName() + " " + (isString() ? getValueString() : getValueInt());
+  }
 }
