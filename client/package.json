@@ -48,8 +48,8 @@
         "title": "Extract c2m"
       },
       {
-        "command": "cultures-ini.package-map",
-        "title": "Export the map"
+        "command": "cultures-ini.package-map-external",
+        "title": "Export the map to external format"
       }
     ],
     "configuration": {
