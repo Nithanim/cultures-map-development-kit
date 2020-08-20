@@ -51,7 +51,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
-import javax.xml.bind.DatatypeConverter;
 import me.nithanim.cultures.format.newlib.LibFileInfo;
 import me.nithanim.cultures.format.newlib.LibFileUtil;
 import me.nithanim.cultures.format.newlib.LibFormat;
@@ -274,58 +273,7 @@ public class LibFileFileSystem extends FileSystem {
     }
 
     public <A extends BasicFileAttributes> SeekableByteChannel newByteChannel(Path path, Set<? extends OpenOption> options, FileAttribute<?>[] attrs) throws IOException {
-        Object content = null;
-        if (content instanceof List) {
-            throw new IOException("Is a directory");
-        }
-        String base64 = ((Map<String, String>) content).get("content");
-        final byte[] data = DatatypeConverter.parseBase64Binary(base64);
-        return new SeekableByteChannel() {
-            long position;
-
-            @Override
-            public int read(ByteBuffer dst) throws IOException {
-                int l = (int) Math.min(dst.remaining(), size() - position);
-                dst.put(data, (int) position, l);
-                position += l;
-                return l;
-            }
-
-            @Override
-            public int write(ByteBuffer src) throws IOException {
-                throw new UnsupportedOperationException();
-            }
-
-            @Override
-            public long position() throws IOException {
-                return position;
-            }
-
-            @Override
-            public SeekableByteChannel position(long newPosition) throws IOException {
-                position = newPosition;
-                return this;
-            }
-
-            @Override
-            public long size() throws IOException {
-                return data.length;
-            }
-
-            @Override
-            public SeekableByteChannel truncate(long size) throws IOException {
-                throw new UnsupportedOperationException();
-            }
-
-            @Override
-            public boolean isOpen() {
-                return true;
-            }
-
-            @Override
-            public void close() throws IOException {
-            }
-        };
+        throw new UnsupportedOperationException();
     }
 
     public <A extends BasicFileAttributes> A readAttributes(Path path, Class<A> clazz, LinkOption... options) throws IOException {
