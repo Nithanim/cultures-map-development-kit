@@ -167,11 +167,15 @@
                                 <database>
                                     <forcedTypes>
                                         <forcedType>
-                                            <!--<name>OTHER</name>-->
-                                            <includeExpression>PUBLIC.CODELENS.DATA</includeExpression><!-- WHY is this needed and not matched by user-type? -->
+                                            <includeExpression>PUBLIC.CODELENS.DATA</includeExpression>
                                             <!--<includeTypes>other</includeTypes>-->
                                             <userType>me.nithanim.cultures.lsp.processor.services.clientpersistent.MyCodeLense</userType>
                                             <binding>me.nithanim.cultures.lsp.config.MyCodeLensBinding</binding>
+                                        </forcedType>
+                                        <forcedType>
+                                            <includeExpression>PUBLIC.DIAGNOSTIC.DATA</includeExpression>
+                                            <userType>me.nithanim.cultures.lsp.processor.util.MyDiagnostic</userType>
+                                            <binding>me.nithanim.cultures.lsp.config.DiagnosticBinding</binding>
                                         </forcedType>
                                     </forcedTypes>
                                 </database>
