@@ -2,6 +2,7 @@ package me.nithanim.cultures.lsp.base;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import lombok.Setter;
 import lombok.SneakyThrows;
 import me.nithanim.cultures.lsp.processor.services.LanguageServerCommandService;
 import org.eclipse.lsp4j.CodeLensOptions;
@@ -27,16 +28,16 @@ import org.eclipse.lsp4j.services.WorkspaceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
 
 public class CulturesIniLanguageServer implements LanguageServer, LanguageClientAware {
   private static final Logger logger = LoggerFactory.getLogger(CulturesIniLanguageServer.class);
 
   private LanguageClient client;
 
-  @Autowired private CulturesIniDocumentService documentService;
+  @Setter
+  private Runnable onExit;
 
-  @Autowired private ConfigurableApplicationContext applicationContext;
+  @Autowired private CulturesIniDocumentService documentService;
 
   @Autowired private me.nithanim.cultures.lsp.processor.services.WorkspaceService workspaceService;
 
@@ -103,7 +104,7 @@ public class CulturesIniLanguageServer implements LanguageServer, LanguageClient
   @Override
   public void exit() {
     logger.info("Req exit");
-    applicationContext.close();
+    onExit.run();
   }
 
   @Override

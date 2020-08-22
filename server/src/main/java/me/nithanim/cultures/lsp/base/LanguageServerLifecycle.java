@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextStoppedEvent;
@@ -23,17 +23,17 @@ import org.springframework.context.event.EventListener;
 public class LanguageServerLifecycle {
   private static final Logger logger = LoggerFactory.getLogger(LanguageServerLifecycle.class);
 
-  private Future<Void> future;
-
-  private final ApplicationContext context;
+  private final ConfigurableApplicationContext applicationContext;
   private final AutowireCapableBeanFactory autowireCapableBeanFactory;
   private final ConfigurableBeanFactory configurableBeanFactory;
+
+  private Future<Void> future;
 
   @Bean
   public LanguageClient languageClient(@Value("${languageserver.port:9826}") int port)
       throws IOException {
     logger.info("Connecting to clients server socket on port " + port);
-    Socket socket = null;
+    Socket socket;
     try {
       socket = new Socket("localhost", port);
     } catch (IOException e) {
@@ -53,11 +53,16 @@ public class LanguageServerLifecycle {
 
   private CulturesIniLanguageServer createCulturesLanguageServer() {
     CulturesIniLanguageServer server = new CulturesIniLanguageServer();
+    server.setOnExit(this::onExit);
     autowireCapableBeanFactory.autowireBean(server);
-    autowireCapableBeanFactory.autowire(
-        CulturesIniLanguageServer.class, AutowireCapableBeanFactory.AUTOWIRE_BY_TYPE, true);
+    // autowireCapableBeanFactory.autowire(CulturesIniLanguageServer.class,
+    // AutowireCapableBeanFactory.AUTOWIRE_BY_TYPE, true);
     configurableBeanFactory.registerSingleton("culturesIniLanguageServer", server);
     return server;
+  }
+
+  private void onExit() {
+    applicationContext.stop();
   }
 
   @EventListener
@@ -81,5 +86,4 @@ public class LanguageServerLifecycle {
 
       future = launcher.startListening();
   }*/
-
 }
