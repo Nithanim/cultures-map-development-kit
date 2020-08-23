@@ -1,0 +1,86 @@
+name: Build native image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup GraalVM
+        uses: DeLaGuardo/setup-graalvm@3
+        with:
+          graalvm-version: '20.2.0.java11'
+
+      - name: Install native-image
+        run: '& "$env:JAVA_HOME\bin\gu.cmd" install native-image'
+
+      # https://github.com/oracle/graal/issues/2151#issuecomment-647522072
+      - name: Workaround for native-image packaging bug on windows
+        shell: cmd
+        run: 'cp %JAVA_HOME%\lib\svm\bin\native-image.exe %JAVA_HOME%\bin\native-image.exe'
+
+      - name: Setup windows build tools
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v3
+        with:
+          maven-version: 3.6.3
+
+      - name: Build cif library
+        run: cd cultures-format-cif && mvn install --no-transfer-progress
+
+      - name: Build lib library
+        run: cd cultures-format-lib && mvn install --no-transfer-progress
+
+      - name: Build main language server
+        run: cd server && mvn clean install --no-transfer-progress
+
+      - name: Build native-image
+        shell: cmd
+        run: |
+          cd server
+          cd native
+          mvn clean install -Pnative --no-transfer-progress
+
+      - name: Upload native executable artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: executable
+          path: server\native\target\native-image*
+
+# CLIENT EXTENSION
+      - name: Copy server executable to client
+        shell: cmd
+        run: |
+          md client\server
+          cp server\native\target\native-image.exe client\server\extension.exe
+
+      - name: Download extension dependencies
+        shell: cmd
+        run: |
+          cd client
+          npm install
+
+      - name: Install vscode packager
+        shell: cmd
+        run: |
+          cd client
+          npm install -g vsce
+
+      - name: Package extension
+        shell: cmd
+        run: |
+          cd client
+          vsce package
+
+      - name: Upload extension artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: extension-windows
+          path: client\cultures-development-kit*.vsix
+

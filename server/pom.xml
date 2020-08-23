@@ -9,10 +9,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.1.RELEASE</version>
+        <version>2.4.0-M2</version>
         <relativePath/>
     </parent>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-indexer</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.antlr</groupId>
             <artifactId>antlr4-runtime</artifactId>
@@ -75,10 +79,6 @@
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jooq</groupId>
-            <artifactId>jooq-codegen-maven</artifactId>
             <version>${jooq.version}</version>
         </dependency>
     </dependencies>
@@ -98,24 +98,6 @@
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <executions>
-                    <execution>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>read-project-properties</goal>
-                        </goals>
-                        <configuration>
-                            <files>
-                                <file>src/main/resources/create_database.properties</file>
-                            </files>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
                 <artifactId>sql-maven-plugin</artifactId>
                 <version>1.5</version>
                 <executions>
@@ -126,7 +108,7 @@
                         </goals>
                         <configuration>
                             <driver>${db.driver}</driver>
-                            <url>${db.url-gen}</url>
+                            <url>${db.url}</url>
                             <username>${db.username}</username>
                             <password>${db.password}</password>
                             <srcFiles>
@@ -146,6 +128,7 @@
             <plugin>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
+                <version>${jooq.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -155,7 +138,7 @@
                         <configuration>
                             <jdbc>
                                 <driver>${db.driver}</driver>
-                                <url>${db.url-gen}</url>
+                                <url>${db.url}</url>
                                 <user>${db.username}</user>
                                 <password>${db.password}</password>
                             </jdbc>
@@ -169,7 +152,9 @@
                                         <forcedType>
                                             <includeExpression>PUBLIC.CODELENS.DATA</includeExpression>
                                             <!--<includeTypes>other</includeTypes>-->
-                                            <userType>me.nithanim.cultures.lsp.processor.services.clientpersistent.MyCodeLense</userType>
+                                            <userType>
+                                                me.nithanim.cultures.lsp.processor.services.clientpersistent.MyCodeLense
+                                            </userType>
                                             <binding>me.nithanim.cultures.lsp.config.MyCodeLensBinding</binding>
                                         </forcedType>
                                         <forcedType>
@@ -183,47 +168,17 @@
                         </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>1.4.200</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
     <profiles>
-        <profile>
-            <id>fat-jar</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <mainClass>${start-class}</mainClass>
-                            <layout>ZIP</layout>
-                        </configuration>
-                    </plugin>
-                    <!--<plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-shade-plugin</artifactId>
-                        <version>3.2.1</version>
-                        <executions>
-                            <execution>
-                                <id>fat-jar</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>shade</goal>
-                                </goals>
-                                <configuration>
-                                    <transformers>
-                                        <transformer
-                                                implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                            <mainClass>me.nithanim.cultures.lsp.Main</mainClass>
-                                        </transformer>
-                                    </transformers>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>-->
-                </plugins>
-            </build>
-        </profile>
         <profile>
             <id>list-dependencies</id>
             <build>
@@ -248,11 +203,29 @@
             </build>
         </profile>
     </profiles>
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
     <properties>
         <start-class>me.nithanim.cultures.lsp.Main</start-class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <db.url>jdbc:h2:file:./target/tmpdb</db.url>
+        <db.driver>org.h2.Driver</db.driver>
+        <db.username>user</db.username>
+        <db.password>pass</db.password>
         <jooq.version>3.13.4</jooq.version>
     </properties>
 </project>

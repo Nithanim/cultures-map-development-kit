@@ -6,6 +6,7 @@
   "publisher": "Nithanim",
   "license": "MIT",
   "version": "0.0.2",
+  "repository": "https://github.com/Nithanim/cultures-map-development-kit",
   "engines": {
     "vscode": "^1.30.0"
   },

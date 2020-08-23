@@ -1,0 +1,8 @@
+/*
+
+!/src
+!/.gitignore
+!/pom.xml
+!/graal-native-image-gen-config.sh
+!/graal-native-image-gen-image.bat
+!/graal-native-image-gen-image.sh

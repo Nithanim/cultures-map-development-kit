@@ -4,6 +4,7 @@
 !/cultures-format-cif
 !/cultures-format-lib
 !/server
+!/.github
 !/.gitignore
 !/build.sh
 !/README.md

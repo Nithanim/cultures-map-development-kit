@@ -81,17 +81,9 @@ function startServerExecutable(serverSocket: net.Server, extensionPath: string, 
 	let options = {cwd: workspace.rootPath};
 
 	let serverPath = path.resolve(extensionPath, "server");
-	let javaExecutable = addOsSpecificSuffix(path.resolve(serverPath, "jre", "bin", "java"));
-	let jarPath = path.resolve(serverPath, "server.jar");
-
+	let javaExecutable = addOsSpecificSuffix(path.resolve(serverPath, "extension"));
 
 	let args = [
-		'-Xmx50m',
-		'-Xshare:off',
-		'-XX:+UseSerialGC',
-		'-XX:MaxRAM=200M',
-		'-jar',
-		jarPath,
 		"--languageserver.port=" + serverSocket.address()["port"]
 	]
 
