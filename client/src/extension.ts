@@ -9,12 +9,8 @@ import * as path from 'path';
 import * as net from 'net';
 import * as child_process from "child_process";
 
-import * as vscode from "vscode";
-
-import { workspace, Disposable, ExtensionContext } from 'vscode';
-import { LanguageClient, LanguageClientOptions, SettingMonitor, StreamInfo } from 'vscode-languageclient';
-import { prototype } from "mocha";
-import { ServerOptions } from "https";
+import {ExtensionContext, workspace} from "vscode";
+import {LanguageClient, LanguageClientOptions, StreamInfo} from 'vscode-languageclient';
 
 const isDevMode = () => process.env.DEV_MODE === "true";
 
@@ -48,8 +44,8 @@ export function activate(context: ExtensionContext) {
 function createServer(extensionPath: string, storagePath: string): Promise<StreamInfo> {
 	return new Promise((resolve, reject) => {
 
-		var server = net.createServer((socket) => {
-			console.log("Creating server");
+		const serverSocket: net.Server = net.createServer((socket: net.Socket) => {
+			console.log("Client/LSP Server connected!");
 
 			resolve({
 				reader: socket,
@@ -66,18 +62,22 @@ function createServer(extensionPath: string, storagePath: string): Promise<Strea
 
 		let port = isDevMode() ? 9826 : undefined;
 		
-		server.listen(port, () => {
-			return onServerConnect(server, extensionPath, storagePath);
+		serverSocket.listen(port, () => {
+			return onListening(serverSocket, extensionPath, storagePath);
 		});
 	});
 }
 
 
-function onServerConnect(server: net.Server, extensionPath: string, storagePath: string) {
+function onListening(serverSocket: net.Server, extensionPath: string, storagePath: string) {
 	if (isDevMode()) {
 		return; // In dev we do not spawn the server
+	} else {
+		startServerExecutable(serverSocket, extensionPath, storagePath);
 	}
-	// Start the child java process
+}
+
+function startServerExecutable(serverSocket: net.Server, extensionPath: string, storagePath: string) {
 	let options = {cwd: workspace.rootPath};
 
 	let serverPath = path.resolve(extensionPath, "server");
@@ -92,7 +92,7 @@ function onServerConnect(server: net.Server, extensionPath: string, storagePath:
 		'-XX:MaxRAM=200M',
 		'-jar',
 		jarPath,
-		"--languageserver.port=" + server.address()["port"]
+		"--languageserver.port=" + serverSocket.address()["port"]
 	]
 
 	let process = child_process.spawn(javaExecutable, args, options);
@@ -111,35 +111,6 @@ function onServerConnect(server: net.Server, extensionPath: string, storagePath:
 	process.stderr.pipe(logStream);
 
 	console.log(`Storing log in '${logFile}'`);
-}
-
-// MIT Licensed code from: https://github.com/georgewfraser/vscode-javac
-function findJavaExecutable(binname: string) {
-	binname = addOsSpecificSuffix(binname);
-
-	// First search each JAVA_HOME bin folder
-	if (process.env['JAVA_HOME']) {
-		let workspaces = process.env['JAVA_HOME'].split(path.delimiter);
-		for (let i = 0; i < workspaces.length; i++) {
-			let binpath = path.join(workspaces[i], 'bin', binname);
-			if (fs.existsSync(binpath)) {
-				return binpath;
-			}
-		}
-	}
-
-	// Then search PATH parts
-	if (process.env['PATH']) {
-		let pathparts = process.env['PATH'].split(path.delimiter);
-		for (let i = 0; i < pathparts.length; i++) {
-			let binpath = path.join(pathparts[i], binname);
-			if (fs.existsSync(binpath)) {
-				return binpath;
-			}
-		}
-	}
-
-	return null;
 }
 
 function addOsSpecificSuffix(binname: string) {
