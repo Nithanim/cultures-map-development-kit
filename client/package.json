@@ -1,6 +1,6 @@
 {
   "name": "cultures-development-kit",
-	"displayName": "Cultures Development Kit",
+  "displayName": "Cultures Development Kit",
   "description": "Language Server for Cultures maps",
   "author": "Nithanim",
   "publisher": "Nithanim",
@@ -8,7 +8,7 @@
   "version": "0.0.2",
   "repository": "https://github.com/Nithanim/cultures-map-development-kit",
   "engines": {
-    "vscode": "^1.30.0"
+    "vscode": "^1.34.0"
   },
   "categories": [
     "Programming Languages"
@@ -71,7 +71,7 @@
           ],
           "default": "off",
           "description": "Traces the communication between VSCode and the languageServerExample service."
-        }        
+        }
       }
     },
     "configurationDefaults": {
@@ -79,22 +79,24 @@
         "files.encoding": "iso885915"
       }
     },
-    "breakpoints": [
-    ]
+    "breakpoints": []
   },
   "scripts": {
-    "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -watch -p ./",
-    "update-vscode": "node ./node_modules/vscode/bin/install",
-    "postinstall": "node ./node_modules/vscode/bin/install"
-  },
-  "devDependencies": {
-    "@types/mocha": "^5.2.5",
-    "@types/node": "^10.12.8",
-    "typescript": "^3.2.2",
-    "vscode": "^1.1.26"
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint . --ext .ts,.tsx",
+    "watch": "tsc -watch -p ./"
   },
   "dependencies": {
-    "vscode-languageclient": "^5.2.1"
+    "vscode-languageclient": "5.2.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "8.0.3",
+    "@types/node": "12.12.6",
+    "@types/vscode": "1.34.0",
+    "@typescript-eslint/eslint-plugin": "3.10.1",
+    "@typescript-eslint/parser": "3.10.1",
+    "eslint": "7.7.0",
+    "typescript": "3.9.7"
   }
 }
