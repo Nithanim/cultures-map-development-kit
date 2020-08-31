@@ -3,8 +3,8 @@
 !/grammar
 !/src
 !/syntaxes
+!test
 !/.vscode
-!/.gitignore
 !/build.sh
 !/package.json
 !/README.md
