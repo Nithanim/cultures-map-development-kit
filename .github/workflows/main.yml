@@ -23,6 +23,9 @@ jobs:
         shell: cmd
         run: 'cp %JAVA_HOME%\lib\svm\bin\native-image.exe %JAVA_HOME%\bin\native-image.exe'
 
+      - name: Workaround for wrong nodejs
+        run: echo "::add-path::C:\Program Files\nodejs"
+
       - name: Setup windows build tools
         uses: ilammy/msvc-dev-cmd@v1
 
