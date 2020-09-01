@@ -8,6 +8,13 @@ jobs:
     runs-on: windows-2019
 
     steps:
+      - name: Remove old artifacts
+        uses: c-hive/gha-remove-artifacts@v1
+        with:
+          age: '0 month'
+          skip-tags: true
+          skip-recent: 5
+
       - uses: actions/checkout@v2
 
       - name: Setup GraalVM
