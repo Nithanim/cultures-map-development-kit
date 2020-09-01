@@ -1,6 +1,7 @@
 mvn clean package -Pfat-jar
 cd target
-java -agentlib:native-image-agent=config-output-dir=native-image-configs -jar cultures-language-server-*
-mv native-image-configs ../
+mkdir configs
+java -agentlib:native-image-agent=config-output-dir=configs -jar native-*
+mv configs ../
 cd ..
 

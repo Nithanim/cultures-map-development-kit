@@ -38,28 +38,33 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-shade-plugin</artifactId>
-                        <version>3.2.4</version>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
                         <executions>
                             <execution>
-                                <phase>package</phase>
                                 <goals>
-                                    <goal>shade</goal>
+                                    <goal>repackage</goal>
                                 </goals>
-                                <configuration>
-                                    <transformers>
-                                        <transformer
-                                                implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                            <mainClass>${main-class}</mainClass>
-                                        </transformer>
-                                    </transformers>
-                                </configuration>
                             </execution>
                         </executions>
+                        <configuration>
+                            <mainClass>${main-class}</mainClass>
+                            <layout>ZIP</layout>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-dependencies</artifactId>
+                        <version>2.3.3.RELEASE</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
         </profile>
         <profile>
             <id>native</id>
@@ -76,8 +81,8 @@
                                 -Dspring.graal.remove-yaml-support=true
                                 --initialize-at-build-time=java.sql.DriverManager
                                 -H:IncludeResources=create_database.sql
+                                -H:ConfigurationFileDirectories=${project.basedir}/configs
                             </buildArgs>
-                            <!-- Why does -H:ConfigurationFileDirectories=${basedir}/native-image-configs not work? -->
                             <imageName>${project.artifactId}-image</imageName>
                             <mainClass>${main-class}</mainClass>
                         </configuration>

@@ -30,8 +30,10 @@ public class LanguageServerLifecycle {
   private Future<Void> future;
 
   @Bean
-  public LanguageClient languageClient(@Value("${languageserver.port:9826}") int port)
+  public LanguageClient languageClient(
+      @Value("${languageserver.port:9826}") int port, CulturesIniLanguageServer server)
       throws IOException {
+    server.setOnExit(this::onExit);
     logger.info("Connecting to clients server socket on port " + port);
     Socket socket;
     try {
@@ -40,8 +42,6 @@ public class LanguageServerLifecycle {
       throw new IOException("Unable to connect to the language server client!");
     }
 
-    CulturesIniLanguageServer server = createCulturesLanguageServer();
-
     Launcher<LanguageClient> launcher =
         LSPLauncher.createServerLauncher(server, socket.getInputStream(), socket.getOutputStream());
     LanguageClient client = launcher.getRemoteProxy();
@@ -49,16 +49,6 @@ public class LanguageServerLifecycle {
 
     future = launcher.startListening();
     return client;
-  }
-
-  private CulturesIniLanguageServer createCulturesLanguageServer() {
-    CulturesIniLanguageServer server = new CulturesIniLanguageServer();
-    server.setOnExit(this::onExit);
-    autowireCapableBeanFactory.autowireBean(server);
-    // autowireCapableBeanFactory.autowire(CulturesIniLanguageServer.class,
-    // AutowireCapableBeanFactory.AUTOWIRE_BY_TYPE, true);
-    configurableBeanFactory.registerSingleton("culturesIniLanguageServer", server);
-    return server;
   }
 
   private void onExit() {
