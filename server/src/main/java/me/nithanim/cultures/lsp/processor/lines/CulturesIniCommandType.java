@@ -129,6 +129,7 @@ public enum CulturesIniCommandType {
       pn("PosY"),
       pn("Id"),
       pn("Behavior")),
+  SETPRODUCEDGOOD(STATICOBJECTS, pt("Good type")),
   SETNAME(MISC_HUMANNAMES, pn("Human Id"), pn("String Id")),
   SETEXPIERENCE(STATICOBJECTS, pbn("Type", 1, 78), pn("Amount")),
   ATTACHTOHOUSE(STATICOBJECTS, pn("PosX"), pn("PosY"), psn("House attachment type", 1, 2, 4)),
