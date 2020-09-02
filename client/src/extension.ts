@@ -9,6 +9,7 @@ import * as path from 'path';
 import * as net from 'net';
 import * as child_process from "child_process";
 
+import * as vscode from "vscode";
 import {ExtensionContext, workspace} from "vscode";
 import {LanguageClient, LanguageClientOptions, StreamInfo} from 'vscode-languageclient';
 
@@ -33,10 +34,9 @@ export function activate(context: ExtensionContext) {
 		}
 	};
 
-	// Create the language client and start the client.
 	let disposable = new LanguageClient('culturesDevelopmentKit', 'Cultures Development Kit', creServ, clientOptions).start();
 
-	// Push the disposable to the context's subscriptions so that the 
+	// Push the disposable to the context's subscriptions so that the
 	// client can be deactivated on extension deactivation
 	context.subscriptions.push(disposable);
 }
@@ -61,7 +61,7 @@ function createServer(extensionPath: string, storagePath: string): Promise<Strea
 		//let javaExecutablePath = findJavaExecutable('java');
 
 		let port = isDevMode() ? 9826 : undefined;
-		
+
 		serverSocket.listen(port, () => {
 			return onListening(serverSocket, extensionPath, storagePath);
 		});
@@ -72,32 +72,61 @@ function createServer(extensionPath: string, storagePath: string): Promise<Strea
 function onListening(serverSocket: net.Server, extensionPath: string, storagePath: string) {
 	if (isDevMode()) {
 		return; // In dev we do not spawn the server
-	} else {
-		startServerExecutable(serverSocket, extensionPath, storagePath);
-	}
+    } else {
+        try {
+            startServerExecutable(serverSocket, extensionPath, storagePath);
+        } catch (e) {
+            vscode.window.showErrorMessage("Unable to start language server: " + e.message);
+            throw e;
+        }
+    }
 }
 
 function startServerExecutable(serverSocket: net.Server, extensionPath: string, storagePath: string) {
-	let options = {cwd: workspace.rootPath};
+    let options = {cwd: workspace.rootPath};
 
-	let serverPath = path.resolve(extensionPath, "server");
-	let javaExecutable = addOsSpecificSuffix(path.resolve(serverPath, "extension"));
+    let serverPath = path.resolve(extensionPath, "server");
 
-	let args = [
-		"--languageserver.port=" + serverSocket.address()["port"]
-	]
+    let pathNativeImageExecutable = addOsSpecificSuffix(path.resolve(serverPath, "extension"));
+    let pathJvmExecutable = addOsSpecificSuffix(path.resolve(serverPath, "jre", "bin", "java"));
 
-	let process = child_process.spawn(javaExecutable, args, options);
-	process.on("error", (err: Error) => {
-		console.log(err);
-	})
+    let pathExecutable: string;
+    let args: string[];
 
-	// Send raw output to a file
-	if (!fs.existsSync(storagePath))
-		fs.mkdirSync(storagePath);
+    if (fs.existsSync(pathNativeImageExecutable)) {
+        pathExecutable = pathNativeImageExecutable;
+        args = [
+            "--languageserver.port=" + serverSocket.address()["port"],
+            "--languageserver.logfile=" + path.resolve(storagePath, "cultures-server.log")
+        ];
+    } else if (fs.existsSync(pathJvmExecutable)) {
+        pathExecutable = pathJvmExecutable;
+        let jarPath = path.resolve(serverPath, "server.jar");
+        args = [
+            '-Xmx50m',
+            '-Xshare:off',
+            '-XX:+UseSerialGC',
+            '-XX:MaxRAM=200M',
+            '-jar',
+            jarPath,
+            "--languageserver.port=" + serverSocket.address()["port"],
+            "--languageserver.logfile=" + path.resolve(storagePath, "cultures-server.log")
+        ]
+    } else {
+        throw new Error("No lsp server executable could be found! " + pathJvmExecutable);
+    }
 
-	let logFile = storagePath + '/vscode-languageserver-java-example.log';
-	let logStream = fs.createWriteStream(logFile, {flags: 'w'});
+    let process = child_process.spawn(pathExecutable, args, options);
+    process.on("error", (err: Error) => {
+        console.log(err);
+    })
+
+    if (!fs.existsSync(storagePath)) {
+        fs.mkdirSync(storagePath);
+    }
+
+    let logFile = path.resolve(storagePath, 'cultures-client.log');
+    let logStream = fs.createWriteStream(logFile, {flags: 'w'});
 
 	process.stdout.pipe(logStream);
 	process.stderr.pipe(logStream);
