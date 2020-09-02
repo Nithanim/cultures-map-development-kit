@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.nithanim.cultures.languageserver</groupId>
     <artifactId>cultures-language-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.3</version>
     <packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -60,12 +60,12 @@
         <dependency>
             <groupId>me.nithanim.cultures.format</groupId>
             <artifactId>lib</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.2</version>
         </dependency>
         <dependency>
             <groupId>me.nithanim.cultures.format</groupId>
             <artifactId>cif</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
+            <version>0.0.2</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>

@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.nithanim.cultures.languageserver</groupId>
     <artifactId>native</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.3</version>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
@@ -15,7 +15,7 @@
         <dependency>
             <groupId>me.nithanim.cultures.languageserver</groupId>
             <artifactId>cultures-language-server</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.graalvm.sdk</groupId>
