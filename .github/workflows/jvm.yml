@@ -1,0 +1,80 @@
+name: Build jvm version
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2019
+
+    steps:
+      - name: Remove old artifacts
+        uses: c-hive/gha-remove-artifacts@v1
+        with:
+          age: '0 month'
+          skip-tags: true
+          skip-recent: 5
+
+      - uses: actions/checkout@v2
+
+      - name: Setup JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11.0.8'
+          java-package: jdk
+          architecture: x64
+
+      - name: Build cif library
+        run: cd cultures-format-cif && mvn install --no-transfer-progress
+
+      - name: Build lib library
+        run: cd cultures-format-lib && mvn install --no-transfer-progress
+
+      - name: Build main language server
+        run: cd server && mvn clean install --no-transfer-progress
+
+      - name: Build fat-jar
+        shell: cmd
+        run: |
+          cd server
+          cd native
+          mvn clean install -Pfat-jar --no-transfer-progress
+
+      - name: Build minimal JVM
+        shell: cmd
+        run: jlink --add-modules java.base,java.logging,java.xml,jdk.unsupported,java.sql,java.naming,java.desktop,java.management,java.security.jgss,java.instrument,jdk.management --no-header-files --no-man-pages --strip-debug --compress 2 --output server\native\package\jre
+
+
+      - name: Copy server jar
+        run: Copy-Item "server\native\target\native-*.jar" -Destination "server\native\package\server.jar"
+
+
+# CLIENT EXTENSION
+      - name: Copy server executable to client
+        run: |
+          Copy-Item -Path "server\native\package" -Destination "client\server" -Recurse
+
+      - name: Download extension dependencies
+        shell: cmd
+        run: |
+          cd client
+          npm install
+
+      - name: Install vscode packager
+        shell: cmd
+        run: |
+          cd client
+          npm install -g vsce
+
+      - name: Package extension
+        shell: cmd
+        run: |
+          cd client
+          vsce package
+
+      - name: Upload extension artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: extension-windows
+          path: client\cultures-development-kit*.vsix
+
