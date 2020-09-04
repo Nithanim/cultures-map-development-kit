@@ -6,15 +6,16 @@ import me.nithanim.cultures.lsp.processor.util.Origin;
 
 @Value
 public class CulturesIniCategory implements CulturesIniLine {
-  @Nullable CulturesIniCategoryType type;
+  Type lineType = Type.CATEGORY;
+  @Nullable CulturesIniCategoryType categoryType;
   Origin originAll;
 
   @Override
   public String printLine() {
-    if (type == null) {
+    if (categoryType == null) {
       return "";
     } else {
-      return "[" + type.getRealname() + "]";
+      return "[" + categoryType.getRealname() + "]";
     }
   }
 }

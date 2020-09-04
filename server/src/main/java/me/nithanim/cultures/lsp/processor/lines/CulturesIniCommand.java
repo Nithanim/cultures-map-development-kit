@@ -8,6 +8,7 @@ import me.nithanim.cultures.lsp.processor.util.Origin;
 
 @Value
 public class CulturesIniCommand implements CulturesIniLine {
+  Type lineType = Type.COMMAND;
   CulturesIniCommandType commandType;
   Origin originAll;
   Origin originBaseCommand;
@@ -55,8 +56,8 @@ public class CulturesIniCommand implements CulturesIniLine {
       /*if(p.getType() == Parameter.Type.STRING || p.getType() == Parameter.Type.TYPE) {
         parts.add("\"" + p.getValue() + "\"");
       } else {*/
-        parts.add(p.getValue());
-      //}
+      parts.add(p.getValue());
+      // }
     }
     return String.join(" ", parts);
   }

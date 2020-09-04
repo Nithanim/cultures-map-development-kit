@@ -37,7 +37,7 @@ public class CodeInsightService {
     for (CulturesIniLine l : allLines) {
       if (l instanceof CulturesIniCategory) {
         CulturesIniCategory cat = (CulturesIniCategory) l;
-        if (cat.getType() == CulturesIniCategoryType.MISSIONDATA) {
+        if (cat.getCategoryType() == CulturesIniCategoryType.MISSIONDATA) {
           missions.add(new Mission(c++, cat.getOriginAll()));
         }
       }

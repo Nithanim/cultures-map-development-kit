@@ -1,5 +1,6 @@
 package me.nithanim.cultures.lsp.base;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import org.eclipse.lsp4j.InitializeResult;
 import org.eclipse.lsp4j.MessageParams;
 import org.eclipse.lsp4j.MessageType;
 import org.eclipse.lsp4j.ServerCapabilities;
+import org.eclipse.lsp4j.SignatureHelpOptions;
 import org.eclipse.lsp4j.SymbolInformation;
 import org.eclipse.lsp4j.TextDocumentSyncKind;
 import org.eclipse.lsp4j.WorkspaceFoldersOptions;
@@ -36,8 +38,7 @@ public class CulturesIniLanguageServer implements LanguageServer, LanguageClient
 
   private LanguageClient client;
 
-  @Setter
-  private Runnable onExit;
+  @Setter private Runnable onExit;
 
   @Autowired private CulturesIniDocumentService documentService;
 
@@ -61,17 +62,16 @@ public class CulturesIniLanguageServer implements LanguageServer, LanguageClient
     capabilities.setCodeActionProvider(false);
     // capabilities.setCompletionProvider(new CompletionOptions(true, null));
     capabilities.setDefinitionProvider(false);
-    capabilities.setReferencesProvider(true);
-    // capabilities.setHoverProvider(true);
+    capabilities.setReferencesProvider(false);
     capabilities.setDocumentLinkProvider(new DocumentLinkOptions(true));
     capabilities.setFoldingRangeProvider(true);
     capabilities.setExecuteCommandProvider(
         new ExecuteCommandOptions(languageServerCommandService.getCommands()));
-    CodeLensOptions clo = new CodeLensOptions();
-    clo.setResolveProvider(false);
-    capabilities.setCodeLensProvider(clo);
+    capabilities.setCodeLensProvider(new CodeLensOptions(false));
 
-    capabilities.setTypeDefinitionProvider(true);
+    capabilities.setTypeDefinitionProvider(false);
+    capabilities.setSignatureHelpProvider(new SignatureHelpOptions(Collections.emptyList()));
+    capabilities.setHoverProvider(true);
 
     WorkspaceFoldersOptions wfo = new WorkspaceFoldersOptions();
     wfo.setSupported(false);

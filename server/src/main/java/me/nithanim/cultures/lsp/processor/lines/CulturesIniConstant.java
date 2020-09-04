@@ -9,6 +9,7 @@ import me.nithanim.cultures.lsp.processor.util.Origin;
 @Builder
 @AllArgsConstructor
 public class CulturesIniConstant implements CulturesIniLine {
+  Type lineType = Type.CONSTANT;
   Origin originAll;
   Origin originKey;
   Origin originValue;

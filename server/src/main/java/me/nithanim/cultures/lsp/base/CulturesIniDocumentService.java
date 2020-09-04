@@ -7,6 +7,8 @@ import java.util.concurrent.CompletableFuture;
 import lombok.SneakyThrows;
 import me.nithanim.cultures.lsp.processor.services.DocumentLinkService;
 import me.nithanim.cultures.lsp.processor.services.SourceFileContentService;
+import me.nithanim.cultures.lsp.processor.services.lsp.HoverService;
+import me.nithanim.cultures.lsp.processor.services.lsp.SignatureHelpService;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
 import me.nithanim.cultures.lsp.processor.util.Uri;
 import org.eclipse.lsp4j.CompletionItem;
@@ -18,9 +20,12 @@ import org.eclipse.lsp4j.DocumentLink;
 import org.eclipse.lsp4j.DocumentLinkParams;
 import org.eclipse.lsp4j.FoldingRange;
 import org.eclipse.lsp4j.FoldingRangeRequestParams;
+import org.eclipse.lsp4j.Hover;
+import org.eclipse.lsp4j.HoverParams;
 import org.eclipse.lsp4j.Location;
 import org.eclipse.lsp4j.LocationLink;
-import org.eclipse.lsp4j.TextDocumentPositionParams;
+import org.eclipse.lsp4j.SignatureHelp;
+import org.eclipse.lsp4j.SignatureHelpParams;
 import org.eclipse.lsp4j.jsonrpc.messages.Either;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +38,8 @@ public class CulturesIniDocumentService extends FullTextDocumentService {
 
   @Autowired private DocumentLinkService documentLinkService;
   @Autowired private SourceFileContentService sourceFileContentService;
+  @Autowired private SignatureHelpService signatureHelpService;
+  @Autowired private HoverService hoverService;
 
   @Override
   public CompletableFuture<Either<List<CompletionItem>, CompletionList>> completion(
@@ -123,6 +130,18 @@ public class CulturesIniDocumentService extends FullTextDocumentService {
   @Override
   public CompletableFuture<DocumentLink> documentLinkResolve(DocumentLink params) {
     throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public CompletableFuture<SignatureHelp> signatureHelp(SignatureHelpParams params) {
+    logger.debug("Req SignatureHelp for " + params);
+    return signatureHelpService.generateSignatureHelp(params);
+  }
+
+  @Override
+  public CompletableFuture<Hover> hover(HoverParams params) {
+    logger.debug("Req Hover for " + params.getTextDocument().getUri());
+    return hoverService.generateHover(params);
   }
 
   @SneakyThrows

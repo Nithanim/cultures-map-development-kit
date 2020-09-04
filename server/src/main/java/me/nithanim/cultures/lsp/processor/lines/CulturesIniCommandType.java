@@ -268,6 +268,14 @@ public enum CulturesIniCommandType {
     this.special = special;
   }
 
+  public String getDisplayName() {
+    return name().toLowerCase();
+  }
+
+  public String getDescription() {
+    return null;
+  }
+
   public CulturesIniCategoryType getCategory() {
     return category;
   }
@@ -351,6 +359,10 @@ public enum CulturesIniCommandType {
     String getName();
 
     CulturesIniCommand.Parameter.Type getType();
+
+    default String getMarkdownDocumentation() {
+      return null;
+    }
   }
 
   @Value

@@ -32,7 +32,7 @@ public class CommandParameterLengthCheckService {
           dc.addError(cmd.getOriginAll(), "Command is outside a category!");
           valid = false;
         } else {
-          if (currCat.getType() != cmd.getCommandType().getCategory()) {
+          if (currCat.getCategoryType() != cmd.getCommandType().getCategory()) {
             dc.addError(
                 cmd.getOriginAll(),
                 "Command belongs to category "
