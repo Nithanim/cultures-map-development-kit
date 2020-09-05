@@ -30,7 +30,7 @@ public class CommandsCheckerService {
       if (cmd.isInvalid()) {
         continue;
       }
-      switch (cmd.getCommandType().getCategory()) {
+      switch (cmd.getCommandType().getCommandInformation().getCategory()) {
         case PLAYERDATA:
         case PLAYERMISC:
           playerdataCommandsService.handle(cmd, dc);

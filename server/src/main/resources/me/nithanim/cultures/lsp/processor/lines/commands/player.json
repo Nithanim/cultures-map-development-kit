@@ -1,0 +1,104 @@
+{
+  "name": "player",
+  "category": "playerdata",
+  "documentation": "Defines a player.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "documentation": "The id of the player to be created.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 19
+      }
+    },
+    {
+      "name": "PlayerType",
+      "documentation": "The type of the player.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 1,
+        "max": 2
+      },
+      "numberHint": [
+        "NONE",
+        "HUMAN",
+        "AI"
+      ]
+    },
+    {
+      "name": "TribeType",
+      "documentation": "The tribe of the player.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 1,
+        "max": 41
+      },
+      "numberHint": [
+        "NONE",
+        "VIKING",
+        "FRANK",
+        "BYZANTINE",
+        "SARACEN",
+        "WERESNAKE",
+        "WEREWOLF",
+        "EGYPT",
+        "BEARS",
+        "BOARS",
+        "CATTLE",
+        "DEERSMALE",
+        "DEERSFEMALE",
+        "DOGS",
+        "GOATSTAME",
+        "GOATSWILD",
+        "RABBITSBROWN",
+        "RABBITSWHITE",
+        "RABBITSEVIL",
+        "SHEEP",
+        "WOLVES",
+        "CAMELS",
+        "DROMEDARIES",
+        "ELEPHANTS",
+        "HORSES",
+        "LIONSMALE",
+        "LIONSFEMALE",
+        "BIRDSSPARROWS",
+        "BIRDSRAVENS",
+        "BIRDSPARROTS",
+        "CHICKEN",
+        "DUCKS",
+        "GEESE",
+        "SWANS",
+        "BEES",
+        "BUTTERFLIES",
+        "MOSQUITOS",
+        "CRABS",
+        "FROGS",
+        "SCORPIONS",
+        "SNAKES",
+        "DRAGONS"
+      ]
+    },
+    {
+      "name": "ColorId",
+      "documentation": "The color of the player.",
+      "type": "NUMBER",
+      "range": {
+        "min": 1,
+        "max": 2
+      },
+      "numberHint": [
+        "BLUE",
+        "RED",
+        "YELLOW",
+        "CYAN",
+        "GREEN",
+        "PURPLE",
+        "GREY",
+        "ORANGE",
+        "NEON",
+        "BLACK"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "name": "mapguid",
+  "category": "logiccontrol",
+  "documentation": "Defines the unique id of the map.",
+  "parameters": [
+    {
+      "name": "a",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "b",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "c",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "d",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "e",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "f",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "g",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "h",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "i",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "j",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "k",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "l",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "m",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "n",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "o",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    },
+    {
+      "name": "p",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 255
+      }
+    }
+  ]
+}

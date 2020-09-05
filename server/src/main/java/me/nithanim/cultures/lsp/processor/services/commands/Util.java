@@ -15,7 +15,7 @@ class Util {
     return commands.stream()
         .filter(l -> l instanceof CulturesIniCommand)
         .map(l -> (CulturesIniCommand) l)
-        .filter(c -> c.getCommandType().getCategory() == cat)
+        .filter(c -> c.getCommandType().getCommandInformation().getCategory() == cat)
         .collect(Collectors.toList());
   }
 
@@ -24,7 +24,7 @@ class Util {
     return commands.stream()
         .filter(l -> l instanceof CulturesIniCommand)
         .map(l -> (CulturesIniCommand) l)
-        .filter(c -> cats.contains(c.getCommandType().getCategory()))
+        .filter(c -> cats.contains(c.getCommandType().getCommandInformation().getCategory()))
         .collect(Collectors.toList());
   }
 }

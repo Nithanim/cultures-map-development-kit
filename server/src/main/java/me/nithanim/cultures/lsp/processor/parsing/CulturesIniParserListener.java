@@ -102,7 +102,10 @@ public class CulturesIniParserListener extends CulturesIniBaseListener {
   public void exitCommandline(CulturesIniParser.CommandlineContext ctx) {
     if (commandBuilder.getCommandType() == null) {
       return;
-    } else if (commandBuilder.getCommandType().isSpecial()) {
+    } else if (commandBuilder
+        .getCommandType()
+        .getCommandInformation()
+        .isVariableLengthParameters()) {
       lines.add(commandBuilder.build());
     } else {
       lines.add(commandBuilder.build());

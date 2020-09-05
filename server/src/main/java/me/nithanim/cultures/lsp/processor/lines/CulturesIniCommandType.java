@@ -1,18 +1,17 @@
 package me.nithanim.cultures.lsp.processor.lines;
 
-import java.util.Arrays;
+import com.google.gson.Gson;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.ToString;
 import lombok.Value;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.AIDATA;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.ALLOWEDTHINGS;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.LOGICCONTROL;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_HUMANGRAPHICS;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_HUMANNAMES;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_MAPNAME;
@@ -30,31 +29,18 @@ import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.S
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.TEXT;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand.Parameter.Type.NUMBER;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand.Parameter.Type.STRING;
+import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformation;
+import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformationMapper;
+import me.nithanim.cultures.lsp.processor.lines.commands.JsonCommandInformation;
+import org.h2.util.IOUtils;
 
 /**
  * Definitions of all commands available. Parameter names, types and basic validation are in place.
  */
 public enum CulturesIniCommandType {
-  VERSION(LOGICCONTROL, pbn("Version", 1, 1)),
-  MAPSIZE(LOGICCONTROL, pn(), pn()),
-  MAPGUID(
-      LOGICCONTROL,
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn(),
-      pn()),
+  VERSION(),
+  MAPSIZE(),
+  MAPGUID(),
   // Map
   MAPTYPE(MISC_MAPTYPE, pbn("Maptype", 1, 6)),
   MAPNAMESTRINGID(MISC_MAPNAME, pn("Mapname string")),
@@ -82,7 +68,7 @@ public enum CulturesIniCommandType {
   // goalwonbymission
   // goallostbymission
   // Player
-  PLAYER(PLAYERDATA, pplayer(), pbn("Player type", 0, 3), pbn("Tribe", 0, 41), pbn("Color", 0, 10)),
+  PLAYER(),
   DIPLOMACY(PLAYERDATA, pbn("This player", 0, 20), pbn("Other player", 0, 20), pbn("State", 1, 3)),
   NAMETRIBE(PLAYERMISC, pplayer(), pn("String")),
   NAMETRIBESHORT(PLAYERMISC, pplayer(), pn("String")),
@@ -231,13 +217,20 @@ public enum CulturesIniCommandType {
     }
   }
 
-  @Getter private final boolean special;
-  private final CulturesIniCategoryType category;
-  /** List of expected parameters */
-  private final List<? extends ParameterInfo<?>> parameterTypes;
+  @Getter private final CommandInformation commandInformation;
 
-  private final int paramMin;
-  private final int paramMax;
+  @SneakyThrows
+  CulturesIniCommandType() {
+    this.commandInformation =
+        new CommandInformationMapper()
+            .map(
+                new Gson()
+                    .fromJson(
+                        IOUtils.getReader(
+                            CulturesIniCommandType.class.getResourceAsStream(
+                                "commands/" + name().toLowerCase() + ".json")),
+                        JsonCommandInformation.class));
+  }
 
   CulturesIniCommandType(CulturesIniCategoryType category, ParameterInfo<?>... parameterTypes) {
     this(false, category, parameterTypes.length, parameterTypes.length, parameterTypes);
@@ -261,31 +254,9 @@ public enum CulturesIniCommandType {
       int paramMin,
       int paramMax,
       ParameterInfo<?>... parameterTypes) {
-    this.category = category;
-    this.paramMax = paramMax;
-    this.parameterTypes = Arrays.asList(parameterTypes);
-    this.paramMin = paramMin;
-    this.special = special;
-  }
-
-  public String getDisplayName() {
-    return name().toLowerCase();
-  }
-
-  public String getDescription() {
-    return null;
-  }
-
-  public CulturesIniCategoryType getCategory() {
-    return category;
-  }
-
-  public List<? extends ParameterInfo<?>> getParameterInfo() {
-    return parameterTypes;
-  }
-
-  public ParameterInfo<?> getParameterInfo(int i) {
-    return parameterTypes.get(i);
+    this.commandInformation =
+        new CommandInformationMapper()
+            .map(name(), special, category, paramMin, paramMax, parameterTypes);
   }
 
   /** Sets the parameter as number. */
@@ -340,16 +311,6 @@ public enum CulturesIniCommandType {
     return pbn("Player", 0, 20);
   }
 
-  /** Minimum supported parameters */
-  public int getParamMin() {
-    return paramMin;
-  }
-
-  /** Maximum supported parameters */
-  public int getParamMax() {
-    return paramMax;
-  }
-
   /**
    * Describes an expected parameter.
    *
@@ -359,10 +320,6 @@ public enum CulturesIniCommandType {
     String getName();
 
     CulturesIniCommand.Parameter.Type getType();
-
-    default String getMarkdownDocumentation() {
-      return null;
-    }
   }
 
   @Value

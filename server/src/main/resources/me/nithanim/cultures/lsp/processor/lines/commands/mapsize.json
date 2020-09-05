@@ -1,0 +1,25 @@
+{
+  "name": "version",
+  "category": "logiccontrol",
+  "documentation": "Defines the size of the map. Values must be a multiple of two and must match map.dat.",
+  "parameters": [
+    {
+      "name": "width",
+      "documentation": "The width of the map.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 500
+      }
+    },
+    {
+      "name": "height",
+      "documentation": "The height of the map.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 500
+      }
+    }
+  ]
+}

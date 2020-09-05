@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCategory;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
-import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommandType;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniLine;
+import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformation;
 import me.nithanim.cultures.lsp.processor.services.clientpersistent.DiagnosticsService;
 import me.nithanim.cultures.lsp.processor.util.DiagnosticsCollector;
 import org.springframework.stereotype.Service;
@@ -32,11 +32,12 @@ public class CommandParameterLengthCheckService {
           dc.addError(cmd.getOriginAll(), "Command is outside a category!");
           valid = false;
         } else {
-          if (currCat.getCategoryType() != cmd.getCommandType().getCategory()) {
+          if (currCat.getCategoryType()
+              != cmd.getCommandType().getCommandInformation().getCategory()) {
             dc.addError(
                 cmd.getOriginAll(),
                 "Command belongs to category "
-                    + cmd.getCommandType().getCategory().getRealname()
+                    + cmd.getCommandType().getCommandInformation().getCategory().getRealname()
                     + "!");
             valid = false;
           }
@@ -59,23 +60,27 @@ public class CommandParameterLengthCheckService {
   private boolean checkParameterLength(CulturesIniCommand cmd, DiagnosticsCollector dc) {
     if (cmd.getCommandType() == null) {
       return false;
-    } else if (cmd.getCommandType().isSpecial()) {
+    } else if (cmd.getCommandType().getCommandInformation().isVariableLengthParameters()) {
       return false;
     }
     boolean valid = true;
 
     // Handle excess
-    if (cmd.getParameters().size() > cmd.getCommandType().getParamMax()) {
-      for (int i = cmd.getCommandType().getParamMax(); i < cmd.getParameters().size(); i++) {
+    if (cmd.getParameters().size()
+        > cmd.getCommandType().getCommandInformation().getGetParametersMaximum()) {
+      for (int i = cmd.getCommandType().getCommandInformation().getGetParametersMaximum();
+          i < cmd.getParameters().size();
+          i++) {
         dc.addError(cmd.getParameter(i).getOrigin(), "Excess parameter!");
         // valid = false;
       }
     }
 
     // Handle minimal
-    List<? extends CulturesIniCommandType.ParameterInfo> parameterInfos =
-        cmd.getCommandType().getParameterInfo();
-    if (cmd.getParameters().size() < cmd.getCommandType().getParamMin()) {
+    List<CommandInformation.ParameterInformation> parameterInfos =
+        cmd.getCommandType().getCommandInformation().getParameters();
+    if (cmd.getParameters().size()
+        < cmd.getCommandType().getCommandInformation().getGetParametersMinimum()) {
       List<String> names =
           parameterInfos.stream().map(i -> i.getName()).collect(Collectors.toList());
       String msg =

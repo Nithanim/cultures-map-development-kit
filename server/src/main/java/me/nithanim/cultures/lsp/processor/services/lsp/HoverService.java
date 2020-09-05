@@ -26,16 +26,19 @@ public class HoverService {
       return CompletableFuture.completedFuture(null);
     }
     StringBuilder sb = new StringBuilder();
-    sb.append("***").append(command.getCommandType().getDisplayName()).append("***").append("\n\n");
+    sb.append("***")
+        .append(command.getCommandType().getCommandInformation().getDisplayName())
+        .append("***")
+        .append("\n\n");
     sb.append("**").append("Description").append("**").append("\n\n");
-    if (command.getCommandType().getDescription() != null) {
-      sb.append(command.getCommandType().getDescription()).append("\n\n");
+    if (command.getCommandType().getCommandInformation().getDocumentation() != null) {
+      sb.append(command.getCommandType().getCommandInformation().getDocumentation()).append("\n\n");
     }
     sb.append("**").append("Params").append("**").append("\n\n");
-    for (var parameterInfo : command.getCommandType().getParameterInfo()) {
+    for (var parameterInfo : command.getCommandType().getCommandInformation().getParameters()) {
       sb.append("* `").append(parameterInfo.getName()).append('`');
-      if (parameterInfo.getMarkdownDocumentation() != null) {
-        sb.append(": ").append(parameterInfo.getMarkdownDocumentation());
+      if (parameterInfo.getDocumentation() != null) {
+        sb.append(": ").append(parameterInfo.getDocumentation());
       }
       sb.append("\n");
     }

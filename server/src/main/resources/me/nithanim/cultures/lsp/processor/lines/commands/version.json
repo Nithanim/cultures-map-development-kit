@@ -1,0 +1,16 @@
+{
+  "name": "version",
+  "category": "logiccontrol",
+  "documentation": "Defines the version number of the map format.",
+  "parameters": [
+    {
+      "name": "VersionNumber",
+      "documentation": "The version number of the map format.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 1,
+        "max": 1
+      }
+    }
+  ]
+}

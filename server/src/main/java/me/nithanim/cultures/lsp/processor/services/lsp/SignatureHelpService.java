@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
-import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommandType;
+import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformation;
 import me.nithanim.cultures.lsp.processor.services.SourceCodeIntelligenceService;
 import me.nithanim.cultures.lsp.processor.util.MyPosition;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
@@ -60,30 +60,28 @@ public class SignatureHelpService {
   }
 
   private List<ParameterInformation> getSignatureParameters(CulturesIniCommand command) {
-    return command.getCommandType().getParameterInfo().stream()
+    return command.getCommandType().getCommandInformation().getParameters().stream()
         .map(this::toSignatureParameter)
         .collect(Collectors.toList());
   }
 
   private ParameterInformation toSignatureParameter(
-      CulturesIniCommandType.ParameterInfo<?> parameterInfo) {
+      CommandInformation.ParameterInformation parameterInfo) {
     String docu =
-        parameterInfo.getMarkdownDocumentation() == null
-            ? ""
-            : ": " + parameterInfo.getMarkdownDocumentation();
+        parameterInfo.getDocumentation() == null ? "" : ": " + parameterInfo.getDocumentation();
     return new ParameterInformation(
         parameterInfo.getName(),
         new MarkupContent(MarkupKind.MARKDOWN, "`" + parameterInfo.getName() + "`" + docu));
   }
 
   private String getSignatureDocumentation(CulturesIniCommand command) {
-    return command.getCommandType().getDescription();
+    return command.getCommandType().getCommandInformation().getDocumentation();
   }
 
   private String getSignatureLabel(CulturesIniCommand command) {
-    var parameters = command.getCommandType().getParameterInfo();
+    var parameters = command.getCommandType().getCommandInformation().getParameters();
     StringBuilder sb = new StringBuilder();
-    sb.append(command.getCommandType().getDisplayName());
+    sb.append(command.getCommandType().getCommandInformation().getDisplayName());
     for (var parameter : parameters) {
       sb.append(' ').append('<').append(parameter.getName()).append('>');
     }

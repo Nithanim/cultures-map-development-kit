@@ -43,7 +43,7 @@ public class CodeInsightService {
       }
       if (l instanceof CulturesIniCommand) {
         CulturesIniCommand cmd = (CulturesIniCommand) l;
-        switch (cmd.getCommandType().getCategory()) {
+        switch (cmd.getCommandType().getCommandInformation().getCategory()) {
           case STATICOBJECTS:
             MyCodeLense socl = staticobjectsCommandsService.handle(cmd);
             if (socl != null) {
