@@ -1,0 +1,23 @@
+{
+  "name": "ChildOfWoman",
+  "category": "StaticObjects",
+  "documentation": "Defines a woman-child relationship.",
+  "parameters": [
+    {
+      "name": "ChildPosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ChildPosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "WomanPosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "WomanPosY",
+      "type": "NUMBER"
+    }
+  ]
+}

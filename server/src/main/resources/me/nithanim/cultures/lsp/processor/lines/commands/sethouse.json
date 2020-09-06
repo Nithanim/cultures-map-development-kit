@@ -1,0 +1,44 @@
+{
+  "name": "SetHouse",
+  "category": "StaticObjects",
+  "documentation": "Places a house/building.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "documentation": "The player the house belongs to.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HouseType",
+      "documentation": "The type of the house.",
+      "type": "TYPE"
+    },
+    {
+      "name": "UpgradeLevel",
+      "documentation": "The upgrade level of the house.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "IsFinished",
+      "documentation": "Specifies if the house is completely built. `0` means construction site; `1` that the house is built.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Id",
+      "documentation": "The object id which allows the house to be referenced by missions. Normally `0`.",
+      "type": "NUMBER"
+    }
+  ]
+}

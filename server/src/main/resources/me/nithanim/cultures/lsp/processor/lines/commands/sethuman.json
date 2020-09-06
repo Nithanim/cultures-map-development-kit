@@ -1,0 +1,62 @@
+{
+  "name": "SetHuman",
+  "category": "StaticObjects",
+  "documentation": "Places a human.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "documentation": "The player the human belongs to.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "documentation": "The type of the tribe this human belongs to. E.g. `\"viking\"`",
+      "type": "TYPE"
+    },
+    {
+      "name": "JobType",
+      "documentation": "The job the human has. E.g. `\"civilist\"` or `\"child_male\"`",
+      "type": "TYPE"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Id",
+      "documentation": "The object id which allows the human to be referenced by missions. Normally `0`.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Behaviour",
+      "documentation": "Defines special behaviours of the human. E.g. No needs, immortal or not controllable. Number interpreted as bitfield.",
+      "type": "NUMBER",
+      "numberHintBitfield": [
+        "DisableNeeds",
+        "DisableJob",
+        "DisableFight",
+        "Immortal",
+        "DisableMessages",
+        "DisableControl",
+        "DisableJobChange",
+        "Important",
+        "UserSectorMove",
+        "SlowMovement",
+        "DoNoChangePalette",
+        "NoExperienceGain",
+        "NoShoeToolDrain",
+        "AnimalsIgnoreHuman",
+        "Ghost",
+        "DontCryForHelp",
+        "DefendMode",
+        "FastMovement",
+        "NeverGrowUp",
+        "ActsLikeAHero"
+      ]
+    }
+  ]
+}

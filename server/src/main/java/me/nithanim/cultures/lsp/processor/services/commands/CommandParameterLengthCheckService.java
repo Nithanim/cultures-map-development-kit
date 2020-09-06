@@ -60,27 +60,26 @@ public class CommandParameterLengthCheckService {
   private boolean checkParameterLength(CulturesIniCommand cmd, DiagnosticsCollector dc) {
     if (cmd.getCommandType() == null) {
       return false;
-    } else if (cmd.getCommandType().getCommandInformation().isVariableLengthParameters()) {
+    } else if (cmd.getCommandType().getCommandInformation().isSpecial()) {
       return false;
     }
     boolean valid = true;
 
+    var actualParameters = cmd.getParameters();
+    CommandInformation commandInformation = cmd.getCommandType().getCommandInformation();
+
     // Handle excess
-    if (cmd.getParameters().size()
-        > cmd.getCommandType().getCommandInformation().getGetParametersMaximum()) {
-      for (int i = cmd.getCommandType().getCommandInformation().getGetParametersMaximum();
-          i < cmd.getParameters().size();
-          i++) {
-        dc.addError(cmd.getParameter(i).getOrigin(), "Excess parameter!");
+    if (actualParameters.size() > commandInformation.getParametersMaximum()
+        && commandInformation.getParametersMaximum() != -1) {
+      for (int i = commandInformation.getParametersMaximum(); i < actualParameters.size(); i++) {
+        dc.addError(actualParameters.get(i).getOrigin(), "Excess parameter!");
         // valid = false;
       }
     }
 
     // Handle minimal
-    List<CommandInformation.ParameterInformation> parameterInfos =
-        cmd.getCommandType().getCommandInformation().getParameters();
-    if (cmd.getParameters().size()
-        < cmd.getCommandType().getCommandInformation().getGetParametersMinimum()) {
+    var parameterInfos = commandInformation.getParameters();
+    if (actualParameters.size() < commandInformation.getParametersMinimum()) {
       List<String> names =
           parameterInfos.stream().map(i -> i.getName()).collect(Collectors.toList());
       String msg =
@@ -89,7 +88,7 @@ public class CommandParameterLengthCheckService {
               + String.join(", ", names)
               + "\n"
               + "Missing: "
-              + names.stream().skip(cmd.getParameters().size()).collect(Collectors.joining(", "));
+              + names.stream().skip(actualParameters.size()).collect(Collectors.joining(", "));
       dc.addError(cmd.getOriginAll(), msg);
       valid = false;
     }

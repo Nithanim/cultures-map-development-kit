@@ -14,12 +14,14 @@ public class CommandInformation {
   String displayName;
   CulturesIniCategoryType category;
   String documentation;
-  boolean variableLengthParameters;
-  List<ParameterInformation> parameters;
+  /** TODO disables some general checking, like parameter count */
+  boolean special;
   /** minimum supported parameters */
-  int getParametersMinimum;
-  /** maximum suppported parameters */
-  int getParametersMaximum;
+  int parametersMinimum;
+  /** maximum supported parameters */
+  int parametersMaximum;
+
+  List<ParameterInformation> parameters;
 
   public ParameterInformation getParameter(int i) {
     return parameters.get(i);

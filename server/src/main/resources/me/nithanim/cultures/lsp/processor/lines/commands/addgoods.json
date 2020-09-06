@@ -1,0 +1,16 @@
+{
+  "name": "AddGoods",
+  "category": "StaticObjects",
+  "documentation": "Add goods to the latest previously defined house or vehicle (most likely the one directly above).",
+  "parameters": [
+    {
+      "name": "GoodType",
+      "documentation": "The good to add. E.g. `\"mud\"`",
+      "type": "TYPE"
+    },
+    {
+      "name": "Amount",
+      "type": "NUMBER"
+    }
+  ]
+}

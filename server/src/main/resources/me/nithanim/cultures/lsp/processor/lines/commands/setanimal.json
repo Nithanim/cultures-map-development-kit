@@ -1,0 +1,46 @@
+{
+  "name": "SetAnimal",
+  "category": "StaticObjects",
+  "documentation": "Places an animal.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "documentation": "The player the animal should belong to.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "documentation": "The type of the tribe this animal belongs to. E.g. `\"deers\"`",
+      "type": "TYPE"
+    },
+    {
+      "name": "JobType",
+      "documentation": "The type of the job. E.g. `\"adult_animal\"`",
+      "type": "TYPE"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Id",
+      "documentation": "The object id which allows the animal to be referenced by missions. Normally `0`.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Behaviour",
+      "documentation": "Defines special behaviours of the animal. Number interpreted as bitfield.",
+      "type": "NUMBER",
+      "numberHintBitfield": [
+        "HoldWorkPoint",
+        "NoReproduction",
+        "LimitedStayRange5",
+        "Immortal"
+      ]
+    }
+  ]
+}

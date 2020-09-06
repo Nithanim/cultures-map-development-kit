@@ -1,5 +1,5 @@
 {
-  "name": "version",
+  "name": "Version",
   "category": "logiccontrol",
   "documentation": "Defines the size of the map. Values must be a multiple of two and must match map.dat.",
   "parameters": [

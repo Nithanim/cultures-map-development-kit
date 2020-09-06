@@ -1,0 +1,16 @@
+{
+  "name": "SetExpierence",
+  "category": "StaticObjects",
+  "documentation": "Add experience to the latest previously defined human (most likely the one directly above).",
+  "parameters": [
+    {
+      "name": "Type",
+      "documentation": "The type of experience to add.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Amount",
+      "type": "NUMBER"
+    }
+  ]
+}

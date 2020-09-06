@@ -1,5 +1,5 @@
 {
-  "name": "player",
+  "name": "Player",
   "category": "playerdata",
   "documentation": "Defines a player.",
   "parameters": [
@@ -14,14 +14,14 @@
     },
     {
       "name": "PlayerType",
-      "documentation": "The type of the player.",
+      "documentation": "The type of the player.\n\n*Note*: Must be `human` if the player integrated to human player in running game.",
       "type": "NUMBER",
       "numberRange": {
         "min": 1,
         "max": 2
       },
       "numberHint": [
-        "NONE",
+        "<HIDE>",
         "HUMAN",
         "AI"
       ]
@@ -35,7 +35,7 @@
         "max": 41
       },
       "numberHint": [
-        "NONE",
+        "<HIDE>",
         "VIKING",
         "FRANK",
         "BYZANTINE",

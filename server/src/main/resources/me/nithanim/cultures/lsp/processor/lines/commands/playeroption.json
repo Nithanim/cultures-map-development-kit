@@ -1,0 +1,59 @@
+{
+  "name": "PlayerOption",
+  "category": "multiplayer",
+  "documentation": "Defines what the given player can be. Effectively a set of PlayerTypes [0 (none), 1 (human), 2 (ai)] as parameters.",
+  "parametersMin": 1,
+  "parametersMax": 3,
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "documentation": "The player to modify",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerType",
+      "documentation": "The type of the player.",
+      "type": "NUMBER",
+      "optional": false,
+      "numberRange": {
+        "min": 0,
+        "max": 2
+      },
+      "numberHint": [
+        "NONE",
+        "HUMAN",
+        "AI"
+      ]
+    },
+    {
+      "name": "PlayerType",
+      "documentation": "The type of the player.",
+      "type": "NUMBER",
+      "optional": true,
+      "numberRange": {
+        "min": 0,
+        "max": 2
+      },
+      "numberHint": [
+        "NONE",
+        "HUMAN",
+        "AI"
+      ]
+    },
+    {
+      "name": "PlayerType",
+      "documentation": "The type of the player.",
+      "type": "NUMBER",
+      "optional": true,
+      "numberRange": {
+        "min": 0,
+        "max": 2
+      },
+      "numberHint": [
+        "NONE",
+        "HUMAN",
+        "AI"
+      ]
+    }
+  ]
+}

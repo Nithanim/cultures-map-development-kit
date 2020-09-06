@@ -12,15 +12,18 @@ public class CommandInformationMapper {
         CulturesIniCategoryType.valueOf(src.getCategory().toUpperCase());
     List<CommandInformation.ParameterInformation> parameters =
         src.getParameters().stream().map(this::map).collect(Collectors.toList());
+    int parameterCount = src.getParameters().size();
+    int parametersMin = src.getParametersMin() == null ? parameterCount : src.getParametersMin();
+    int parametersMax = src.getParametersMax() == null ? parameterCount : src.getParametersMax();
     return new CommandInformation(
         src.getName(),
         src.getDisplayName() == null ? src.getName() : src.getDisplayName(),
         category,
         src.getDocumentation(),
-        src.isVariableLengthParameters(),
-        parameters,
-        src.getParameters().size(),
-        src.getParameters().size());
+        src.isSpecial(),
+        parametersMin,
+        parametersMax,
+        parameters);
   }
 
   private CommandInformation.ParameterInformation map(
@@ -83,6 +86,6 @@ public class CommandInformationMapper {
                 })
             .collect(Collectors.toList());
     return new CommandInformation(
-        name, name, category, null, special, parameters, paramMin, paramMax);
+        name, name, category, null, special, paramMin, paramMax, parameters);
   }
 }

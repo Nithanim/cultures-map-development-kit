@@ -1,0 +1,16 @@
+{
+  "name": "PlayerFixColors",
+  "category": "multiplayer",
+  "documentation": "Defines if colors are un-changeable in the multiplayer lobby.",
+  "parameters": [
+    {
+      "name": "IsFixed",
+      "documentation": "`0` if colors should be changeable; `1` otherwise.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

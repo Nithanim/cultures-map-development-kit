@@ -1,5 +1,5 @@
 {
-  "name": "mapguid",
+  "name": "MapGuid",
   "category": "logiccontrol",
   "documentation": "Defines the unique id of the map.",
   "parameters": [

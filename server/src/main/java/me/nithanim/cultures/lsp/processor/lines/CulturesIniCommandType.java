@@ -1,6 +1,8 @@
 package me.nithanim.cultures.lsp.processor.lines;
 
 import com.google.gson.Gson;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,11 +23,8 @@ import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.M
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_TRADEAGREEMENT;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_WEATHER;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISSIONDATA;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MULTIPLAYER;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.PLAYERDATA;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.PLAYERMISC;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.SPECIALITEMS;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.STATICOBJECTS;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.TEXT;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand.Parameter.Type.NUMBER;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand.Parameter.Type.STRING;
@@ -69,7 +68,7 @@ public enum CulturesIniCommandType {
   // goallostbymission
   // Player
   PLAYER(),
-  DIPLOMACY(PLAYERDATA, pbn("This player", 0, 20), pbn("Other player", 0, 20), pbn("State", 1, 3)),
+  DIPLOMACY(),
   NAMETRIBE(PLAYERMISC, pplayer(), pn("String")),
   NAMETRIBESHORT(PLAYERMISC, pplayer(), pn("String")),
   PLAYERNEVERDIES(PLAYERMISC, pplayer()),
@@ -77,16 +76,9 @@ public enum CulturesIniCommandType {
   RELATIONNOTCHANGEABLE(PLAYERMISC, pplayerA(), pplayerB()),
   RELATIONHIDE(PLAYERMISC, pplayerA(), pplayerB()),
   // Multiplayer
-  PLAYERFIXCOLORS(MULTIPLAYER, pplayer()),
-  PLAYEROPTION(
-      MULTIPLAYER,
-      1,
-      3,
-      pplayer(),
-      pbn("Player type", 0, 2),
-      pbn("Player type", 0, 2),
-      pbn("Player type", 0, 2)),
-  PLAYERHIDEINMENU(MULTIPLAYER, pplayer()),
+  PLAYERFIXCOLORS(),
+  PLAYEROPTION(),
+  PLAYERHIDEINMENU(),
   // Special items
   ADD(SPECIALITEMS, pplayer(), pbn("Letter type", 2, 4), pn("House type")),
   // Allowed things
@@ -94,47 +86,21 @@ public enum CulturesIniCommandType {
   FORBIDGOOD(ALLOWEDTHINGS, pplayer(), pbn("Tribetype human", 0, 7), pbn("Good type", 1, 63)),
   FORBIDHOUSE(ALLOWEDTHINGS, pplayer(), pbn("Tribetype human", 0, 7), pbn("House type", 0, 54)),
   // StaticObjects
-  SETHOUSE(
-      STATICOBJECTS,
-      pplayer(),
-      pt("House type"),
-      pn("Level"),
-      pbn("Finished", 0, 1),
-      pn("PosX"),
-      pn("PosY"),
-      pn("Id")),
-  SETVEHICLE(
-      STATICOBJECTS, pplayer(), pt("Tribe"), pt("Vehicle"), pn("PosX"), pn("PosY"), pn("Id")),
-  ADDGOODS(STATICOBJECTS, pt("Good"), pn("Amount")),
-  SETHUMAN(
-      STATICOBJECTS,
-      pplayer(),
-      pt("Tribe"),
-      pt("Job"),
-      pn("PosX"),
-      pn("PosY"),
-      pn("Id"),
-      pn("Behavior")),
-  SETPRODUCEDGOOD(STATICOBJECTS, pt("Good type")),
+  SETHOUSE(),
+  SETVEHICLE(),
+  ADDGOODS(),
+  SETHUMAN(),
+  SETPRODUCEDGOOD(),
   SETNAME(MISC_HUMANNAMES, pn("Human Id"), pn("String Id")),
-  SETEXPIERENCE(STATICOBJECTS, pbn("Type", 1, 78), pn("Amount")),
-  ATTACHTOHOUSE(STATICOBJECTS, pn("PosX"), pn("PosY"), psn("House attachment type", 1, 2, 4)),
-  SETPRODUCEGOOD(STATICOBJECTS, pt("Good type")),
-  ATTACHTOVEHICLE(STATICOBJECTS, pn("PosX"), pn("PosY")),
-  MOVEINTOVEHILCE(STATICOBJECTS),
-  MARRY(STATICOBJECTS, pn("Woman PosX"), pn("Woman PosY"), pn("Man PosX"), pn("Man PosY")),
-  CHILDOFWOMAN(
-      STATICOBJECTS, pn("Child PosX"), pn("Child PosY"), pn("Woman PosX"), pn("Woman PosY")),
-  SETANIMAL(
-      STATICOBJECTS,
-      pplayer(),
-      pt("Tribe"),
-      pt("Job"),
-      pn("PosX"),
-      pn("PosY"),
-      pn("Id"),
-      pn("Behavior")),
-  SETGUIDE(STATICOBJECTS, pplayer(), pn("PosX"), pn("PosY")),
+  SETEXPIERENCE(),
+  ATTACHTOHOUSE(),
+  // SETPRODUCEGOOD(STATICOBJECTS, pt("Good type")), //?
+  ATTACHTOVEHICLE(),
+  MOVEINTOVEHICLE(),
+  MARRY(),
+  CHILDOFWOMAN(),
+  SETANIMAL(),
+  SETGUIDE(),
   // Text; Check that it is invalid string.ini file and others are not
   STRINGN(TEXT, pn("Id"), ps("String")),
   // Missions
@@ -221,15 +187,20 @@ public enum CulturesIniCommandType {
 
   @SneakyThrows
   CulturesIniCommandType() {
-    this.commandInformation =
-        new CommandInformationMapper()
-            .map(
-                new Gson()
-                    .fromJson(
-                        IOUtils.getReader(
-                            CulturesIniCommandType.class.getResourceAsStream(
-                                "commands/" + name().toLowerCase() + ".json")),
-                        JsonCommandInformation.class));
+    try {
+      String fileName = "commands/" + name().toLowerCase() + ".json";
+      InputStream in = CulturesIniCommandType.class.getResourceAsStream(fileName);
+      if (in == null) {
+        throw new IllegalStateException(
+            "Unable to find definition for command " + name(), new FileNotFoundException(fileName));
+      }
+      this.commandInformation =
+          new CommandInformationMapper()
+              .map(new Gson().fromJson(IOUtils.getReader(in), JsonCommandInformation.class));
+
+    } catch (Exception ex) {
+      throw new IllegalStateException("Unable to find definition for command " + name(), ex);
+    }
   }
 
   CulturesIniCommandType(CulturesIniCategoryType category, ParameterInfo<?>... parameterTypes) {
@@ -241,7 +212,7 @@ public enum CulturesIniCommandType {
       int paramMin,
       int paramMax,
       ParameterInfo<?>... parameterTypes) {
-    this(false, category, parameterTypes.length, parameterTypes.length, parameterTypes);
+    this(false, category, paramMin, paramMax, parameterTypes);
   }
 
   CulturesIniCommandType(CulturesIniCategoryType category) {

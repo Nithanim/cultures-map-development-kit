@@ -1,0 +1,23 @@
+{
+  "name": "Marry",
+  "category": "StaticObjects",
+  "documentation": "Marries a woman to a man.",
+  "parameters": [
+    {
+      "name": "WomanPosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "WomanPosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ManPosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ManPosY",
+      "type": "NUMBER"
+    }
+  ]
+}

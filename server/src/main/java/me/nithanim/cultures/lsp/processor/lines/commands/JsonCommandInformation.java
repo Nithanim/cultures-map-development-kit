@@ -13,7 +13,9 @@ public class JsonCommandInformation {
   String displayName;
   String category;
   String documentation;
-  boolean variableLengthParameters;
+  boolean special;
+  Integer parametersMin;
+  Integer parametersMax;
   List<JsonParameterInformation> parameters;
 
   @Value
@@ -24,7 +26,8 @@ public class JsonCommandInformation {
     String documentation;
     JsonType type;
     JsonRange numberRange;
-    List<Integer> numberHints;
+    boolean optional;
+    List<String> numberHints;
 
     @Value
     @AllArgsConstructor

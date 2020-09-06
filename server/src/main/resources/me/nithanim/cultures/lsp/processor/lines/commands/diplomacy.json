@@ -1,0 +1,32 @@
+{
+  "name": "Diplomacy",
+  "category": "playerdata",
+  "documentation": "Defines the diplomatic relationship of a player to another one.\n\n*Note*:Defaults to neutral if not defined.",
+  "parameters": [
+    {
+      "name": "PlayerIdThis",
+      "documentation": "The player to modify the view of the other player of.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdOther",
+      "documentation": "The target player of the relationship.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdOther",
+      "documentation": "The target player of the relationship.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 1,
+        "max": 3
+      },
+      "numberHint": [
+        "<HIDE>",
+        "FRIEND",
+        "NEUTRAL",
+        "ENEMY"
+      ]
+    }
+  ]
+}

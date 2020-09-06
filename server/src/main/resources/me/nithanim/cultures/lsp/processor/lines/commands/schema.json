@@ -21,6 +21,14 @@
       "description": "Documentation about the usage of the command (markdown).",
       "type": "string"
     },
+    "parametersMin": {
+      "type": "number",
+      "description": "Minimum count of parameters."
+    },
+    "parametersMax": {
+      "type": "number",
+      "description": "Maximum count of parameters."
+    },
     "parameters": {
       "type": "array",
       "items": [
@@ -59,6 +67,24 @@
                     }
                   },
                   "additionalProperties": false
+                },
+                "numberHint": {
+                  "type": "array",
+                  "description": "Assigns names to the numbers this parameter takes. Used for automatic documentation to show the user-friendly name for numbers. Array is zero-based. Special value `<NONE>` is hidden from the user.",
+                  "items": [
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "numberHintBitfield": {
+                  "type": "array",
+                  "description": "Like number hint, but assigns a user-friendly name to every bit of the number taken by this parameter. Array starts with the lowest-value bit.",
+                  "items": [
+                    {
+                      "type": "string"
+                    }
+                  ]
                 }
               },
               "required": [

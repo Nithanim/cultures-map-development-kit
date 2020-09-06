@@ -1,0 +1,34 @@
+{
+  "name": "SetVehicle",
+  "category": "StaticObjects",
+  "documentation": "Places a vehicle.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "documentation": "The player the building belongs to.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "documentation": "The type of the tribe this vehicle belongs to.",
+      "type": "TYPE"
+    },
+    {
+      "name": "VehicleType",
+      "documentation": "The type of the vehicle.",
+      "type": "TYPE"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Id",
+      "type": "NUMBER"
+    }
+  ]
+}

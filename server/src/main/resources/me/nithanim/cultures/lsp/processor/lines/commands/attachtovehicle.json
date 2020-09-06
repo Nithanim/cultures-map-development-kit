@@ -1,0 +1,15 @@
+{
+  "name": "AttachToVehicle",
+  "category": "StaticObjects",
+  "documentation": "Assigns the latest previously defined human (most likely the one directly above) to the vehicle on the given position.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    }
+  ]
+}

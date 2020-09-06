@@ -1,0 +1,25 @@
+{
+  "name": "AttachToHouse",
+  "category": "StaticObjects",
+  "documentation": "Assigns the latest previously defined human (most likely the one directly above) to the house on the given position.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Type",
+      "documentation": "The type of relationship of the assignment. Effectively a bitfield of [`home` (1), `work` (2), `build` (4)]. ",
+      "type": "NUMBER",
+      "numberHintBitfield": [
+        "home",
+        "work",
+        "build"
+      ]
+    }
+  ]
+}

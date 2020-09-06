@@ -1,0 +1,7 @@
+{
+  "name": "MoveIntoVehicle",
+  "category": "StaticObjects",
+  "documentation": "Puts the latest previously defined human (most likely the one directly above) into the vehicle at the given position at the start of the game.\n\n*WARNING*: Human must be on DoorPoint of the vehicle (the point where the human would enter the vehicle in-game)! Vehicle Coordinates [x,y] => DoorPoint [x-2,y-4]. Also fo not forget to use `attachtovehicle`!",
+  "parameters": [
+  ]
+}

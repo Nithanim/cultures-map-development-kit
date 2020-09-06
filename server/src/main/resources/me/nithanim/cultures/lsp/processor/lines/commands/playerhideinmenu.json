@@ -1,0 +1,12 @@
+{
+  "name": "PlayerHideInMenu",
+  "category": "multiplayer",
+  "documentation": "Defines if the player is hidden in the menu.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "documentation": "1 if the player should be hidden in the menu; 0 otherwise.",
+      "type": "NUMBER"
+    }
+  ]
+}

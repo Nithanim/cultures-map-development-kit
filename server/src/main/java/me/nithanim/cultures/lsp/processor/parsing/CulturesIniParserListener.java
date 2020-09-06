@@ -105,7 +105,7 @@ public class CulturesIniParserListener extends CulturesIniBaseListener {
     } else if (commandBuilder
         .getCommandType()
         .getCommandInformation()
-        .isVariableLengthParameters()) {
+        .isSpecial()) {
       lines.add(commandBuilder.build());
     } else {
       lines.add(commandBuilder.build());

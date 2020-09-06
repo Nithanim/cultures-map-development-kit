@@ -1,0 +1,20 @@
+{
+  "name": "SetGuide",
+  "category": "StaticObjects",
+  "documentation": "Sets a guide into the world on the given position.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "documentation": "The player the guide belongs to.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    }
+  ]
+}
