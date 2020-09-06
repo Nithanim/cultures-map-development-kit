@@ -35,7 +35,7 @@
       "name": "Behaviour",
       "documentation": "Defines special behaviours of the animal. Number interpreted as bitfield.",
       "type": "NUMBER",
-      "numberHintBitfield": [
+      "numberHintsBitfield": [
         "HoldWorkPoint",
         "NoReproduction",
         "LimitedStayRange5",

@@ -32,7 +32,9 @@ public class CommandInformationMapper {
         src.getName(),
         CommandInformation.ParameterInformation.Type.valueOf(src.getType().name()),
         src.getDocumentation(),
-        map(src.getNumberRange()));
+        map(src.getNumberRange()),
+        src.getNumberHints(),
+        src.getNumberHintsBitfield());
   }
 
   private CommandInformation.ParameterInformation.Range map(
@@ -58,26 +60,43 @@ public class CommandInformationMapper {
                 p -> {
                   if (p instanceof CulturesIniCommandType.StringParameterInfo) {
                     return new CommandInformation.ParameterInformation(
-                        p.getName(), CommandInformation.ParameterInformation.Type.TYPE, null, null);
+                        p.getName(),
+                        CommandInformation.ParameterInformation.Type.TYPE,
+                        null,
+                        null,
+                        null,
+                        null);
                   } else if (p instanceof CulturesIniCommandType.TypeParameterInfo) {
                     return new CommandInformation.ParameterInformation(
-                        p.getName(), CommandInformation.ParameterInformation.Type.TYPE, null, null);
+                        p.getName(),
+                        CommandInformation.ParameterInformation.Type.TYPE,
+                        null,
+                        null,
+                        null,
+                        null);
                   } else if (p instanceof CulturesIniCommandType.BoundedNumberParameterInfo) {
+                    var b = (CulturesIniCommandType.BoundedNumberParameterInfo) p;
                     return new CommandInformation.ParameterInformation(
                         p.getName(),
                         CommandInformation.ParameterInformation.Type.NUMBER,
                         null,
-                        new CommandInformation.ParameterInformation.Range());
+                        new CommandInformation.ParameterInformation.Range(b.getMin(), b.getMax()),
+                        null,
+                        null);
                   } else if (p instanceof CulturesIniCommandType.NumberParameterInfo) {
                     return new CommandInformation.ParameterInformation(
                         p.getName(),
                         CommandInformation.ParameterInformation.Type.NUMBER,
+                        null,
+                        null,
                         null,
                         null);
                   } else if (p instanceof CulturesIniCommandType.SpecificNumberParameterInfo) {
                     return new CommandInformation.ParameterInformation(
                         p.getName(),
                         CommandInformation.ParameterInformation.Type.NUMBER,
+                        null,
+                        null,
                         null,
                         null);
                   } else {

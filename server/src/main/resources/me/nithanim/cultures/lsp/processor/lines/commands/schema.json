@@ -77,7 +77,7 @@
                     }
                   ]
                 },
-                "numberHintBitfield": {
+                "numberHintsBitfield": {
                   "type": "array",
                   "description": "Like number hint, but assigns a user-friendly name to every bit of the number taken by this parameter. Array starts with the lowest-value bit.",
                   "items": [

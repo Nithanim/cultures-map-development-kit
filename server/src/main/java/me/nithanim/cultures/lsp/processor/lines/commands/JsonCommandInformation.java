@@ -28,6 +28,7 @@ public class JsonCommandInformation {
     JsonRange numberRange;
     boolean optional;
     List<String> numberHints;
+    List<String> numberHintsBitfield;
 
     @Value
     @AllArgsConstructor

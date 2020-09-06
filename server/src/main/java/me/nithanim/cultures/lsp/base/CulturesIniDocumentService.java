@@ -7,10 +7,14 @@ import java.util.concurrent.CompletableFuture;
 import lombok.SneakyThrows;
 import me.nithanim.cultures.lsp.processor.services.DocumentLinkService;
 import me.nithanim.cultures.lsp.processor.services.SourceFileContentService;
+import me.nithanim.cultures.lsp.processor.services.lsp.CodeActionService;
 import me.nithanim.cultures.lsp.processor.services.lsp.HoverService;
 import me.nithanim.cultures.lsp.processor.services.lsp.SignatureHelpService;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
 import me.nithanim.cultures.lsp.processor.util.Uri;
+import org.eclipse.lsp4j.CodeAction;
+import org.eclipse.lsp4j.CodeActionParams;
+import org.eclipse.lsp4j.Command;
 import org.eclipse.lsp4j.CompletionItem;
 import org.eclipse.lsp4j.CompletionItemKind;
 import org.eclipse.lsp4j.CompletionList;
@@ -40,6 +44,7 @@ public class CulturesIniDocumentService extends FullTextDocumentService {
   @Autowired private SourceFileContentService sourceFileContentService;
   @Autowired private SignatureHelpService signatureHelpService;
   @Autowired private HoverService hoverService;
+  @Autowired private CodeActionService codeActionService;
 
   @Override
   public CompletableFuture<Either<List<CompletionItem>, CompletionList>> completion(
@@ -142,6 +147,12 @@ public class CulturesIniDocumentService extends FullTextDocumentService {
   public CompletableFuture<Hover> hover(HoverParams params) {
     logger.debug("Req Hover for " + params.getTextDocument().getUri());
     return hoverService.generateHover(params);
+  }
+
+  @Override
+  public CompletableFuture<List<Either<Command, CodeAction>>> codeAction(CodeActionParams params) {
+    logger.info("Req CodeAction for " + params.getTextDocument().getUri());
+    return codeActionService.codeAction(params);
   }
 
   @SneakyThrows

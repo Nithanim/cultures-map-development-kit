@@ -35,6 +35,8 @@ public class CommandInformation {
     Type type;
     String documentation;
     Range range;
+    List<String> numberHints;
+    List<String> numberHintsBitfield;
 
     @Value
     @AllArgsConstructor

@@ -59,7 +59,7 @@ public class CulturesIniLanguageServer implements LanguageServer, LanguageClient
 
     ServerCapabilities capabilities = new ServerCapabilities();
     capabilities.setTextDocumentSync(TextDocumentSyncKind.Full);
-    capabilities.setCodeActionProvider(false);
+    capabilities.setCodeActionProvider(true);
     // capabilities.setCompletionProvider(new CompletionOptions(true, null));
     capabilities.setDefinitionProvider(false);
     capabilities.setReferencesProvider(false);
