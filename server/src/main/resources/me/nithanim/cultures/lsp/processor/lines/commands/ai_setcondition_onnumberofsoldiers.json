@@ -1,0 +1,35 @@
+{
+  "name": "AI_SetCondition_OnNumberOfSoldiers",
+  "category": "aidata",
+  "documentation": "Sets the given condition of the given player to true if other player has equal to or more than given number of soldiers.",
+  "parameters": [
+    {
+      "name": "PlayerIdThis",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "EverActive",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHint": [
+        "Stay true if became true.",
+        "Resets the condition back to false when read."
+      ]
+    },
+    {
+      "name": "NumberSoldiers",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdOther",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "AI_SetCondition_OnTimer",
+  "category": "aidata",
+  "documentation": "Sets the given condition of the given player after the give amount of minutes to true (=10000).",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TimeInitial",
+      "documentation": "Time before the TimeTrueCycle (with the other duration) starts. Condition is `false`. Given in twelves of a second (=> 120 is 10 seconds). Rounded to 10 seconds.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TimeTrueCycle",
+      "documentation": "Time frame where the condition stays on `true`. Given in 640th of a minute (6400 => 10 minutes). Rounded to 10 seconds. Switches to the TimeFalseCycle when out of time.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TimeFalseCycle",
+      "documentation": "Time frame where the condition stays on `false`. Given in 640s of a minute (6400 => 10 minutes). Rounded to 10 seconds. Switches to the TimeTrueCycle when out of time.",
+      "type": "NUMBER"
+    }
+  ]
+}

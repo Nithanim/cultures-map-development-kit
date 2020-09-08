@@ -1,0 +1,27 @@
+{
+  "name": "AI_SetCondition_OnExternal",
+  "category": "aidata",
+  "documentation": "Sets the given condition of the given player via mission result `SetExternalFlag` with given initial value.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "InitialValue",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHint": [
+        "false",
+        "true"
+      ]
+    }
+  ]
+}

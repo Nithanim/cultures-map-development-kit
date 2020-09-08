@@ -1,0 +1,88 @@
+{
+  "name": "AI_SetCondition_OnHouseInRange",
+  "category": "aidata",
+  "documentation": "Sets the given condition of the given player based on house found and (other stuff).",
+  "parameters": [
+    {
+      "name": "PlayerIdThis",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "EverActive",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHint": [
+        "Stay true if became true.",
+        "Resets the condition back to false when read."
+      ]
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdOther",
+      "type": "NUMBER"
+    },
+    {
+      "name": "OnlyEnemy",
+      "documentation": "Condition only matches if diplomatic relationship to THIS player is enemy.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHint": [
+        "any diplomatic state",
+        "only if enemy"
+      ]
+    },
+    {
+      "name": "HouseType",
+      "documentation": "Condition only matches if a house of certain type is found.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 7
+      },
+      "numberHint": [
+        "All type",
+        "Only warehouses",
+        "Only residential",
+        "Only workplace",
+        "Only educational",
+        "Only war building",
+        "Only vehicle (in blueprint; else not a building)",
+        "Only wonder"
+      ]
+    },
+    {
+      "name": "FinishedOnly",
+      "documentation": "Condition only matches if a house is completely built.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHint": [
+        "any state",
+        "only finished"
+      ]
+    }
+  ]
+}

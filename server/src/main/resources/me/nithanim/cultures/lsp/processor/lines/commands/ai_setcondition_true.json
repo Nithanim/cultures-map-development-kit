@@ -1,0 +1,15 @@
+{
+  "name": "AI_SetCondition_True",
+  "category": "aidata",
+  "documentation": "Sets the given condition of the given player to true (=10000).",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    }
+  ]
+}

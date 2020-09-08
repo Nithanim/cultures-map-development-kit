@@ -1,0 +1,50 @@
+{
+  "name": "AI_SetCondition_OnDiplomacyChange",
+  "category": "aidata",
+  "documentation": "Sets the given condition of the given player when the given diplomacy state of Player A to Player B activates.",
+  "parameters": [
+    {
+      "name": "PlayerIdThis",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "EverActive",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHint": [
+        "Stay true if became true.",
+        "Resets the condition back to false when read."
+      ]
+    },
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    },
+    {
+      "name": "DiplomacyState",
+      "documentation": "The target value the observed condition must switch to to active this condition.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 1,
+        "max": 3
+      },
+      "numberHint": [
+        "<NONE>",
+        "friend",
+        "neutral",
+        "enemy"
+      ]
+    }
+  ]
+}

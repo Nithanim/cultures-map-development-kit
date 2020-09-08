@@ -1,0 +1,19 @@
+{
+  "name": "AI_SetCondition_OnTime",
+  "category": "aidata",
+  "documentation": "Sets the given condition of the given player after the give amount of minutes to true (=10000).",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TimeInMinutes",
+      "type": "NUMBER"
+    }
+  ]
+}

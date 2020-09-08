@@ -1,0 +1,68 @@
+{
+  "name": "AI_SetCondition_OnConditions",
+  "category": "aidata",
+  "documentation": "Sets the given condition of the given player based on the given operation and on given other conditions. E.g. `and`, `or`, ...",
+  "parametersMin": 1,
+  "parametersMax": -1,
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "EverActive",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHint": [
+        "Stay true if became true.",
+        "Resets the condition back to false when read."
+      ]
+    },
+    {
+      "name": "LogicalOperation",
+      "type": "NUMBER",
+      "documentation": "The logical operation that is applied to the state of all condition to determine the value of this condition.",
+      "numberHint": [
+        "AND",
+        "OR",
+        "none",
+        "exactly one"
+      ]
+    },
+    {
+      "name": "OtherConditionId1",
+      "type": "NUMBER"
+    },
+    {
+      "name": "OtherConditionId2",
+      "type": "NUMBER"
+    },
+    {
+      "name": "OtherConditionId3",
+      "type": "NUMBER"
+    },
+    {
+      "name": "OtherConditionId4",
+      "type": "NUMBER"
+    },
+    {
+      "name": "OtherConditionId5",
+      "type": "NUMBER"
+    },
+    {
+      "name": "OtherConditionId6",
+      "type": "NUMBER"
+    },
+    {
+      "name": "OtherConditionIdN",
+      "type": "NUMBER"
+    }
+  ]
+}

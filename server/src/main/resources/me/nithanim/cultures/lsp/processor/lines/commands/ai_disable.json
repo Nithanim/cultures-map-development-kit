@@ -1,0 +1,11 @@
+{
+  "name": "AI_Disable",
+  "category": "aidata",
+  "documentation": "Player does noting.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    }
+  ]
+}

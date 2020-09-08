@@ -38,6 +38,10 @@ public class CodeActionService {
     if (command == null) {
       return CompletableFuture.completedFuture(null);
     }
+    if (command.getCommandType().getCommandInformation().isSpecial()) {
+      // Weird commands let the code below explode because it depends on exact param matches
+      return CompletableFuture.completedFuture(null);
+    }
 
     List<Either<Command, CodeAction>> actions = new ArrayList<>();
 

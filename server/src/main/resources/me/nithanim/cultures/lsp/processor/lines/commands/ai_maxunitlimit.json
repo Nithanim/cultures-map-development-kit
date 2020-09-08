@@ -1,0 +1,15 @@
+{
+  "name": "AI_MaxUnitLimit",
+  "category": "aidata",
+  "documentation": "Sets the maximum number of people in total the player is allowed to have. (civilians + soldiers)",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "MaxCivilians",
+      "type": "NUMBER"
+    }
+  ]
+}

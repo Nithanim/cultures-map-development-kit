@@ -1,0 +1,11 @@
+{
+  "name": "HAI_Disable",
+  "category": "aidata",
+  "documentation": "Player grows population and repairs buildings; no new buildings are built.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    }
+  ]
+}

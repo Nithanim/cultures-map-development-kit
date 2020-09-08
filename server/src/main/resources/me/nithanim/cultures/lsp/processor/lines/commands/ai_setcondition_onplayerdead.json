@@ -1,0 +1,21 @@
+{
+  "name": "AI_SetCondition_OnPlayerDead",
+  "category": "aidata",
+  "documentation": "Sets the given condition of the given player if other player died.",
+  "parametersMin": 1,
+  "parametersMax": -1,
+  "parameters": [
+    {
+      "name": "PlayerIdThis",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdOther",
+      "type": "NUMBER"
+    }
+  ]
+}

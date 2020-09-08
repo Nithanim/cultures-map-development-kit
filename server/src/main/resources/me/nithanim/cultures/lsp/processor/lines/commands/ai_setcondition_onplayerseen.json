@@ -1,0 +1,37 @@
+{
+  "name": "AI_SetCondition_OnPlayerSeen",
+  "category": "aidata",
+  "documentation": "Sets the given condition of the given player to true if PlayerA saw PlayerB.",
+  "parametersMin": 1,
+  "parametersMax": -1,
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "EverActive",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHint": [
+        "Stay true if became true.",
+        "Resets the condition back to false when read."
+      ]
+    },
+    {
+      "name": "PlayerA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerB",
+      "type": "NUMBER"
+    }
+  ]
+}

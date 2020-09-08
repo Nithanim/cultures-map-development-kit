@@ -1,0 +1,69 @@
+{
+  "name": "AI_SetCondition_OnCreatureInRange",
+  "category": "aidata",
+  "documentation": "Sets the given condition of the given player based on diplomacy (optionally) and humans (optionally only soldiers) around a given point.",
+  "parameters": [
+    {
+      "name": "PlayerIdThis",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "EverActive",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHint": [
+        "Stay true if became true.",
+        "Resets the condition back to false when read."
+      ]
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdOther",
+      "type": "NUMBER"
+    },
+    {
+      "name": "OnlyEnemy",
+      "documentation": "Condition only matches if diplomatic relationship to THIS player is enemy.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHint": [
+        "any diplomatic state",
+        "only if enemy"
+      ]
+    },
+    {
+      "name": "DiplomacyState",
+      "documentation": "Condition only matches if soldiers are detected.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHint": [
+        "all people",
+        "only soldiers"
+      ]
+    }
+  ]
+}
