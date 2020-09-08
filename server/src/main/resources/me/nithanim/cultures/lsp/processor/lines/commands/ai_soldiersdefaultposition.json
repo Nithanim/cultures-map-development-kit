@@ -1,0 +1,23 @@
+{
+  "name": "AI_SoldiersDefaultPosition",
+  "category": "aidata",
+  "documentation": "All soldiers of the given player stay in the give area in case they have nothing more important to do.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

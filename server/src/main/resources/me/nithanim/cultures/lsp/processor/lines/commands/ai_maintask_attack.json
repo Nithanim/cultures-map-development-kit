@@ -1,0 +1,63 @@
+{
+  "name": "AI_MainTask_Attack",
+  "category": "aidata",
+  "documentation": "Defines an attack rallying area and attack area.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Priority",
+      "documentation": "The higher the more important.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "documentation": "Command is only active if the condition is true.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "AttackPosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "AttackPosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "AttackRadius(?)",
+      "type": "NUMBER"
+    },
+    {
+      "name": "MinSoldiers",
+      "type": "NUMBER"
+    },
+    {
+      "name": "MaxSoldiers",
+      "type": "NUMBER"
+    },
+    {
+      "name": "RallyPosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "RallyPosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "SoldierMode",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 1,
+        "max": 3
+      },
+      "numberHint": [
+        "<NONE>",
+        "Attack",
+        "Defend",
+        "Ignorant"
+      ]
+    }
+  ]
+}

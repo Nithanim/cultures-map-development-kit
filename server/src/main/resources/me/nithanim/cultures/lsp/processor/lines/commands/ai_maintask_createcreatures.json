@@ -1,0 +1,53 @@
+{
+  "name": "AI_MainTask_CreateCreatures",
+  "category": "aidata",
+  "documentation": "Creates given soldier types on given position.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Priority",
+      "documentation": "The higher the more important.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "documentation": "Command is only active if the condition is true.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "documentation": "E.g. 3 (TRIBE_TYPE_HUMAN_BYZANTINE)",
+      "type": "NUMBER"
+    },
+    {
+      "name": "SoldierJobId",
+      "documentation": "E.g. 32 (JOB_TYPE_HUMAN_SOLDIER_SPEAR_WOODEN)",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "MissionId",
+      "documentation": "Id for the generated soldiers to control via missions.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "AmountSoldiers",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Unknown",
+      "documentation": "Should be 1. Longer: (Un)known or not? But 'most likely wrong outcome if not `1` -- Molt'",
+      "type": "NUMBER"
+    }
+  ]
+}

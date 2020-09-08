@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.ToString;
 import lombok.Value;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.AIDATA;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.ALLOWEDTHINGS;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_HUMANGRAPHICS;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_HUMANNAMES;
@@ -128,13 +127,13 @@ public enum CulturesIniCommandType {
   AI_SETCONDITION_ONEXTERNAL(),
   AI_SETCONDITION_ONTIMER(),
   // AI TASKS
-  AI_SOLDIERSDEFAULTPOSITION(AIDATA),
-  AI_MAINTASK_DEFEND(AIDATA),
-  AI_MAINTASK_ATTACK(AIDATA),
-  AI_MAINTASK_BUILDHOUSE(AIDATA),
-  AI_MAINTASK_CHANGEDIPLOMACY(AIDATA),
-  AI_MAINTASK_CREATECREATURES(AIDATA),
-  AI_MAINTASK_SELFDESTROYPLAYER(AIDATA),
+  AI_SOLDIERSDEFAULTPOSITION(),
+  AI_MAINTASK_DEFEND(),
+  AI_MAINTASK_ATTACK(),
+  AI_MAINTASK_BUILDHOUSE(),
+  AI_MAINTASK_CHANGEDIPLOMACY(),
+  AI_MAINTASK_CREATECREATURES(),
+  AI_MAINTASK_SELFDESTROYPLAYER(),
   ;
 
   private static final Map<String, CulturesIniCommandType> LOWERCASE_MAP;

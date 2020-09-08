@@ -1,0 +1,15 @@
+{
+  "name": "AI_MainTask_SelfDestroyPlayer",
+  "category": "aidata",
+  "documentation": "Player dies if condition becomes true.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    }
+  ]
+}

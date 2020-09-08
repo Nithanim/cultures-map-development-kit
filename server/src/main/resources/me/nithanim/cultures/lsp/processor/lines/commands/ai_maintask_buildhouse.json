@@ -1,0 +1,43 @@
+{
+  "name": "AI_MainTask_BuildHouse",
+  "category": "aidata",
+  "documentation": "When given condition is true, a blueprint for give house is set.\n\n*Note*: Needs a human near target area.\n\n*WARNING*: May take up to 30 seconds to actually place the blueprint.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Priority",
+      "documentation": "The higher the more important.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "documentation": "Command is only active if the condition is true.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HouseType",
+      "documentation": "E.g. `\"viking tower\"`",
+      "type": "TYPE"
+    },
+    {
+      "name": "HouseLevel",
+      "documentation": "Specifies the upgrade level of the building. E.g. `1` for level 2 viking tower.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "MissionId",
+      "type": "NUMBER"
+    }
+  ]
+}

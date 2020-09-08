@@ -1,0 +1,41 @@
+{
+  "name": "AI_MainTask_Defend",
+  "category": "aidata",
+  "documentation": "The given area is defended with the given amount of soldiers if the given condition is met.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Priority",
+      "documentation": "The higher the more important.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "documentation": "Area is only defended if the condition is true.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "MinSoldiers",
+      "type": "NUMBER"
+    },
+    {
+      "name": "MaxSoldiers",
+      "type": "NUMBER"
+    }
+  ]
+}

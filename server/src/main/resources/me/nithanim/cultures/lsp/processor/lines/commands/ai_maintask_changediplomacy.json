@@ -1,0 +1,39 @@
+{
+  "name": "AI_MainTask_ChangeDiplomacy",
+  "category": "aidata",
+  "documentation": "Changes the diplomacy of THIS player to the other player if the condition is/becomes true.",
+  "parameters": [
+    {
+      "name": "PlayerIdThis",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Priority",
+      "documentation": "The higher the more important.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "documentation": "Command is only active if the condition is true.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdOther",
+      "type": "NUMBER"
+    },
+    {
+      "name": "relation",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 1,
+        "max": 3
+      },
+      "numberHint": [
+        "<NONE>",
+        "friend",
+        "neutral",
+        "enemy"
+      ]
+    }
+  ]
+}
