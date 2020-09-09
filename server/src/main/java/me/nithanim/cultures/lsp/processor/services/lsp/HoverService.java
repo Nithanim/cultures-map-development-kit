@@ -10,6 +10,7 @@ import org.eclipse.lsp4j.Hover;
 import org.eclipse.lsp4j.HoverParams;
 import org.eclipse.lsp4j.MarkupContent;
 import org.eclipse.lsp4j.MarkupKind;
+import org.eclipse.lsp4j.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,11 @@ public class HoverService {
     if (command == null) {
       return CompletableFuture.completedFuture(null);
     }
+
+    if (!isHoverOnCommand(command, params)) {
+      return CompletableFuture.completedFuture(null);
+    }
+
     StringBuilder sb = new StringBuilder();
     sb.append("***")
         .append(command.getCommandType().getCommandInformation().getDisplayName())
@@ -44,6 +50,16 @@ public class HoverService {
     }
 
     return CompletableFuture.completedFuture(
-        new Hover(new MarkupContent(MarkupKind.MARKDOWN, sb.toString())));
+        new Hover(
+            new MarkupContent(MarkupKind.MARKDOWN, sb.toString()),
+            command.getOriginBaseCommand().getRange()));
+  }
+
+  private boolean isHoverOnCommand(CulturesIniCommand command, HoverParams hover) {
+    Range commandRange = command.getOriginBaseCommand().getRange();
+    int hoverPosition = hover.getPosition().getCharacter();
+
+    return commandRange.getStart().getCharacter() <= hoverPosition
+        && hoverPosition <= commandRange.getEnd().getCharacter();
   }
 }
