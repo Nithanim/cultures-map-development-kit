@@ -1,0 +1,32 @@
+{
+  "name": "SetSnowRectangle",
+  "category": "misc_weather",
+  "documentation": "Sets snowfall in the given area with the given strength.\n\n*Note*: The points can be given in any order.\n\n*Note*: Points must have valid coordinates (inside the map).\n\n*Note*: If defined here, cannot be controlled by missions.\n\n*See*: [German tutorial](https://www.wikinger-tommy.de/download/intern/wettererscheinungen.pdf)",
+  "parameters": [
+    {
+      "name": "PosAX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosAY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosBX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosBY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Strength",
+      "documentation": "The higher the stronger the weather effect. Ranges from 100 (light) to 5000 (heavy).",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 100,
+        "max": 5000
+      }
+    }
+  ]
+}

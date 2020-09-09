@@ -1,0 +1,31 @@
+{
+  "name": "TradeAgreement",
+  "category": "misc_tradeagreement",
+  "documentation": "Sets an available trade on the house with the given id. Payer to trade with must be friendly.",
+  "parameters": [
+    {
+      "name": "HouseId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodTypeHave",
+      "documentation": "Good that another player sends to this house to exchange. E.g. `17` (#GOOD_TYPE_FOOD_EXTRA)",
+      "type": "NUMBER"
+    },
+    {
+      "name": "AmountHave",
+      "documentation": "The number of items that have to be sent to fulfill the agreement.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodTypeWant",
+      "documentation": "Good that is the result of the trade, the one that the caravan is sent off with. E.g. `5` (#GOOD_TYPE_MUSHROOM)",
+      "type": "NUMBER"
+    },
+    {
+      "name": "AmountWant",
+      "documentation": "The number of items that result from delivering the required goods.",
+      "type": "NUMBER"
+    }
+  ]
+}

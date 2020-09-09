@@ -1,0 +1,16 @@
+{
+  "name": "SetName",
+  "category": "misc_humannames",
+  "documentation": "Assigns a name to a human.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "documentation": "The id of the human (e.g. set in `SetHuman`).",
+      "type": "NUMBER"
+    },
+    {
+      "name": "StringId",
+      "type": "NUMBER"
+    }
+  ]
+}

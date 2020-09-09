@@ -1,0 +1,6 @@
+{
+  "name": "GoalWonByMission",
+  "category": "misc_multiplayer_goals",
+  "documentation": "Sets the win condition to be controlled by missions.",
+  "parameters": []
+}

@@ -1,0 +1,16 @@
+{
+  "name": "SetPalette",
+  "category": "misc_humangraphics",
+  "documentation": "Assigns palette to a human. See [the specific tutorial (german)](https://www.wikinger-tommy.de/download/intern/Bjarnis_Kleider-Wechsel.pdf). TODO",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "documentation": "The id of the human (e.g. set in `SetHuman`).",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PaletteName",
+      "type": "TYPE"
+    }
+  ]
+}

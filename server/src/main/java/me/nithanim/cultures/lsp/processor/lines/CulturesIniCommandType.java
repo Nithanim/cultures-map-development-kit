@@ -13,14 +13,8 @@ import lombok.SneakyThrows;
 import lombok.ToString;
 import lombok.Value;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.ALLOWEDTHINGS;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_HUMANGRAPHICS;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_HUMANNAMES;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_MAPNAME;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_MAPTYPE;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_MUSIC;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_STARTPOSITION;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_TRADEAGREEMENT;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_WEATHER;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISSIONDATA;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.PLAYERMISC;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.SPECIALITEMS;
@@ -41,30 +35,21 @@ public enum CulturesIniCommandType {
   MAPGUID(),
   // Map
   MAPTYPE(MISC_MAPTYPE, pbn("Maptype", 1, 6)),
-  MAPNAMESTRINGID(MISC_MAPNAME, pn("Mapname string")),
-  MAPDESCRIPTIONSTRINGID(MISC_MAPNAME, pn("Mapdescription string")),
+  MAPNAMESTRINGID(),
+  MAPDESCRIPTIONSTRINGID(),
   // Misc
   MUSICTYPE(MISC_MUSIC, pbn("Music", 2, 38)),
-  SETARTPOSITION(MISC_STARTPOSITION, pplayer(), pn("PosX"), pn("PosY")),
-  SETPALETTE(MISC_HUMANGRAPHICS, pn("Human id"), pt("Palette name")),
-  SETRAINRECTANGLE(
-      MISC_WEATHER,
-      pn("TopleftX"),
-      pn("TopleftY"),
-      pn("Bottomright"),
-      pn("Bottomright"),
-      pbn("Strength (100-5000)", 100, 5000)),
-  TRADEAGREEMENT(
-      MISC_TRADEAGREEMENT,
-      pn("House id"),
-      pn("Good type want"),
-      pn("Amount want"),
-      pn("Good type give"),
-      pn("Amount give")),
-  // GOALWONWHENGOODS(MISC_MULTIPLAYER_GOALS, pn("Good type"), pn("Amount type")),
-  // goalwonwheninhabitants
-  // goalwonbymission
-  // goallostbymission
+  STARTPOSITION(),
+  SETPALETTE(),
+  SETRAINRECTANGLE(),
+  SETSNOWRECTANGLE(),
+  SETSANDRECTANGLE(),
+  TRADEAGREEMENT(),
+  // misc multiplayer
+  GOALWONWHENGOODS(),
+  GOALWONWHENINHABITANTS(),
+  GOALWONBYMISSION(),
+  GOALLOSTBYMISSION(),
   // Player
   PLAYER(),
   DIPLOMACY(),
@@ -90,7 +75,7 @@ public enum CulturesIniCommandType {
   ADDGOODS(),
   SETHUMAN(),
   SETPRODUCEDGOOD(),
-  SETNAME(MISC_HUMANNAMES, pn("Human Id"), pn("String Id")),
+  SETNAME(),
   SETEXPIERENCE(),
   ATTACHTOHOUSE(),
   // SETPRODUCEGOOD(STATICOBJECTS, pt("Good type")), //?

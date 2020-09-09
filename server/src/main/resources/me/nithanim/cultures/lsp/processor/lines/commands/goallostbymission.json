@@ -1,0 +1,6 @@
+{
+  "name": "GoalLostByMission",
+  "category": "misc_multiplayer_goals",
+  "documentation": "Sets the lose condition to be controlled by missions.",
+  "parameters": []
+}

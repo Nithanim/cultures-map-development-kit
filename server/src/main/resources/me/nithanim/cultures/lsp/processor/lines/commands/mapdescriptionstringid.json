@@ -1,0 +1,11 @@
+{
+  "name": "MapDescriptionStringId",
+  "category": "misc_mapname",
+  "documentation": "Description of the map.",
+  "parameters": [
+    {
+      "name": "StringId",
+      "type": "NUMBER"
+    }
+  ]
+}

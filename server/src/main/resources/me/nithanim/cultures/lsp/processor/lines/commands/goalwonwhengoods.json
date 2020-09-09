@@ -1,0 +1,74 @@
+{
+  "name": "GoalWonWhenGoods",
+  "category": "misc_multiplayer_goals",
+  "documentation": "Wins the multiplayer match when the given good with the given amount is in storage. Up to 8 goods can be defined.",
+  "parametersMin": 2,
+  "parametersMax": 16,
+  "parameters": [
+    {
+      "name": "GoodType1",
+      "documentation": "Probably a number (?). E.g. `17` (#GOOD_TYPE_FOOD_EXTRA)",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodAmount1",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType2",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodAmount2",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType3",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodAmount3",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType4",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodAmount4",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType5",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodAmount5",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType6",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodAmount6",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType7",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodAmount7",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType8",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodAmount8",
+      "type": "NUMBER"
+    }
+  ]
+}

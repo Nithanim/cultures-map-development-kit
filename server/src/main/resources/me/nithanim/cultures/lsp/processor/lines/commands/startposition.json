@@ -1,0 +1,19 @@
+{
+  "name": "StartPosition",
+  "category": "misc_startpositions",
+  "documentation": "Might be the initial camera position. (?)",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    }
+  ]
+}
