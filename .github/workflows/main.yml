@@ -57,11 +57,11 @@ jobs:
           cd native
           mvn clean install -Pnative --no-transfer-progress
 
-      - name: Upload native executable artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: executable
-          path: server\native\target\native-image*
+#      - name: Upload native executable artifact
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: executable
+#          path: server\native\target\native-image*
 
 # CLIENT EXTENSION
       - name: Copy server executable to client
