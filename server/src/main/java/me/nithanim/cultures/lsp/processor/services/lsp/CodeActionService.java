@@ -8,6 +8,7 @@ import java.util.concurrent.CompletableFuture;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
 import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformation;
 import me.nithanim.cultures.lsp.processor.services.SourceCodeIntelligenceService;
+import me.nithanim.cultures.lsp.processor.services.lsp.helper.ActualParameterPair;
 import me.nithanim.cultures.lsp.processor.util.MyPosition;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
 import me.nithanim.cultures.lsp.processor.util.Uri;
@@ -45,18 +46,18 @@ public class CodeActionService {
 
     List<Either<Command, CodeAction>> actions = new ArrayList<>();
 
-    for (int i = 0; i < command.getParameters().size(); i++) {
-      CulturesIniCommand.Parameter parameterActual = command.getParameters().get(i);
-      CommandInformation.ParameterInformation parameterMeta =
-          command.getCommandType().getCommandInformation().getParameter(i);
+    List<ActualParameterPair> parameterPairs = ActualParameterPair.of(command);
+    for (ActualParameterPair parameterPair : parameterPairs) {
 
-      Range parameterRange = parameterActual.getOrigin().getRange();
+      Range parameterRange = parameterPair.getParameterActual().getOrigin().getRange();
       if (contains(parameterRange, selection.getStart().getCharacter())) {
-        if (parameterMeta.getNumberHintsBitfield() != null) {
+        if (parameterPair.getParameterInformation().getNumberHintsBitfield() != null) {
 
           actions.addAll(
               generateNumberHintsBitfieldActions(
-                  params.getTextDocument().getUri(), parameterActual, parameterMeta));
+                  params.getTextDocument().getUri(),
+                  parameterPair.getParameterActual(),
+                  parameterPair.getParameterInformation()));
         }
       }
     }
