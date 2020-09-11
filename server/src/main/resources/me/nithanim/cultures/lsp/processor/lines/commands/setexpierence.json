@@ -7,7 +7,7 @@
       "name": "Type",
       "documentation": "The type of experience to add.",
       "type": "NUMBER",
-      "numberHint": [
+      "numberHints": [
         "<NONE>",
         "Builder",
         "<NOME>",

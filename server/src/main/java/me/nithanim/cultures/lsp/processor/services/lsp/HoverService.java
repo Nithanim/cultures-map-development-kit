@@ -1,7 +1,10 @@
 package me.nithanim.cultures.lsp.processor.services.lsp;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import lombok.Value;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
+import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformation;
 import me.nithanim.cultures.lsp.processor.services.SourceCodeIntelligenceService;
 import me.nithanim.cultures.lsp.processor.util.MyPosition;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
@@ -27,10 +30,84 @@ public class HoverService {
       return CompletableFuture.completedFuture(null);
     }
 
-    if (!isHoverOnCommand(command, params)) {
-      return CompletableFuture.completedFuture(null);
+    if (isHoverOnCommand(command, params)) {
+      return processCommandHover(command);
+    } else {
+      ParameterHover parameterHover = isHoverOnParameter(command, params);
+      if (parameterHover != null) {
+        return processParameterWithNumberHintHover(command, params, parameterHover);
+      } else {
+        return CompletableFuture.completedFuture(null);
+      }
+    }
+  }
+
+  private CompletableFuture<Hover> processParameterWithNumberHintHover(
+      CulturesIniCommand command, HoverParams hover, ParameterHover parameterHover) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("***")
+        .append(parameterHover.getParameterInformation().getName())
+        .append("*** ")
+        .append(" of ")
+        .append(command.getCommandType().getCommandInformation().getDisplayName())
+        .append("\n\n");
+    sb.append("**Type**: `")
+        .append(parameterHover.getParameterInformation().getType())
+        .append("`\n\n");
+
+    if (parameterHover.getParameterInformation().getDocumentation() != null) {
+      sb.append("**Documentation**: \n\n")
+          .append(parameterHover.getParameterInformation().getDocumentation())
+          .append("\n\n");
     }
 
+    if (parameterHover.getParameterInformation().getNumberHints() != null) {
+      sb.append("**Values**: \n\n");
+      List<String> numberHints = parameterHover.getParameterInformation().getNumberHints();
+      for (int i = 0; i < numberHints.size(); i++) {
+        String numberHintText = numberHints.get(i);
+        if ("<NONE>".equals(numberHintText) || "<HIDE>".equals(numberHintText)) {
+          continue;
+        }
+        sb.append("* ");
+        String valueString = parameterHover.getParameter().getValue();
+        try {
+          int value = Integer.parseInt(valueString);
+          if (value == i) {
+            sb.append("\\> ");
+          }
+        } catch (NumberFormatException ex) {
+        }
+        sb.append('`').append(i).append("`: ").append(numberHintText).append('\n');
+      }
+    }
+
+    return CompletableFuture.completedFuture(
+        new Hover(
+            new MarkupContent(MarkupKind.MARKDOWN, sb.toString()),
+            parameterHover.getParameter().getOrigin().getRange()));
+  }
+
+  private ParameterHover isHoverOnParameter(CulturesIniCommand command, HoverParams hover) {
+    int maxParametersToCheck =
+        Math.min(
+            command.getParameters().size(),
+            command.getCommandType().getCommandInformation().getParameters().size());
+    for (int i = 0; i < maxParametersToCheck; i++) {
+      CulturesIniCommand.Parameter parameter = command.getParameter(i);
+      Range commandRange = parameter.getOrigin().getRange();
+      int hoverPosition = hover.getPosition().getCharacter();
+
+      if (isHoverTarget(commandRange, hoverPosition)) {
+        CommandInformation.ParameterInformation parameterInformation =
+            command.getCommandType().getCommandInformation().getParameter(i);
+        return new ParameterHover(parameter, parameterInformation);
+      }
+    }
+    return null;
+  }
+
+  private CompletableFuture<Hover> processCommandHover(CulturesIniCommand command) {
     StringBuilder sb = new StringBuilder();
     sb.append("***")
         .append(command.getCommandType().getCommandInformation().getDisplayName())
@@ -59,7 +136,16 @@ public class HoverService {
     Range commandRange = command.getOriginBaseCommand().getRange();
     int hoverPosition = hover.getPosition().getCharacter();
 
-    return commandRange.getStart().getCharacter() <= hoverPosition
-        && hoverPosition <= commandRange.getEnd().getCharacter();
+    return isHoverTarget(commandRange, hoverPosition);
+  }
+
+  private boolean isHoverTarget(Range range, int position) {
+    return range.getStart().getCharacter() <= position && position <= range.getEnd().getCharacter();
+  }
+
+  @Value
+  private class ParameterHover {
+    CulturesIniCommand.Parameter parameter;
+    CommandInformation.ParameterInformation parameterInformation;
   }
 }

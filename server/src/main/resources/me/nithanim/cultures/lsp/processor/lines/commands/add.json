@@ -12,7 +12,7 @@
         "min": 2,
         "max": 4
       },
-      "numberHint": [
+      "numberHints": [
         "<NONE>",
         "<NONE>",
         "#SPECIAL_ITEM_TYPE_LETTER_TO_SET_ANY_HOUSE: Placement of any house",

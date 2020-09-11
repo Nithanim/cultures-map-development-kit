@@ -10,7 +10,7 @@
         "min": 0,
         "max": 38
       },
-      "numberHint": [
+      "numberHints": [
         "#DM_MUSIC_TYPE_NOMUSIC",
         "#DM_MUSIC_TYPE_CULTURE_MISSION",
         "#DM_MUSIC_TYPE_CULTURE_VIKING",

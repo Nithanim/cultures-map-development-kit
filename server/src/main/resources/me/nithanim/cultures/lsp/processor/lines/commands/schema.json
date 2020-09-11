@@ -68,7 +68,7 @@
                   },
                   "additionalProperties": false
                 },
-                "numberHint": {
+                "numberHints": {
                   "type": "array",
                   "description": "Assigns names to the numbers this parameter takes. Used for automatic documentation to show the user-friendly name for numbers. Array is zero-based. Special value `<NONE>` is hidden from the user.",
                   "items": [

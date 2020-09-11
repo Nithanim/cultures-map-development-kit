@@ -35,7 +35,7 @@ public class SignatureHelpService {
               Collections.singletonList(
                   new SignatureInformation(
                       getSignatureLabel(command),
-                      getSignatureDocumentation(command),
+                      new MarkupContent(MarkupKind.MARKDOWN, getSignatureDocumentation(command)),
                       getSignatureParameters(command))),
               0,
               getActiveParameter(command, params.getPosition())));

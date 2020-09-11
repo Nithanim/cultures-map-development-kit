@@ -15,7 +15,7 @@
       "name": "Type",
       "documentation": "The type of relationship of the assignment. Effectively a bitfield of [`home` (1), `work` (2), `build` (4)]. ",
       "type": "NUMBER",
-      "numberHintBitfield": [
+      "numberHintsBitfield": [
         "home",
         "work",
         "build"

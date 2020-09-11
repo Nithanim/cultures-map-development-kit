@@ -20,7 +20,7 @@
         "min": 0,
         "max": 1
       },
-      "numberHint": [
+      "numberHints": [
         "Stay true if became true.",
         "Resets the condition back to false when read."
       ]
@@ -29,7 +29,7 @@
       "name": "LogicalOperation",
       "type": "NUMBER",
       "documentation": "The logical operation that is applied to the state of all condition to determine the value of this condition.",
-      "numberHint": [
+      "numberHints": [
         "AND",
         "OR",
         "none",

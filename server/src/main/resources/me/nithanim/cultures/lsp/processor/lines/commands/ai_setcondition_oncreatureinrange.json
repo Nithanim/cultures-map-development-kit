@@ -18,7 +18,7 @@
         "min": 0,
         "max": 1
       },
-      "numberHint": [
+      "numberHints": [
         "Stay true if became true.",
         "Resets the condition back to false when read."
       ]
@@ -47,7 +47,7 @@
         "min": 0,
         "max": 1
       },
-      "numberHint": [
+      "numberHints": [
         "any diplomatic state",
         "only if enemy"
       ]
@@ -60,7 +60,7 @@
         "min": 0,
         "max": 1
       },
-      "numberHint": [
+      "numberHints": [
         "all people",
         "only soldiers"
       ]
