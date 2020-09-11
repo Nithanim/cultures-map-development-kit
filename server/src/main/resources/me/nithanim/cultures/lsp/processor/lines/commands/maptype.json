@@ -1,0 +1,23 @@
+{
+  "name": "MapType",
+  "category": "misc_maptype",
+  "documentation": "Controls where or if the map is displayed in the menu.\n\n*See*: [German documentation](https://www.wikinger-tommy.de/download/intern/Misc.pdf)",
+  "parameters": [
+    {
+      "name": "MapTypeId",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 1,
+        "max": 6
+      },
+      "numberHint": [
+        "#CLEAN_MAP_TYPE_SINGLE_PLAYER_CAMPAIGN: For submissions; Needs the `mapcampaignid` command",
+        "#CLEAN_MAP_TYPE_SINGLE_PLAYER_FREE: Normal singleplayer map",
+        "#CLEAN_MAP_TYPE_SINGLE_PLAYER_DEMO: Unknown",
+        "#CLEAN_MAP_TYPE_MULTI_PLAYER_FREE: Normal multiplayer map",
+        "#CLEAN_MAP_TYPE_USER_SINGLE_PLAYER_FREE: Maps created with external editor",
+        "#CLEAN_MAP_TYPE_USER_MULTI_PLAYER_FREE: Maps created with external editor"
+      ]
+    }
+  ]
+}

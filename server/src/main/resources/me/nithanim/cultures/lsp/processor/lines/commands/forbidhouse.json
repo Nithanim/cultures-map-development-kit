@@ -1,0 +1,21 @@
+{
+  "name": "ForbidHouse",
+  "category": "allowedthings",
+  "documentation": "Forbids a job. Can later be allowed by mission command `allowhouse`.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "documentation": "E.g. #TRIBE_TYPE_HUMAN_VIKING",
+      "type": "NUMBER"
+    },
+    {
+      "name": "JobType",
+      "documentation": "E.g. #HOUSE_TYPE_WORK_FARM",
+      "type": "NUMBER"
+    }
+  ]
+}

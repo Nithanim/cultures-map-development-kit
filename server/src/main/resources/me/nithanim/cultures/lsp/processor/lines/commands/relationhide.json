@@ -1,0 +1,15 @@
+{
+  "name": "RelationHide",
+  "category": "playermisc",
+  "documentation": "For PlayerA: hides PlayerB in the diplomacy window.",
+  "parameters": [
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    }
+  ]
+}

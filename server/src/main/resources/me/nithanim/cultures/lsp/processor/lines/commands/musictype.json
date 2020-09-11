@@ -1,0 +1,61 @@
+{
+  "name": "MusicType",
+  "category": "misc_music",
+  "documentation": "Specifies the background music track.",
+  "parameters": [
+    {
+      "name": "MusicType",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 38
+      },
+      "numberHint": [
+        "#DM_MUSIC_TYPE_NOMUSIC",
+        "#DM_MUSIC_TYPE_CULTURE_MISSION",
+        "#DM_MUSIC_TYPE_CULTURE_VIKING",
+        "#DM_MUSIC_TYPE_CULTURE_FRANKEN",
+        "#DM_MUSIC_TYPE_CULTURE_BYZANZ",
+        "#DM_MUSIC_TYPE_CULTURE_ARABS",
+        "#DM_MUSIC_TYPE_ATTACK_VIKING",
+        "#DM_MUSIC_TYPE_ATTACK_FRANKEN",
+        "#DM_MUSIC_TYPE_ATTACK_BYZANZ",
+        "#DM_MUSIC_TYPE_ATTACK_ARABS",
+        "#DM_MUSIC_TYPE_MISSION_VIKING1",
+        "#DM_MUSIC_TYPE_MISSION_FRANKEN1",
+        "#DM_MUSIC_TYPE_MISSION_FRANKEN2",
+        "#DM_MUSIC_TYPE_MISSION_BYZANZ1",
+        "#DM_MUSIC_TYPE_MISSION_BYZANZ2",
+        "#DM_MUSIC_TYPE_MISSION_BYZANZ3",
+        "#DM_MUSIC_TYPE_MISSION_BYZANZ4",
+        "#DM_MUSIC_TYPE_MISSION_ARABS1",
+        "#DM_MUSIC_TYPE_MISSION_ARABS2",
+        "#DM_MUSIC_TYPE_MISSION_ARABS3",
+        "#DM_MUSIC_TYPE_MISSION_MIDGARD1",
+        "#DM_MUSIC_TYPE_MISSION_MIDGARD2",
+        "#DM_MUSIC_TYPE_JINGLE_MARRIAGE",
+        "#DM_MUSIC_TYPE_JINGLE_BIRTH",
+        "#DM_MUSIC_TYPE_JINGLE_CIVILDEFENSE",
+        "#DM_MUSIC_TYPE_JINGLE_DEATH",
+        "#DM_MUSIC_TYPE_JINGLE_HOUSEBUILT",
+        "#DM_MUSIC_TYPE_JINGLE_WON",
+        "#DM_MUSIC_TYPE_JINGLE_LOST",
+        "#DM_MUSIC_TYPE_JINGLE_TECHNOLOGY",
+        "#DM_MUSIC_TYPE_JINGLE_OPENCHEST",
+        "#DM_MUSIC_TYPE_ADDON_MISSION_ARABS1",
+        "#DM_MUSIC_TYPE_ADDON_MISSION_ARABS2",
+        "#DM_MUSIC_TYPE_ADDON_MISSION_FRANKEN1",
+        "#DM_MUSIC_TYPE_ADDON_MISSION_FRANKEN2",
+        "#DM_MUSIC_TYPE_ADDON_MISSION_FRANKEN3",
+        "#DM_MUSIC_TYPE_ADDON_MISSION_NORDLAND",
+        "#DM_MUSIC_TYPE_ADDON_MISSION_UNDERWORLD",
+        "#DM_MUSIC_TYPE_ADDON_MISSION_ASGARD"
+      ]
+    },
+    {
+      "name": "HouseType",
+      "documentation": "E.g. 1 (#HOUSE_TYPE_HEADQUARTERS)",
+      "type": "NUMBER"
+    }
+  ]
+}

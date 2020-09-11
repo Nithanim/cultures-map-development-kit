@@ -1,0 +1,15 @@
+{
+  "name": "RelationNotChangeable",
+  "category": "playermisc",
+  "documentation": "Makes PlayerA unable to change the diplomatic relation to PlayerB.\n\n*Note*: Can be modified by mission command `SetDiplomacyNotChangeableFlag`.",
+  "parameters": [
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    }
+  ]
+}

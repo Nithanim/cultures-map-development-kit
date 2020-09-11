@@ -34,11 +34,11 @@ public enum CulturesIniCommandType {
   MAPSIZE(),
   MAPGUID(),
   // Map
-  MAPTYPE(MISC_MAPTYPE, pbn("Maptype", 1, 6)),
+  MAPTYPE(),
   MAPNAMESTRINGID(),
   MAPDESCRIPTIONSTRINGID(),
   // Misc
-  MUSICTYPE(MISC_MUSIC, pbn("Music", 2, 38)),
+  MUSICTYPE(),
   STARTPOSITION(),
   SETPALETTE(),
   SETRAINRECTANGLE(),
@@ -53,22 +53,22 @@ public enum CulturesIniCommandType {
   // Player
   PLAYER(),
   DIPLOMACY(),
-  NAMETRIBE(PLAYERMISC, pplayer(), pn("String")),
-  NAMETRIBESHORT(PLAYERMISC, pplayer(), pn("String")),
-  PLAYERNEVERDIES(PLAYERMISC, pplayer()),
-  NOSEENFIRSTMESSAGE(PLAYERMISC, pplayerA(), pplayerB()),
-  RELATIONNOTCHANGEABLE(PLAYERMISC, pplayerA(), pplayerB()),
-  RELATIONHIDE(PLAYERMISC, pplayerA(), pplayerB()),
+  NAMETRIBE(),
+  NAMETRIBESHORT(),
+  PLAYERNEVERDIES(),
+  NOSEENFIRSTMESSAGE(),
+  RELATIONNOTCHANGEABLE(),
+  RELATIONHIDE(),
   // Multiplayer
   PLAYERFIXCOLORS(),
   PLAYEROPTION(),
   PLAYERHIDEINMENU(),
   // Special items
-  ADD(SPECIALITEMS, pplayer(), pbn("Letter type", 2, 4), pn("House type")),
+  ADD(),
   // Allowed things
-  FORBIDJOB(ALLOWEDTHINGS, pplayer(), pbn("Tribetype human", 0, 7), pbn("Job type", 1, 55)),
-  FORBIDGOOD(ALLOWEDTHINGS, pplayer(), pbn("Tribetype human", 0, 7), pbn("Good type", 1, 63)),
-  FORBIDHOUSE(ALLOWEDTHINGS, pplayer(), pbn("Tribetype human", 0, 7), pbn("House type", 0, 54)),
+  FORBIDJOB(),
+  FORBIDGOOD(),
+  FORBIDHOUSE(),
   // StaticObjects
   SETHOUSE(),
   SETVEHICLE(),
@@ -78,7 +78,6 @@ public enum CulturesIniCommandType {
   SETNAME(),
   SETEXPIERENCE(),
   ATTACHTOHOUSE(),
-  // SETPRODUCEGOOD(STATICOBJECTS, pt("Good type")), //?
   ATTACHTOVEHICLE(),
   MOVEINTOVEHICLE(),
   MARRY(),

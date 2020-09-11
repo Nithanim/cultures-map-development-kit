@@ -1,0 +1,29 @@
+{
+  "name": "Add",
+  "category": "specialItems",
+  "documentation": "Adds \"letters\" to a player to place buildings immediately.",
+  "parametersMin": 1,
+  "parametersMax": 2,
+  "parameters": [
+    {
+      "name": "LetterType",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 2,
+        "max": 4
+      },
+      "numberHint": [
+        "<NONE>",
+        "<NONE>",
+        "#SPECIAL_ITEM_TYPE_LETTER_TO_SET_ANY_HOUSE: Placement of any house",
+        "#SPECIAL_ITEM_TYPE_LETTER_TO_SET_GIVEN_HOUSE: Placement of predefined house",
+        "#SPECIAL_ITEM_TYPE_LETTER_TO_ALLOW_A_HOUSE: Placement of predefined house which has its internal storage filled"
+      ]
+    },
+    {
+      "name": "HouseType",
+      "documentation": "E.g. 1 (#HOUSE_TYPE_HEADQUARTERS)",
+      "type": "NUMBER"
+    }
+  ]
+}

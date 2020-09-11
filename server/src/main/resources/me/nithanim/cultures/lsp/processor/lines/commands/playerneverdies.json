@@ -1,0 +1,11 @@
+{
+  "name": "PlayerNeverDies",
+  "category": "playermisc",
+  "documentation": "No \"Player died\" message is shown to other players if this player dies.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "NameTribeShort",
+  "category": "playermisc",
+  "documentation": "Sets the name of the given player with the given string id which is used in the diplomacy window for the tabs. If not defined, no entry is shown.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "StringId",
+      "type": "NUMBER"
+    }
+  ]
+}

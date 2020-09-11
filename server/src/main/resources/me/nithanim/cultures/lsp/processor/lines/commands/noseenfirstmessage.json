@@ -1,0 +1,15 @@
+{
+  "name": "NoSeenFirstMessage",
+  "category": "playermisc",
+  "documentation": "PlayerA is not shown a notification if they discover PlayerB for the first time.",
+  "parameters": [
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    }
+  ]
+}
