@@ -133,6 +133,6 @@ public class HoverService {
   }
 
   private boolean isHoverTarget(Range range, int position) {
-    return range.getStart().getCharacter() <= position && position <= range.getEnd().getCharacter();
+    return range.getStart().getCharacter() <= position && position < range.getEnd().getCharacter();
   }
 }
