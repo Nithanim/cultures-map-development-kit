@@ -66,7 +66,7 @@ public class CodeActionService {
   }
 
   private CulturesIniCommand getCommandOnLine(CodeActionParams params) {
-    return sourceCodeIntelligenceService.findForOnlyCommand(
+    return sourceCodeIntelligenceService.getByPositionOnlyCommand(
         new MyPosition(
             new SourceFile(Uri.of(params.getTextDocument().getUri())),
             params.getRange().getStart()));

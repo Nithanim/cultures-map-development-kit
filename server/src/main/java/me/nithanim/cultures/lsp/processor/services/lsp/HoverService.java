@@ -22,7 +22,7 @@ public class HoverService {
 
   public CompletableFuture<Hover> generateHover(HoverParams params) {
     CulturesIniCommand command =
-        sourceCodeIntelligenceService.findForOnlyCommand(
+        sourceCodeIntelligenceService.getByPositionOnlyCommand(
             new MyPosition(
                 new SourceFile(Uri.of(params.getTextDocument().getUri())), params.getPosition()));
     if (command == null) {

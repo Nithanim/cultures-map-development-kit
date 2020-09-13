@@ -1,7 +1,7 @@
 grammar CulturesIni;
 
 fullfile: line+ EOF;
-line: (metaline|categoryline|debugline|commandline)? LINEEND;
+line: (metaline|categoryline|commandline)? LINEEND;
 
 metaline: METACHAR (includeline | defineline);
 includeline: 'include' includepath;
@@ -16,8 +16,6 @@ categoryname: CHARS; //CATEGORYCHARS
 
 commandline: commandname commandarg*;
 
-debugline: DEBUGINFO STRING;
-
 commandname: CHARS;
 commandarg: (stringarg | numberarg | constantarg);
 stringarg: STRING;
@@ -30,7 +28,6 @@ LINE_COMMENT: '//' ~[\r\n]* -> skip;
 
 
 METACHAR: '#';
-DEBUGINFO: 'debuginfo';
 
 DIGITS : '-'?('0'..'9' | '1'..'9' '0'..'9'*);
 //STRING: '"' (~('\n' | '\r' | '"'))+ '"';
