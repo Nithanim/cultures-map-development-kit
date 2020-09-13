@@ -8,6 +8,7 @@ import lombok.SneakyThrows;
 import me.nithanim.cultures.lsp.processor.services.DocumentLinkService;
 import me.nithanim.cultures.lsp.processor.services.SourceFileContentService;
 import me.nithanim.cultures.lsp.processor.services.lsp.CodeActionService;
+import me.nithanim.cultures.lsp.processor.services.lsp.CompletionService;
 import me.nithanim.cultures.lsp.processor.services.lsp.HoverService;
 import me.nithanim.cultures.lsp.processor.services.lsp.SignatureHelpService;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
@@ -16,7 +17,6 @@ import org.eclipse.lsp4j.CodeAction;
 import org.eclipse.lsp4j.CodeActionParams;
 import org.eclipse.lsp4j.Command;
 import org.eclipse.lsp4j.CompletionItem;
-import org.eclipse.lsp4j.CompletionItemKind;
 import org.eclipse.lsp4j.CompletionList;
 import org.eclipse.lsp4j.CompletionParams;
 import org.eclipse.lsp4j.DefinitionParams;
@@ -45,18 +45,13 @@ public class CulturesIniDocumentService extends FullTextDocumentService {
   @Autowired private SignatureHelpService signatureHelpService;
   @Autowired private HoverService hoverService;
   @Autowired private CodeActionService codeActionService;
+  @Autowired private CompletionService completionService;
 
   @Override
   public CompletableFuture<Either<List<CompletionItem>, CompletionList>> completion(
       CompletionParams params) {
     logger.info("Req Completion for " + params.getTextDocument().getUri());
-    CompletionItem ci = new CompletionItem();
-    ci.setLabel("TextCompletion");
-    ci.setKind(CompletionItemKind.Interface);
-    ci.setData("testdata");
-    List<CompletionItem> cis = new ArrayList<>();
-    cis.add(ci);
-    return CompletableFuture.completedFuture(Either.forRight(new CompletionList(cis)));
+    return completionService.completion(params);
   }
 
   @Override

@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.SneakyThrows;
 import me.nithanim.cultures.lsp.processor.services.LanguageServerCommandService;
 import org.eclipse.lsp4j.CodeLensOptions;
+import org.eclipse.lsp4j.CompletionOptions;
 import org.eclipse.lsp4j.DidChangeConfigurationParams;
 import org.eclipse.lsp4j.DidChangeWatchedFilesParams;
 import org.eclipse.lsp4j.DocumentLinkOptions;
@@ -60,7 +61,7 @@ public class CulturesIniLanguageServer implements LanguageServer, LanguageClient
     ServerCapabilities capabilities = new ServerCapabilities();
     capabilities.setTextDocumentSync(TextDocumentSyncKind.Full);
     capabilities.setCodeActionProvider(true);
-    // capabilities.setCompletionProvider(new CompletionOptions(true, null));
+    capabilities.setCompletionProvider(new CompletionOptions(false, null));
     capabilities.setDefinitionProvider(false);
     capabilities.setReferencesProvider(false);
     capabilities.setDocumentLinkProvider(new DocumentLinkOptions(true));
