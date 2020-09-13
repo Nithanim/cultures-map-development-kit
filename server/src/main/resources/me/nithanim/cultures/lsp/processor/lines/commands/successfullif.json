@@ -1,0 +1,21 @@
+{
+  "name": "SuccessfullIf",
+  "category": "MissionData",
+  "documentation": "States the number of conditions (or logical requirements) that need to be true such that the mission is activated.",
+  "parameters": [
+    {
+      "name": "LetterType",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 3
+      },
+      "numberHints": [
+        "all (default): All goals must be true",
+        "one: Just one goal needs to be true",
+        "half: Half of the goals must be true",
+        "none: No goal must be true"
+      ]
+    }
+  ]
+}

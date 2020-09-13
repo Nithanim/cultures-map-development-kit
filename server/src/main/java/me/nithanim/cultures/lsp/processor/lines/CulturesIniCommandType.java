@@ -91,6 +91,7 @@ public enum CulturesIniCommandType {
   VISIBLE(MISSIONDATA, pbn("Is shown in goals", 0, 1)),
   DESCRIPTION(MISSIONDATA, pn("String")),
   DEBUGINFO(MISSIONDATA, ps("String")),
+  SUCCESSFULLIF(),
   GOAL(MISSIONDATA),
   RESULT(MISSIONDATA),
   // aidata
