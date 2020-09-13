@@ -1,0 +1,15 @@
+{
+  "name": "Visible",
+  "category": "MissionData",
+  "documentation": "Defines if the mission is active at the beginning and checking for its goals.",
+  "parameters": [
+    {
+      "name": "IsActive",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

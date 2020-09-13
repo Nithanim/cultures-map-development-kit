@@ -87,10 +87,10 @@ public enum CulturesIniCommandType {
   // Text; Check that it is invalid string.ini file and others are not
   STRINGN(TEXT, pn("Id"), ps("String")),
   // Missions
-  ACTIVE(MISSIONDATA, pbn("Is endabled on map start", 0, 1)),
-  VISIBLE(MISSIONDATA, pbn("Is shown in goals", 0, 1)),
-  DESCRIPTION(MISSIONDATA, pn("String")),
-  DEBUGINFO(MISSIONDATA, ps("String")),
+  ACTIVE(),
+  VISIBLE(),
+  DESCRIPTION(),
+  DEBUGINFO(),
   SUCCESSFULLIF(),
   GOAL(MISSIONDATA),
   RESULT(MISSIONDATA),

@@ -1,0 +1,15 @@
+{
+  "name": "Visible",
+  "category": "MissionData",
+  "documentation": "Relevant for command `description`.",
+  "parameters": [
+    {
+      "name": "IsVisible",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

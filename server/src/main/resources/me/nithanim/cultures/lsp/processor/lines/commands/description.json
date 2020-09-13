@@ -1,0 +1,12 @@
+{
+  "name": "Description",
+  "category": "MissionData",
+  "documentation": "The mission is shown as short text (one sentence in most cases) in the briefings/goals UI. Needs command `visible 1`. When this mission's goals are reached, it gets a checkmark instead of a cross.",
+  "parameters": [
+    {
+      "name": "StringId",
+      "documentation": "The string to display in the UI.",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "DebugInfo",
+  "category": "MissionData",
+  "documentation": "Any short name or text describing this mission. Is probably displayed in the internal editor so not of much **actual* use for people without it, except some short name for readability.",
+  "parameters": [
+    {
+      "name": "StringId",
+      "documentation": "The string to display in the UI.",
+      "type": "NUMBER"
+    }
+  ]
+}
