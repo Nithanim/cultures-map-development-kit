@@ -12,7 +12,6 @@ import me.nithanim.cultures.lsp.processor.util.Uri;
 import org.eclipse.lsp4j.Hover;
 import org.eclipse.lsp4j.HoverParams;
 import org.eclipse.lsp4j.MarkupContent;
-import org.eclipse.lsp4j.MarkupKind;
 import org.eclipse.lsp4j.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,48 +44,10 @@ public class HoverService {
 
   private CompletableFuture<Hover> processParameterWithNumberHintHover(
       CulturesIniCommand command, HoverParams hover, ActualParameterPair parameterPair) {
-    StringBuilder sb = new StringBuilder();
-    sb.append("***")
-        .append(parameterPair.getParameterInformation().getName())
-        .append("*** ")
-        .append(" of ")
-        .append(command.getCommandType().getCommandInformation().getDisplayName())
-        .append("\n\n");
-    sb.append("**Type**: `")
-        .append(parameterPair.getParameterInformation().getType())
-        .append("`\n\n");
-
-    if (parameterPair.getParameterInformation().getDocumentation() != null) {
-      sb.append("**Documentation**: \n\n")
-          .append(parameterPair.getParameterInformation().getDocumentation())
-          .append("\n\n");
-    }
-
-    if (parameterPair.getParameterInformation().getNumberHints() != null) {
-      sb.append("**Values**: \n\n");
-      List<String> numberHints = parameterPair.getParameterInformation().getNumberHints();
-      for (int i = 0; i < numberHints.size(); i++) {
-        String numberHintText = numberHints.get(i);
-        if ("<NONE>".equals(numberHintText) || "<HIDE>".equals(numberHintText)) {
-          continue;
-        }
-        sb.append("* ");
-        String valueString = parameterPair.getParameterActual().getValue();
-        try {
-          int value = Integer.parseInt(valueString);
-          if (value == i) {
-            sb.append("\\> ");
-          }
-        } catch (NumberFormatException ex) {
-        }
-        sb.append('`').append(i).append("`: ").append(numberHintText).append('\n');
-      }
-    }
-
+    MarkupContent contents =
+        documentationService.createParameterDocumentation(command, parameterPair);
     return CompletableFuture.completedFuture(
-        new Hover(
-            new MarkupContent(MarkupKind.MARKDOWN, sb.toString()),
-            parameterPair.getParameterActual().getOrigin().getRange()));
+        new Hover(contents, parameterPair.getParameterActual().getOrigin().getRange()));
   }
 
   private ActualParameterPair isHoverOnParameter(CulturesIniCommand command, HoverParams hover) {
