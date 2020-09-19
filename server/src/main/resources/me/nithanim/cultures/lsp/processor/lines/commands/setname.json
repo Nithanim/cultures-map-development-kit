@@ -4,7 +4,7 @@
   "documentation": "Assigns a name to a human.",
   "parameters": [
     {
-      "name": "HumanId",
+      "name": "ObjectId",
       "documentation": "The id of the human (e.g. set in `SetHuman`).",
       "type": "NUMBER"
     },

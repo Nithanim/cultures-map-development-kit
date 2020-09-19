@@ -36,7 +36,7 @@
       "type": "NUMBER"
     },
     {
-      "name": "MissionId",
+      "name": "ObjectId",
       "documentation": "Id for the generated soldiers to control via missions.",
       "type": "NUMBER"
     },
