@@ -1,6 +1,8 @@
 package me.nithanim.cultures.lsp.processor.lines;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -27,8 +29,18 @@ public enum CulturesIniCategoryType {
   TEXT,
   ;
 
-  private static final Map<String, CulturesIniCategoryType> MAP =
-      Arrays.stream(values()).collect(Collectors.toMap(t -> t.getRealname(), t -> t));
+  private static Map<CulturesIniCategoryType, List<CulturesIniCommandType>> COMMAND_TYPES;
+
+  private static Map<CulturesIniCategoryType, List<CulturesIniCommandType>>
+      getCommandTypesInternal() {
+    // Prevents circular reference; commands need the category but the category would need the commands
+    if (COMMAND_TYPES == null) {
+      COMMAND_TYPES =
+          Arrays.stream(CulturesIniCommandType.values())
+              .collect(Collectors.groupingBy(k -> k.getCommandInformation().getCategory()));
+    }
+    return COMMAND_TYPES;
+  }
 
   public static CulturesIniCategoryType find(String s) {
     // return MAP.get(s.toUpperCase());
@@ -53,5 +65,9 @@ public enum CulturesIniCategoryType {
 
   public String getRealname() {
     return realname;
+  }
+
+  public Collection<CulturesIniCommandType> getCommandTypes() {
+    return getCommandTypesInternal().get(this);
   }
 }

@@ -5,6 +5,7 @@ import java.util.concurrent.CompletableFuture;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
 import me.nithanim.cultures.lsp.processor.services.SourceCodeIntelligenceService;
 import me.nithanim.cultures.lsp.processor.services.lsp.helper.ActualParameterPair;
+import me.nithanim.cultures.lsp.processor.services.lsp.helper.DocumentationService;
 import me.nithanim.cultures.lsp.processor.util.MyPosition;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
 import me.nithanim.cultures.lsp.processor.util.Uri;
@@ -18,7 +19,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HoverService {
-  @Autowired SourceCodeIntelligenceService sourceCodeIntelligenceService;
+  @Autowired private SourceCodeIntelligenceService sourceCodeIntelligenceService;
+  @Autowired private DocumentationService documentationService;
 
   public CompletableFuture<Hover> generateHover(HoverParams params) {
     CulturesIniCommand command =
@@ -101,28 +103,10 @@ public class HoverService {
   }
 
   private CompletableFuture<Hover> processCommandHover(CulturesIniCommand command) {
-    StringBuilder sb = new StringBuilder();
-    sb.append("***")
-        .append(command.getCommandType().getCommandInformation().getDisplayName())
-        .append("***")
-        .append("\n\n");
-    sb.append("**").append("Description").append("**").append("\n\n");
-    if (command.getCommandType().getCommandInformation().getDocumentation() != null) {
-      sb.append(command.getCommandType().getCommandInformation().getDocumentation()).append("\n\n");
-    }
-    sb.append("**").append("Params").append("**").append("\n\n");
-    for (var parameterInfo : command.getCommandType().getCommandInformation().getParameters()) {
-      sb.append("* `").append(parameterInfo.getName()).append('`');
-      if (parameterInfo.getDocumentation() != null) {
-        sb.append(": ").append(parameterInfo.getDocumentation());
-      }
-      sb.append("\n");
-    }
-
+    MarkupContent contents =
+        documentationService.createCommandDocumentation(command.getCommandType());
     return CompletableFuture.completedFuture(
-        new Hover(
-            new MarkupContent(MarkupKind.MARKDOWN, sb.toString()),
-            command.getOriginBaseCommand().getRange()));
+        new Hover(contents, command.getOriginBaseCommand().getRange()));
   }
 
   private boolean isHoverOnCommand(CulturesIniCommand command, HoverParams hover) {

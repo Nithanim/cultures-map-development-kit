@@ -18,6 +18,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 /** Holds information about what command an parameters are where defined. */
+// The whole thing has the shortcoming that it has no ordering of files TODO
 @Service
 public class SourceCodeIntelligenceService {
   @Autowired private DefinitionEnvironment definitionEnvironment;
@@ -47,21 +48,54 @@ public class SourceCodeIntelligenceService {
 
         CulturesIniCategoryType categoryType =
             command.getCommandType().getCommandInformation().getCategory();
+        Integer categoryNumber = numberOccurrences.getOrDefault(categoryType, 0);
         insertStatement.values(
             command.getOriginAll().getSourceFile().getUri().toString(),
             command.getOriginAll().getRange().getStart().getLine(),
             command.getLineType().name(),
             categoryType.name(),
-            numberOccurrences.getOrDefault(categoryType, 0),
+            categoryNumber,
             line);
       } else if (line instanceof CulturesIniCategory) {
         CulturesIniCategory cat = (CulturesIniCategory) line;
         if (cat.getCategoryType() != null) { // When invalid category parsed
-          numberOccurrences.compute(cat.getCategoryType(), (k, v) -> (v == null) ? 0 : v + 1);
+          Integer categoryNumber =
+              numberOccurrences.compute(cat.getCategoryType(), (k, v) -> (v == null) ? 0 : v + 1);
+
+          insertStatement.values(
+              cat.getOriginAll().getSourceFile().getUri().toString(),
+              cat.getOriginAll().getRange().getStart().getLine(),
+              cat.getLineType().name(),
+              cat.getCategoryType().name(),
+              categoryNumber,
+              line);
         }
       }
     }
     insertStatement.execute();
+  }
+
+  public CulturesIniCategoryType getCurrentCategoryType(MyPosition position) {
+    var category =
+        jooq.select(Intelligence.INTELLIGENCE.DATA)
+            .from(Intelligence.INTELLIGENCE)
+            .where(
+                Intelligence.INTELLIGENCE
+                    .SOURCE_FILE
+                    .eq(position.getSourceFile().getUri().toString())
+                    .and(Intelligence.INTELLIGENCE.LINE_NUMBER.lt(position.getPosition().getLine()))
+                    .and(
+                        Intelligence.INTELLIGENCE.LINE_TYPE.eq(
+                            CulturesIniLine.Type.CATEGORY.name())))
+            .orderBy(Intelligence.INTELLIGENCE.LINE_NUMBER.desc())
+            .limit(1)
+            .fetchOne(0, CulturesIniCategory.class);
+
+    if (category == null) {
+      return null;
+    } else {
+      return category.getCategoryType();
+    }
   }
 
   public List<List<CulturesIniCommand>> getAllCommandsInSingleCategoryDefinition(
