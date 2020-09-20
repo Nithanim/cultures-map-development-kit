@@ -21,6 +21,8 @@ game_pre_stuff_skip
 # Using this extension
 Download the extension and drop it into the extensions menu in VS Code.
 
+For a detailed step-by-step setup process (with images) please [check out the wiki page](../../wiki/setup).
+
 ## First time
 Go to you game folder and the find the folder `data` and then `maps`.
 If they do not exist, either create them or install a custom user map that was created via the internal editor.
