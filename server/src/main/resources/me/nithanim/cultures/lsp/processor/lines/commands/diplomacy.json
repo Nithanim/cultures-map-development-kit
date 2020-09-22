@@ -14,8 +14,8 @@
       "type": "NUMBER"
     },
     {
-      "name": "PlayerIdOther",
-      "documentation": "The target player of the relationship.",
+      "name": "Relation",
+      "documentation": "The relationship of this player to the other player.",
       "type": "NUMBER",
       "numberRange": {
         "min": 1,
