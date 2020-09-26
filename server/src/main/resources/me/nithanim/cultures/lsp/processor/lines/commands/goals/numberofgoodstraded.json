@@ -1,0 +1,19 @@
+{
+  "name": "NumberOfGoodsTraded",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player A has traded with the given player B a given amount of goods.",
+  "parameters": [
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    }
+  ]
+}

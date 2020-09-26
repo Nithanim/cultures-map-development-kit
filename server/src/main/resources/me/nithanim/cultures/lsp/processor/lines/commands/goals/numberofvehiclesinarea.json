@@ -1,0 +1,31 @@
+{
+  "name": "NumberOfVehiclesInArea",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player has given number of vehicles of the given type in the given area.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "VehicleType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

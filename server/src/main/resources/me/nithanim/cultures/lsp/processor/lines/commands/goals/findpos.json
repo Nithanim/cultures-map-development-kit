@@ -1,0 +1,19 @@
+{
+  "name": "FindPos",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given position is revealed by the given player.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "IsLandscapePlayer10ConstructionSignOnPoint",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    }
+  ]
+}

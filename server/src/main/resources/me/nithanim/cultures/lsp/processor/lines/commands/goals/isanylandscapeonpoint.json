@@ -1,0 +1,14 @@
+{
+  "name": "IsAnyLandscapeOnPoint",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    }
+  ]
+}

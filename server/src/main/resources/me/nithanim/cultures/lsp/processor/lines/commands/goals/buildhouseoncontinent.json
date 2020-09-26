@@ -1,0 +1,25 @@
+{
+  "name": "BuildHouseOnContinent",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player has a house of given type on the continent which the coordinates belong to.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "documentation": "The X-component of the coordinate on the continent to check.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "documentation": "The Y-component of the coordinate on the continent to check.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HouseType",
+      "type": "TYPE"
+    }
+  ]
+}

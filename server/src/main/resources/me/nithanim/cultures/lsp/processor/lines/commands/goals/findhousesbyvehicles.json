@@ -1,0 +1,22 @@
+{
+  "name": "FindHousesByVehicles",
+  "category": "<dummy>",
+  "documentation": "Satisfied if given vehicle gets inside the given radius around the given house.",
+  "parameters": [
+    {
+      "name": "VehicleId",
+      "documentation": "The ObjectId of the vehicle that needs to approach the house.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HouseId",
+      "documentation": "The ObjectId of the house the vehicle needs to approach.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "documentation": "The radius around the house the vehicle has to be in to satisfy the goal.",
+      "type": "NUMBER"
+    }
+  ]
+}

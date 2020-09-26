@@ -1,0 +1,15 @@
+{
+  "name": "FindVehicles",
+  "category": "<dummy>",
+  "documentation": "Satisfied if a given vehicle is revealed to the given player.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "NumberOfSoldiers",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player has trained the given number of soldiers.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    }
+  ]
+}

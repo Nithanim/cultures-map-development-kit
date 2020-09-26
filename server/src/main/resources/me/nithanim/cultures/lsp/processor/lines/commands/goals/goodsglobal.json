@@ -1,0 +1,19 @@
+{
+  "name": "GoodsGlobal",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player has equal to or more than the given amount of the given good in all their warehouses combined.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Amount",
+      "type": "NUMBER"
+    }
+  ]
+}

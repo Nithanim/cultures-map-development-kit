@@ -1,0 +1,11 @@
+{
+  "name": "IsMissionDone",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given mission has already been completed.",
+  "parameters": [
+    {
+      "name": "MissionId",
+      "type": "NUMBER"
+    }
+  ]
+}

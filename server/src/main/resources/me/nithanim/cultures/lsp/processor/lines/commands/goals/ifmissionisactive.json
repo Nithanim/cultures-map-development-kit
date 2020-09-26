@@ -1,0 +1,11 @@
+{
+  "name": "IfMissionIsActive",
+  "category": "<dummy>",
+  "documentation": "Satisfied if given mission is active. Not to be confused with fulfilled conditions!",
+  "parameters": [
+    {
+      "name": "MissionId",
+      "type": "NUMBER"
+    }
+  ]
+}

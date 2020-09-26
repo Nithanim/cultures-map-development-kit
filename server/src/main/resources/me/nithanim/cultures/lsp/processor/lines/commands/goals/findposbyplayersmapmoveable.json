@@ -1,0 +1,23 @@
+{
+  "name": "FindPosByPlayersMapMoveable",
+  "category": "<dummy>",
+  "documentation": "Satisfied if a human or vehicle of a given player is inside a given area.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

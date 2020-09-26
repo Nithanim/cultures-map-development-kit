@@ -1,0 +1,15 @@
+{
+  "name": "PlayerAttackedByPlayer",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player A has attacked the given player B. TODO Unclear what order",
+  "parameters": [
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    }
+  ]
+}

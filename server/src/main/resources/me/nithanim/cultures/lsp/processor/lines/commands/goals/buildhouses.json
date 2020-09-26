@@ -1,0 +1,24 @@
+{
+  "name": "BuildHouses",
+  "category": "<dummy>",
+  "documentation": "Satisfied as long as NOT enough houses of the given type of the given player with given quantity have been built.\n\n*Note*: Effectively an inverted version of \"player has 'n' houses of type\".",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HouseType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ObjectId",
+      "documentation": "This id is assigned to the house(es). Probably, when this condition stops being fulfilled.",
+      "type": "NUMBER"
+    }
+  ]
+}

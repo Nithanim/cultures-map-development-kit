@@ -1,0 +1,21 @@
+{
+  "name": "FindHumansByPlayersMM",
+  "category": "<dummy>",
+  "documentation": "Satisfied if given human gets in reach of a given player.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "documentation": "The ObjectId of the human that needs to get in range of a player.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "documentation": "The maximum distance at which the goal satisfies.",
+      "type": "NUMBER"
+    }
+  ]
+}

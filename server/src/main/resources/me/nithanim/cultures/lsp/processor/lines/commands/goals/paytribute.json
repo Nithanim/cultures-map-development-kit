@@ -1,0 +1,11 @@
+{
+  "name": "PayTribute",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given tribute has been paid.",
+  "parameters": [
+    {
+      "name": "TributeId",
+      "type": "NUMBER"
+    }
+  ]
+}

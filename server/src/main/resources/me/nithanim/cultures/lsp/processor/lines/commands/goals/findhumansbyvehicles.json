@@ -1,0 +1,20 @@
+{
+  "name": "FindHumansByVehicles",
+  "category": "<dummy>",
+  "documentation": "Satisfied if a given vehicle gets inside the given radius around a given human.",
+  "parameters": [
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "documentation": "The maximum distance at which the goal satisfies.",
+      "type": "NUMBER"
+    }
+  ]
+}

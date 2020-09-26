@@ -1,0 +1,20 @@
+{
+  "name": "GoodsInVehicles",
+  "category": "<dummy>",
+  "documentation": "Satisfied if equal to or more than the given amount of the given good is stored in the given vehicle.",
+  "parameters": [
+    {
+      "name": "ObjectId",
+      "documentation": "The id of the vehicle.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Amount",
+      "type": "NUMBER"
+    }
+  ]
+}

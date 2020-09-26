@@ -1,0 +1,19 @@
+{
+  "name": "FindVehiclesByVehicles",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the distance between two given vehicles is less than or equal to a given radius.",
+  "parameters": [
+    {
+      "name": "VehicleIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "VehicleIdB",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

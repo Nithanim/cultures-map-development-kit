@@ -1,0 +1,15 @@
+{
+  "name": "SoldiersDied",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player has lost the given amount of soldiers.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    }
+  ]
+}

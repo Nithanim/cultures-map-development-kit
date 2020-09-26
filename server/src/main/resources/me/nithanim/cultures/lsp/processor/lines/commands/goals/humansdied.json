@@ -1,0 +1,11 @@
+{
+  "name": "HumansDied",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given human is removed from the game.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    }
+  ]
+}

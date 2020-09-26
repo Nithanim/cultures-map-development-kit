@@ -1,0 +1,19 @@
+{
+  "name": "ChestNearPos",
+  "category": "<dummy>",
+  "documentation": "Satisfied if there is a chest in the given area.\n\n*Note*: Only closed chests count as chests.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

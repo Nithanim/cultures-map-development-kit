@@ -1,0 +1,15 @@
+{
+  "name": "NumberOfHumansKilled",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player has killed the given number of \"humans\" of any other player.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    }
+  ]
+}

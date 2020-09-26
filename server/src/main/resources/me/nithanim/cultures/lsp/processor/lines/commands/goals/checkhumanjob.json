@@ -1,0 +1,15 @@
+{
+  "name": "CheckHumanJob",
+  "category": "<dummy>",
+  "documentation": "Satisfied when the human with the given id has teh given job active.",
+  "parameters": [
+    {
+      "name": "ObjectId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "JobType",
+      "type": "TYPE"
+    }
+  ]
+}

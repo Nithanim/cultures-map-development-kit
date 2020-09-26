@@ -1,0 +1,15 @@
+{
+  "name": "CheckNumberOfWildAnimals",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the number of free animals (player 20) of the given tribe are present.",
+  "parameters": [
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "TYPE"
+    }
+  ]
+}

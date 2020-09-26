@@ -1,0 +1,19 @@
+{
+  "name": "JobEnabled",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given job is unlocked with the necessary experience points.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "TYPE"
+    },
+    {
+      "name": "JobType",
+      "type": "TYPE"
+    }
+  ]
+}

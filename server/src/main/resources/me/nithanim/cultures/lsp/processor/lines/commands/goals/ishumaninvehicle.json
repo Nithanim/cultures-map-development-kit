@@ -1,0 +1,14 @@
+{
+  "name": "IsHumanInVehicle",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    }
+  ]
+}

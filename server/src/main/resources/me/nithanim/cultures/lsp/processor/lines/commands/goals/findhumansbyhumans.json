@@ -1,0 +1,21 @@
+{
+  "name": "FindHumansByHumans",
+  "category": "<dummy>",
+  "documentation": "Satisfied if given human A gets inside the given radius around given human B.",
+  "parameters": [
+    {
+      "name": "HumanIdA",
+      "documentation": "The ObjectId of the human that needs to approach the other human.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HumanIdB",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "documentation": "The maximum distance at which the goal satisfies.",
+      "type": "NUMBER"
+    }
+  ]
+}

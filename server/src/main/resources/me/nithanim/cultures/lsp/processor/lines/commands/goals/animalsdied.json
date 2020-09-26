@@ -1,0 +1,11 @@
+{
+  "name": "AnimalsDied",
+  "category": "<dummy>",
+  "documentation": "Satisfied if one ore more animals with the given id died.",
+  "parameters": [
+    {
+      "name": "ObjectId",
+      "type": "NUMBER"
+    }
+  ]
+}

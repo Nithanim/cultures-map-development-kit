@@ -1,0 +1,15 @@
+{
+  "name": "PlayerSeen",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player A has seen given player B.",
+  "parameters": [
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    }
+  ]
+}

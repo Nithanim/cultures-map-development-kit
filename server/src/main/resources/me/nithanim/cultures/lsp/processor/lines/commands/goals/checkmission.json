@@ -1,0 +1,11 @@
+{
+  "name": "CheckMission",
+  "category": "<dummy>",
+  "documentation": "Satisfied when the given mission is completed.",
+  "parameters": [
+    {
+      "name": "MissionId",
+      "type": "NUMBER"
+    }
+  ]
+}

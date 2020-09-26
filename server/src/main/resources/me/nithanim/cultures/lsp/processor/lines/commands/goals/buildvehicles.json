@@ -1,0 +1,24 @@
+{
+  "name": "BuildVehicles",
+  "category": "<dummy>",
+  "documentation": "Satisfied when enough vehicles have been built by the given player.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "VehicleType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ObjectId",
+      "documentation": "This id is assigned to the house(es).",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "GoodsInHouses",
+  "category": "<dummy>",
+  "documentation": "Satisfied if equal to or more than the given amount of the given good is stored in the given warehouse.",
+  "parameters": [
+    {
+      "name": "ObjectId",
+      "documentation": "The id of the warehouse.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Amount",
+      "type": "NUMBER"
+    }
+  ]
+}

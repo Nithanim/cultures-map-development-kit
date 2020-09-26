@@ -1,0 +1,24 @@
+{
+  "name": "BuildHumans",
+  "category": "<dummy>",
+  "documentation": "Satisfied when enough humans of the given player can do the given job.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "JobType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ObjectId",
+      "documentation": "This id is assigned to the house(es).",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "PlayerDied",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player died.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    }
+  ]
+}

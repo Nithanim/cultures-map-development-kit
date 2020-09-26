@@ -1,0 +1,20 @@
+{
+  "name": "NumberOfAnimals",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player has a given number of animals.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "documentation": "The tribe type of the animal. E.g. \"cattle\", \"sheep\", ...",
+      "type": "TYPE"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    }
+  ]
+}

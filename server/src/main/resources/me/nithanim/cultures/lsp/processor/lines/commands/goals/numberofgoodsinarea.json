@@ -1,0 +1,31 @@
+{
+  "name": "NumberOfGoodsInArea",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player has a given number of goods in the given area. Goods count both on ground and in houses.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

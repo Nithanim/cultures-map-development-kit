@@ -1,0 +1,15 @@
+{
+  "name": "Population",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player has reached the given number of people.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    }
+  ]
+}

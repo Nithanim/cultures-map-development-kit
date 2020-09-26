@@ -1,0 +1,12 @@
+{
+  "name": "HousesDied",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given house is destroyed (regardless of the cause).",
+  "parameters": [
+    {
+      "name": "ObjectId",
+      "documentation": "The id of the house.",
+      "type": "NUMBER"
+    }
+  ]
+}

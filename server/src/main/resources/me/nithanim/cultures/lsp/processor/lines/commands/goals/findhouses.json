@@ -1,0 +1,17 @@
+{
+  "name": "FindHouses",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player finds the house with the given id.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "documentation": "The player that needs to find the house.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ObjectId",
+      "documentation": "The house to be found. Must be already defined!",
+      "type": "NUMBER"
+    }
+  ]
+}

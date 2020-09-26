@@ -1,0 +1,11 @@
+{
+  "name": "VehiclesDied",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given vehicle died.",
+  "parameters": [
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "TimeGone",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given number of seconds elapsed.",
+  "parameters": [
+    {
+      "name": "Seconds",
+      "type": "NUMBER"
+    }
+  ]
+}

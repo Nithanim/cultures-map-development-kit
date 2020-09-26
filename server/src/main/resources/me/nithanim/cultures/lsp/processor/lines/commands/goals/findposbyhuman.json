@@ -1,0 +1,23 @@
+{
+  "name": "FindPosByHuman",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given human is inside the given area.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

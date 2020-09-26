@@ -1,0 +1,25 @@
+{
+  "name": "DiplomacyState",
+  "category": "<dummy>",
+  "documentation": "Satisfied if player A has the given relationship status to player B.",
+  "parameters": [
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    },
+    {
+      "name": "State",
+      "documentation": "This parameter is not a number but a string!",
+      "type": "Type",
+      "stringHints": {
+        "enemy": {},
+        "neutral":  {},
+        "friend": {}
+      }
+    }
+  ]
+}

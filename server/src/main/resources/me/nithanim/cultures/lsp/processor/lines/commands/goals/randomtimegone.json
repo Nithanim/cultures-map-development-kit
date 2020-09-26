@@ -1,0 +1,11 @@
+{
+  "name": "RandomTimeGone",
+  "category": "<dummy>",
+  "documentation": "Satisfied if a random amount of seconds elapsed. The given time is used as the maximum and the minimum is half the maximum.",
+  "parameters": [
+    {
+      "name": "MaximumNumberOfSeconds",
+      "type": "NUMBER"
+    }
+  ]
+}

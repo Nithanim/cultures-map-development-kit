@@ -1,0 +1,23 @@
+{
+  "name": "DetectGuide",
+  "category": "<dummy>",
+  "documentation": "Satisfied if a guide post of the given player is present in the given area.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

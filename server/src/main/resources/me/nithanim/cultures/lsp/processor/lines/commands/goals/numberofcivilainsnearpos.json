@@ -1,0 +1,27 @@
+{
+  "name": "NumberOfCivilainsNearPos",
+  "category": "<dummy>",
+  "documentation": "Satisfied if the given player has a given number of civilians in the given area.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    },
+  ]
+}

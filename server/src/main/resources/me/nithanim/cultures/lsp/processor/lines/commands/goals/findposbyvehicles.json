@@ -1,0 +1,23 @@
+{
+  "name": "FindPosByVehicles",
+  "category": "<dummy>",
+  "documentation": "Satisfied if a given vehicle is inside a given area.",
+  "parameters": [
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

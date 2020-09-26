@@ -1,0 +1,19 @@
+{
+  "name": "GoodProduceable",
+  "category": "<dummy>",
+  "documentation": "Satisfied if a given player has unlocked a given good (regardless of the source).",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "TYPE"
+    },
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    }
+  ]
+}
