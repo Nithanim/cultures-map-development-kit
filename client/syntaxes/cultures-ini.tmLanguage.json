@@ -52,7 +52,7 @@
             "patterns": [
                 {
                     "name": "support.function",
-                    "match": "^[a-z]+"
+                    "match": "^[a-zA-Z]+"
                 }
             ]
         },
