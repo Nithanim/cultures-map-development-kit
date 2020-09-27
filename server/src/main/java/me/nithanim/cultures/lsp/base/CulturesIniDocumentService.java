@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import lombok.SneakyThrows;
-import me.nithanim.cultures.lsp.processor.services.DocumentLinkService;
+import me.nithanim.cultures.lsp.processor.services.lsp.DocumentLinkService;
 import me.nithanim.cultures.lsp.processor.services.SourceFileContentService;
 import me.nithanim.cultures.lsp.processor.services.lsp.CodeActionService;
 import me.nithanim.cultures.lsp.processor.services.lsp.CompletionService;

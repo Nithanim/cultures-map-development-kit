@@ -1,4 +1,4 @@
-package me.nithanim.cultures.lsp.processor.services;
+package me.nithanim.cultures.lsp.processor.services.lsp;
 
 import java.util.List;
 import java.util.Objects;
@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniInclude;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniLine;
 import me.nithanim.cultures.lsp.processor.model.DefinitionEnvironment;
+import me.nithanim.cultures.lsp.processor.services.PathResolverService;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
 import me.nithanim.cultures.lsp.processor.util.Uri;
 import org.eclipse.lsp4j.DocumentLink;

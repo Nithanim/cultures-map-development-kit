@@ -1,4 +1,4 @@
-package me.nithanim.cultures.lsp.processor.services;
+package me.nithanim.cultures.lsp.processor.services.lsp;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,6 +20,8 @@ import lombok.SneakyThrows;
 import me.nithanim.cultures.format.newlib.io.writing.LibFileWriter;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniLine;
 import me.nithanim.cultures.lsp.processor.model.DefinitionEnvironment;
+import me.nithanim.cultures.lsp.processor.services.MapFileUtil;
+import me.nithanim.cultures.lsp.processor.services.WorkspaceService;
 import org.eclipse.lsp4j.ExecuteCommandParams;
 import org.eclipse.lsp4j.MessageParams;
 import org.eclipse.lsp4j.MessageType;
@@ -31,13 +33,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StreamUtils;
 
 @Service
-public class LanguageServerCommandService {
-  private static final Logger logger = LoggerFactory.getLogger(LanguageServerCommandService.class);
+public class CommandExecutionService {
+  private static final Logger logger = LoggerFactory.getLogger(CommandExecutionService.class);
 
   public static final String COMMAND_EXTRACT_MAP = "culures-ini.extract-c2m";
   public static final String COMMAND_PACKAGE = "cultures-ini.package-map-internal";
   public static final String COMMAND_PACKAGE_EXTERNAL = "cultures-ini.package-map-external";
-  private static final Map<String, BiConsumer<LanguageServerCommandService, ExecuteCommandParams>>
+  private static final Map<String, BiConsumer<CommandExecutionService, ExecuteCommandParams>>
       map;
 
   @Autowired private WorkspaceService workspaceService;
@@ -45,14 +47,14 @@ public class LanguageServerCommandService {
   @Setter private LanguageClient client;
 
   static {
-    Map<String, BiConsumer<LanguageServerCommandService, ExecuteCommandParams>> m = new HashMap<>();
-    m.put(COMMAND_PACKAGE_EXTERNAL, LanguageServerCommandService::pack);
-    m.put(COMMAND_EXTRACT_MAP, LanguageServerCommandService::extract);
+    Map<String, BiConsumer<CommandExecutionService, ExecuteCommandParams>> m = new HashMap<>();
+    m.put(COMMAND_PACKAGE_EXTERNAL, CommandExecutionService::pack);
+    m.put(COMMAND_EXTRACT_MAP, CommandExecutionService::extract);
     map = m;
   }
 
   public CompletableFuture<Object> execute(ExecuteCommandParams params) {
-    BiConsumer<LanguageServerCommandService, ExecuteCommandParams> o = map.get(params.getCommand());
+    BiConsumer<CommandExecutionService, ExecuteCommandParams> o = map.get(params.getCommand());
     try {
       o.accept(this, params);
       return CompletableFuture.completedFuture(null);

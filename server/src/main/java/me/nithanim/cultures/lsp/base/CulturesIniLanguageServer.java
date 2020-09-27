@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import lombok.Setter;
 import lombok.SneakyThrows;
-import me.nithanim.cultures.lsp.processor.services.LanguageServerCommandService;
+import me.nithanim.cultures.lsp.processor.services.lsp.CommandExecutionService;
 import org.eclipse.lsp4j.CodeLensOptions;
 import org.eclipse.lsp4j.CompletionOptions;
 import org.eclipse.lsp4j.DidChangeConfigurationParams;
@@ -45,7 +45,7 @@ public class CulturesIniLanguageServer implements LanguageServer, LanguageClient
 
   @Autowired private me.nithanim.cultures.lsp.processor.services.WorkspaceService workspaceService;
 
-  @Autowired private LanguageServerCommandService languageServerCommandService;
+  @Autowired private CommandExecutionService commandExecutionService;
 
   @Override
   @SneakyThrows
@@ -67,7 +67,7 @@ public class CulturesIniLanguageServer implements LanguageServer, LanguageClient
     capabilities.setDocumentLinkProvider(new DocumentLinkOptions(true));
     capabilities.setFoldingRangeProvider(true);
     capabilities.setExecuteCommandProvider(
-        new ExecuteCommandOptions(languageServerCommandService.getCommands()));
+        new ExecuteCommandOptions(commandExecutionService.getCommands()));
     capabilities.setCodeLensProvider(new CodeLensOptions(false));
 
     capabilities.setTypeDefinitionProvider(false);
@@ -142,7 +142,7 @@ public class CulturesIniLanguageServer implements LanguageServer, LanguageClient
       @Override
       public CompletableFuture<Object> executeCommand(ExecuteCommandParams params) {
         logger.info("Reqws executeCommand " + params.getCommand() + " " + params.getArguments());
-        return languageServerCommandService.execute(params);
+        return commandExecutionService.execute(params);
       }
     };
   }
@@ -150,6 +150,6 @@ public class CulturesIniLanguageServer implements LanguageServer, LanguageClient
   @Override
   public void connect(LanguageClient client) {
     this.client = client;
-    languageServerCommandService.setClient(client);
+    commandExecutionService.setClient(client);
   }
 }
