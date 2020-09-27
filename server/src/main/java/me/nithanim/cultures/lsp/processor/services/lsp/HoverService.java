@@ -25,11 +25,7 @@ public class HoverService {
   @Autowired private ParameterService parameterService;
 
   public CompletableFuture<Hover> generateHover(HoverParams hoverParameters) {
-    CulturesIniCommand command =
-        sourceCodeIntelligenceService.getByPositionOnlyCommand(
-            new MyPosition(
-                new SourceFile(Uri.of(hoverParameters.getTextDocument().getUri())),
-                hoverParameters.getPosition()));
+    CulturesIniCommand command = getCommandOnPosition(hoverParameters);
     if (command == null) {
       return CompletableFuture.completedFuture(null);
     }
@@ -48,6 +44,13 @@ public class HoverService {
         return CompletableFuture.completedFuture(null);
       }
     }
+  }
+
+  private CulturesIniCommand getCommandOnPosition(HoverParams hoverParameters) {
+    return sourceCodeIntelligenceService.getByPositionOnlyCommand(
+        new MyPosition(
+            new SourceFile(Uri.of(hoverParameters.getTextDocument().getUri())),
+            hoverParameters.getPosition()));
   }
 
   private CompletableFuture<Hover> processParameterWithNumberHintHover(

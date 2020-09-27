@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
 import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformation;
 import me.nithanim.cultures.lsp.processor.services.SourceCodeIntelligenceService;
+import me.nithanim.cultures.lsp.processor.services.lsp.helper.ParameterService;
 import me.nithanim.cultures.lsp.processor.util.MyPosition;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
 import me.nithanim.cultures.lsp.processor.util.Uri;
@@ -23,20 +24,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class SignatureHelpService {
   @Autowired SourceCodeIntelligenceService sourceCodeIntelligenceService;
+  @Autowired ParameterService parameterService;
 
   public CompletableFuture<SignatureHelp> generateSignatureHelp(SignatureHelpParams params) {
-    CulturesIniCommand command =
-        sourceCodeIntelligenceService.getByPositionOnlyCommand(
-            new MyPosition(
-                new SourceFile(Uri.of(params.getTextDocument().getUri())), params.getPosition()));
+    CulturesIniCommand command = getCommandOnPosition(params);
     if (command != null) {
+      CommandInformation commandInformation =
+          parameterService.getCraftedCommandInformation(command);
+      if (commandInformation == null) {
+        commandInformation = command.getCommandType().getCommandInformation();
+      }
       return CompletableFuture.completedFuture(
           new SignatureHelp(
               Collections.singletonList(
                   new SignatureInformation(
-                      getSignatureLabel(command),
+                      getSignatureLabel(commandInformation),
                       new MarkupContent(MarkupKind.MARKDOWN, getSignatureDocumentation(command)),
-                      getSignatureParameters(command))),
+                      getSignatureParameters(commandInformation))),
               0,
               getActiveParameter(command, params.getPosition())));
     } else {
@@ -44,6 +48,12 @@ public class SignatureHelpService {
           Collections.emptyList(); // SHOULD BE NULL BY SPECIFICATION BUT SHITTY LIBRARY IS BUGGY
       return CompletableFuture.completedFuture(new SignatureHelp(signatures, 0, 0));
     }
+  }
+
+  private CulturesIniCommand getCommandOnPosition(SignatureHelpParams params) {
+    return sourceCodeIntelligenceService.getByPositionOnlyCommand(
+        new MyPosition(
+            new SourceFile(Uri.of(params.getTextDocument().getUri())), params.getPosition()));
   }
 
   private int getActiveParameter(CulturesIniCommand command, Position position) {
@@ -59,8 +69,8 @@ public class SignatureHelpService {
     return -1;
   }
 
-  private List<ParameterInformation> getSignatureParameters(CulturesIniCommand command) {
-    return command.getCommandType().getCommandInformation().getParameters().stream()
+  private List<ParameterInformation> getSignatureParameters(CommandInformation commandInformation) {
+    return commandInformation.getParameters().stream()
         .map(this::toSignatureParameter)
         .collect(Collectors.toList());
   }
@@ -78,10 +88,10 @@ public class SignatureHelpService {
     return command.getCommandType().getCommandInformation().getDocumentation();
   }
 
-  private String getSignatureLabel(CulturesIniCommand command) {
-    var parameters = command.getCommandType().getCommandInformation().getParameters();
+  private String getSignatureLabel(CommandInformation commandInformation) {
+    var parameters = commandInformation.getParameters();
     StringBuilder sb = new StringBuilder();
-    sb.append(command.getCommandType().getCommandInformation().getDisplayName());
+    sb.append(commandInformation.getDisplayName());
     for (var parameter : parameters) {
       sb.append(' ').append('<').append(parameter.getName()).append('>');
     }

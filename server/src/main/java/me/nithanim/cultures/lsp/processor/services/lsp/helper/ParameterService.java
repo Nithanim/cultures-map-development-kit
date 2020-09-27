@@ -42,7 +42,7 @@ public class ParameterService {
         var subcommandCommandInformation = goalType.getCommandInformation();
         var interpolatedParameter =
             new CommandInformation.ParameterInformation(
-                subcommandCommandInformation.getName(),
+                originalParameter.getName(),
                 originalParameter.getType(),
                 subcommandCommandInformation.getDocumentation(),
                 originalParameter.getRange(),
