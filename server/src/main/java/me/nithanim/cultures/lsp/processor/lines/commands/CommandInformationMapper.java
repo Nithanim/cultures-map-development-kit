@@ -8,8 +8,12 @@ import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommandType;
 
 public class CommandInformationMapper {
   public CommandInformation map(JsonCommandInformation src) {
-    CulturesIniCategoryType category =
-        CulturesIniCategoryType.valueOf(src.getCategory().toUpperCase());
+    CulturesIniCategoryType category;
+    if (src.getCategory().equals("<dummy>")) {
+      category = null;
+    } else {
+      category = CulturesIniCategoryType.valueOf(src.getCategory().toUpperCase());
+    }
     List<CommandInformation.ParameterInformation> parameters =
         src.getParameters().stream().map(this::map).collect(Collectors.toList());
     int parameterCount = src.getParameters().size();

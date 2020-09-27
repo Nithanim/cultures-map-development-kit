@@ -49,7 +49,7 @@ public class CompletionService {
       ci.setKind(CompletionItemKind.Function);
       ci.setLabel(commandInformation.getDisplayName());
       ci.setInsertText(getTextToInsert(commandInformation));
-      ci.setDocumentation(documentationService.createCommandDocumentation(commandType));
+      ci.setDocumentation(documentationService.createCommandDocumentation(commandInformation));
       completionItems.add(ci);
     }
     return CompletableFuture.completedFuture(Either.forRight(new CompletionList(completionItems)));

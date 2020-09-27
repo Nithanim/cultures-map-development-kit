@@ -11,11 +11,6 @@ public class ActualParameterPair {
   CulturesIniCommand.Parameter parameterActual;
   CommandInformation.ParameterInformation parameterInformation;
 
-  public static List<ActualParameterPair> of(CulturesIniCommand command) {
-    return of(
-        command.getParameters(), command.getCommandType().getCommandInformation().getParameters());
-  }
-
   public static List<ActualParameterPair> of(
       List<CulturesIniCommand.Parameter> parameterActual,
       List<CommandInformation.ParameterInformation> parameterInformation) {

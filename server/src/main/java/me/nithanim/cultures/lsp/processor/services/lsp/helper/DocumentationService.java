@@ -1,26 +1,22 @@
 package me.nithanim.cultures.lsp.processor.services.lsp.helper;
 
 import java.util.List;
-import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
-import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommandType;
+import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformation;
 import org.eclipse.lsp4j.MarkupContent;
 import org.eclipse.lsp4j.MarkupKind;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DocumentationService {
-  public MarkupContent createCommandDocumentation(CulturesIniCommandType commandType) {
+  public MarkupContent createCommandDocumentation(CommandInformation actualCommandInformation) {
     StringBuilder sb = new StringBuilder();
-    sb.append("***")
-        .append(commandType.getCommandInformation().getDisplayName())
-        .append("***")
-        .append("\n\n");
+    sb.append("***").append(actualCommandInformation.getDisplayName()).append("***").append("\n\n");
     sb.append("**").append("Description").append("**").append("\n\n");
-    if (commandType.getCommandInformation().getDocumentation() != null) {
-      sb.append(commandType.getCommandInformation().getDocumentation()).append("\n\n");
+    if (actualCommandInformation.getDocumentation() != null) {
+      sb.append(actualCommandInformation.getDocumentation()).append("\n\n");
     }
     sb.append("**").append("Params").append("**").append("\n\n");
-    for (var parameterInfo : commandType.getCommandInformation().getParameters()) {
+    for (var parameterInfo : actualCommandInformation.getParameters()) {
       sb.append("* `").append(parameterInfo.getName()).append('`');
       if (parameterInfo.getDocumentation() != null) {
         sb.append(": ").append(parameterInfo.getDocumentation());
@@ -32,13 +28,13 @@ public class DocumentationService {
   }
 
   public MarkupContent createParameterDocumentation(
-      CulturesIniCommand command, ActualParameterPair parameterPair) {
+      CommandInformation commandInformation, ActualParameterPair parameterPair) {
     StringBuilder sb = new StringBuilder();
     sb.append("***")
         .append(parameterPair.getParameterInformation().getName())
         .append("*** ")
         .append(" of ")
-        .append(command.getCommandType().getCommandInformation().getDisplayName())
+        .append(commandInformation.getDisplayName())
         .append("\n\n");
     sb.append("**Type**: `")
         .append(parameterPair.getParameterInformation().getType())

@@ -92,7 +92,7 @@ public enum CulturesIniCommandType {
   DESCRIPTION(),
   DEBUGINFO(),
   SUCCESSFULLIF(),
-  GOAL(MISSIONDATA),
+  GOAL(),
   RESULT(MISSIONDATA),
   // aidata
   AI_DISABLE(),

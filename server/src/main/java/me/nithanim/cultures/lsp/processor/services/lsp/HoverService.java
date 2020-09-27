@@ -3,9 +3,11 @@ package me.nithanim.cultures.lsp.processor.services.lsp;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
+import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformation;
 import me.nithanim.cultures.lsp.processor.services.SourceCodeIntelligenceService;
 import me.nithanim.cultures.lsp.processor.services.lsp.helper.ActualParameterPair;
 import me.nithanim.cultures.lsp.processor.services.lsp.helper.DocumentationService;
+import me.nithanim.cultures.lsp.processor.services.lsp.helper.ParameterService;
 import me.nithanim.cultures.lsp.processor.util.MyPosition;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
 import me.nithanim.cultures.lsp.processor.util.Uri;
@@ -20,22 +22,28 @@ import org.springframework.stereotype.Service;
 public class HoverService {
   @Autowired private SourceCodeIntelligenceService sourceCodeIntelligenceService;
   @Autowired private DocumentationService documentationService;
+  @Autowired private ParameterService parameterService;
 
-  public CompletableFuture<Hover> generateHover(HoverParams params) {
+  public CompletableFuture<Hover> generateHover(HoverParams hoverParameters) {
     CulturesIniCommand command =
         sourceCodeIntelligenceService.getByPositionOnlyCommand(
             new MyPosition(
-                new SourceFile(Uri.of(params.getTextDocument().getUri())), params.getPosition()));
+                new SourceFile(Uri.of(hoverParameters.getTextDocument().getUri())),
+                hoverParameters.getPosition()));
     if (command == null) {
       return CompletableFuture.completedFuture(null);
     }
 
-    if (isHoverOnCommand(command, params)) {
-      return processCommandHover(command);
+    var commandInformation = parameterService.getCraftedCommandInformation(command);
+    var actualParameters = command.getParameters();
+
+    if (isHoverOnCommand(command, hoverParameters)) {
+      return processCommandHover(command, commandInformation);
     } else {
-      ActualParameterPair parameterPair = isHoverOnParameter(command, params);
+      ActualParameterPair parameterPair =
+          isHoverOnParameter(commandInformation.getParameters(), actualParameters, hoverParameters);
       if (parameterPair != null) {
-        return processParameterWithNumberHintHover(command, params, parameterPair);
+        return processParameterWithNumberHintHover(commandInformation, parameterPair);
       } else {
         return CompletableFuture.completedFuture(null);
       }
@@ -43,15 +51,19 @@ public class HoverService {
   }
 
   private CompletableFuture<Hover> processParameterWithNumberHintHover(
-      CulturesIniCommand command, HoverParams hover, ActualParameterPair parameterPair) {
+      CommandInformation commandInformation, ActualParameterPair parameterPair) {
     MarkupContent contents =
-        documentationService.createParameterDocumentation(command, parameterPair);
+        documentationService.createParameterDocumentation(commandInformation, parameterPair);
     return CompletableFuture.completedFuture(
         new Hover(contents, parameterPair.getParameterActual().getOrigin().getRange()));
   }
 
-  private ActualParameterPair isHoverOnParameter(CulturesIniCommand command, HoverParams hover) {
-    List<ActualParameterPair> pairs = ActualParameterPair.of(command);
+  private ActualParameterPair isHoverOnParameter(
+      List<CommandInformation.ParameterInformation> parameterInformation,
+      List<CulturesIniCommand.Parameter> actualParameters,
+      HoverParams hover) {
+    List<ActualParameterPair> pairs =
+        ActualParameterPair.of(actualParameters, parameterInformation);
     for (ActualParameterPair pair : pairs) {
       Range commandRange = pair.getParameterActual().getOrigin().getRange();
       int hoverPosition = hover.getPosition().getCharacter();
@@ -63,9 +75,9 @@ public class HoverService {
     return null;
   }
 
-  private CompletableFuture<Hover> processCommandHover(CulturesIniCommand command) {
-    MarkupContent contents =
-        documentationService.createCommandDocumentation(command.getCommandType());
+  private CompletableFuture<Hover> processCommandHover(
+      CulturesIniCommand command, CommandInformation commandInformation) {
+    MarkupContent contents = documentationService.createCommandDocumentation(commandInformation);
     return CompletableFuture.completedFuture(
         new Hover(contents, command.getOriginBaseCommand().getRange()));
   }

@@ -9,6 +9,7 @@ import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniLine;
 import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformation;
 import me.nithanim.cultures.lsp.processor.services.clientpersistent.DiagnosticsService;
+import me.nithanim.cultures.lsp.processor.services.lsp.helper.ParameterService;
 import me.nithanim.cultures.lsp.processor.util.DiagnosticsCollector;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CommandParameterLengthCheckService {
   private final DiagnosticsService diagnosticsService;
+  private final ParameterService parameterService;
 
   public List<? extends CulturesIniLine> onData(List<? extends CulturesIniLine> all) {
     CulturesIniCategory currCat = null;
@@ -66,7 +68,7 @@ public class CommandParameterLengthCheckService {
     boolean valid = true;
 
     var actualParameters = cmd.getParameters();
-    CommandInformation commandInformation = cmd.getCommandType().getCommandInformation();
+    CommandInformation commandInformation = parameterService.getCraftedCommandInformation(cmd);
 
     // Handle excess
     if (actualParameters.size() > commandInformation.getParametersMaximum()

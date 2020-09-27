@@ -1,0 +1,12 @@
+{
+  "name": "Goal",
+  "category": "missiondata",
+  "documentation": "Sets a goal that needs to be fulfilled when the results should be activated. Changes based on the goal type.",
+  "parameters": [
+    {
+      "name": "GoalType",
+      "documentation": "Defines the type of the goal.",
+      "type": "TYPE"
+    }
+  ]
+}

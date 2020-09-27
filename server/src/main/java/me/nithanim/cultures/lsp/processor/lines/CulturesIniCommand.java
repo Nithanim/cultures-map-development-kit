@@ -53,11 +53,11 @@ public class CulturesIniCommand implements CulturesIniLine {
     List<String> parts = new ArrayList<>();
     parts.add(commandType.name().toLowerCase());
     for (Parameter p : parameters) {
-      /*if(p.getType() == Parameter.Type.STRING || p.getType() == Parameter.Type.TYPE) {
+      if (p.getType() == Parameter.Type.STRING || p.getType() == Parameter.Type.TYPE) {
         parts.add("\"" + p.getValue() + "\"");
-      } else {*/
-      parts.add(p.getValue());
-      // }
+      } else {
+        parts.add(p.getValue());
+      }
     }
     return String.join(" ", parts);
   }

@@ -9,6 +9,7 @@ import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
 import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformation;
 import me.nithanim.cultures.lsp.processor.services.SourceCodeIntelligenceService;
 import me.nithanim.cultures.lsp.processor.services.lsp.helper.ActualParameterPair;
+import me.nithanim.cultures.lsp.processor.services.lsp.helper.ParameterService;
 import me.nithanim.cultures.lsp.processor.util.MyPosition;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
 import me.nithanim.cultures.lsp.processor.util.Uri;
@@ -26,6 +27,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CodeActionService {
   @Autowired SourceCodeIntelligenceService sourceCodeIntelligenceService;
+  @Autowired ParameterService parameterService;
 
   public CompletableFuture<List<Either<Command, CodeAction>>> codeAction(CodeActionParams params) {
     Range selection = params.getRange();
@@ -39,14 +41,17 @@ public class CodeActionService {
     if (command == null) {
       return CompletableFuture.completedFuture(null);
     }
-    if (command.getCommandType().getCommandInformation().isSpecial()) {
+    /*if (command.getCommandType().getCommandInformation().isSpecial()) {
       // Weird commands let the code below explode because it depends on exact param matches
       return CompletableFuture.completedFuture(null);
-    }
+    }*/
 
     List<Either<Command, CodeAction>> actions = new ArrayList<>();
 
-    List<ActualParameterPair> parameterPairs = ActualParameterPair.of(command);
+    List<ActualParameterPair> parameterPairs =
+        ActualParameterPair.of(
+            command.getParameters(),
+            parameterService.getCraftedCommandInformation(command).getParameters());
     for (ActualParameterPair parameterPair : parameterPairs) {
 
       Range parameterRange = parameterPair.getParameterActual().getOrigin().getRange();

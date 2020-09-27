@@ -91,8 +91,15 @@ public class CulturesIniParserListener extends CulturesIniBaseListener {
   @Override
   public void exitCommandarg(CulturesIniParser.CommandargContext ctx) {
     if (parameterType != null) {
+      String value;
+      if (parameterType == CulturesIniCommand.Parameter.Type.STRING) {
+        String text = ctx.getText();
+        value = text.substring(1, text.length() - 1);
+      } else {
+        value = ctx.getText();
+      }
       commandBuilder.addParameter(
-          new CulturesIniCommand.Parameter(ctx.getText(), parameterType, getOrigin(ctx)));
+          new CulturesIniCommand.Parameter(value, parameterType, getOrigin(ctx)));
     } else {
       diagnostics.addError(getOrigin(ctx), "Unknown parameter type!");
     }
