@@ -1,0 +1,17 @@
+{
+  "name": "MapCampaignId",
+  "category": "misc_maptype",
+  "documentation": "Defines this map as part of a campaign. Needs `maptype 1`.",
+  "parameters": [
+    {
+      "name": "CampaignId",
+      "documentation": "All maps that form one campaign have the same id. 8th wonder loads campaign `3`.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "MapId",
+      "documentation": "Usually, the ids for main maps are ascending with a step size of 10 and starting at 10. E.g. 10 for the first map, 20 for the second, ... => Major number.\n\nThe submaps of a main map have the \"unit position\", e.g. for main map 10, the first submap would be 11, the second 12, ...",
+      "type": "NUMBER"
+    }
+  ]
+}

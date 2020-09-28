@@ -12,12 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.ToString;
 import lombok.Value;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.ALLOWEDTHINGS;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_MAPTYPE;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISC_MUSIC;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISSIONDATA;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.PLAYERMISC;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.SPECIALITEMS;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.TEXT;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand.Parameter.Type.NUMBER;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand.Parameter.Type.STRING;
@@ -35,6 +30,7 @@ public enum CulturesIniCommandType {
   MAPGUID(),
   // Map
   MAPTYPE(),
+  MAPCAMPAIGNID(),
   MAPNAMESTRINGID(),
   MAPDESCRIPTIONSTRINGID(),
   // Misc
