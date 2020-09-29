@@ -1,0 +1,7 @@
+{
+  "name": "DisableAll",
+  "category": "<dummy>",
+  "documentation": "Disables all missions.",
+  "parameters": [
+  ]
+}

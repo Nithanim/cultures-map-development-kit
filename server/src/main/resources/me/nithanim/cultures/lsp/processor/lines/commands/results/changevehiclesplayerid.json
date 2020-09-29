@@ -1,0 +1,15 @@
+{
+  "name": "ChangeVehiclesPlayerId",
+  "category": "<dummy>",
+  "documentation": "Changes the owning player of all vehicles with the given id to the given player.",
+  "parameters": [
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    }
+  ]
+}

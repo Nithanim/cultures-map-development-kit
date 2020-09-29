@@ -1,0 +1,11 @@
+{
+  "name": "ActivateMission",
+  "category": "<dummy>",
+  "documentation": "Activates a mission.",
+  "parameters": [
+    {
+      "name": "MissionId",
+      "type": "NUMBER"
+    }
+  ]
+}

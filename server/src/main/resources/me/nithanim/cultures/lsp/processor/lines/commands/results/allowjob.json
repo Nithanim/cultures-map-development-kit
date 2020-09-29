@@ -1,0 +1,19 @@
+{
+  "name": "AllowJob",
+  "category": "<dummy>",
+  "documentation": "Allows the given player to use the given job.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "TYPE"
+    },
+    {
+      "name": "JobType",
+      "type": "TYPE"
+    }
+  ]
+}

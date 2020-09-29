@@ -1,0 +1,19 @@
+{
+  "name": "AddGoodsToVehicle",
+  "category": "<dummy>",
+  "documentation": "Adds the given good with the given quantity in the given vehicle.",
+  "parameters": [
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    }
+  ]
+}

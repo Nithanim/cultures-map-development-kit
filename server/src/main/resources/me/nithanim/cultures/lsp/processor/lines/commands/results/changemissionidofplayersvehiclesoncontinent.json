@@ -1,0 +1,23 @@
+{
+  "name": "ChangeMissionIdOfPlayersVehiclesOnContinent",
+  "category": "<dummy>",
+  "documentation": "Changes the id of all vehicles of the given player on the given continent.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    }
+  ]
+}

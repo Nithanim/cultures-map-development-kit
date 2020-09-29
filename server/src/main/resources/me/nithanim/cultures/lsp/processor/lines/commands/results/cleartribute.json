@@ -1,0 +1,11 @@
+{
+  "name": "ClearTribute",
+  "category": "<dummy>",
+  "documentation": "Deletes the tribute with the given id.",
+  "parameters": [
+    {
+      "name": "TributeId",
+      "type": "NUMBER"
+    }
+  ]
+}

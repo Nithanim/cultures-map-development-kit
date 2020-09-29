@@ -1,0 +1,36 @@
+{
+  "name": "ChangeAnimalPlayerIdInArea",
+  "category": "<dummy>",
+  "documentation": "Changes the PlayerId of animals in the given area from player A to player B with the upper limit of given quantity.",
+  "parameters": [
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "TYPE"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Quantity",
+      "documentation": "0 means all",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    }
+  ]
+}

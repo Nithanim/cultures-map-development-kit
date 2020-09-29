@@ -1,0 +1,19 @@
+{
+  "name": "AllowHouse",
+  "category": "<dummy>",
+  "documentation": "Allows the given player to build the given house.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "TYPE"
+    },
+    {
+      "name": "HouseType",
+      "type": "TYPE"
+    }
+  ]
+}

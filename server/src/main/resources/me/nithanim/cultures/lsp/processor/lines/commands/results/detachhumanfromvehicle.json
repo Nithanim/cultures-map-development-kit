@@ -1,0 +1,11 @@
+{
+  "name": "DetachHumanFromVehicle",
+  "category": "<dummy>",
+  "documentation": "Removes the assignment of the given human(s) with their vehicle (if any).",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    }
+  ]
+}

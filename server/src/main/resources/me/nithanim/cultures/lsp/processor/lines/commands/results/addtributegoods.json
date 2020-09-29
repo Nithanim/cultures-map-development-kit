@@ -1,0 +1,19 @@
+{
+  "name": "AddTributeGoods",
+  "category": "<dummy>",
+  "documentation": "Adds the given good with the given quantity to the tribute.\n\n*Note*: The tribute must already exist, so if used with `CreateTribute` in the same mission, `CreateTribute` must come first.",
+  "parameters": [
+    {
+      "name": "TributeId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    }
+  ]
+}

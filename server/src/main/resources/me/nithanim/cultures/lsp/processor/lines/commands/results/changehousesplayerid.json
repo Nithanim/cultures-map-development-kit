@@ -1,0 +1,15 @@
+{
+  "name": "ChangeHousesPlayerId",
+  "category": "<dummy>",
+  "documentation": "Changes all given houses to the given player.",
+  "parameters": [
+    {
+      "name": "ObjectId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    }
+  ]
+}

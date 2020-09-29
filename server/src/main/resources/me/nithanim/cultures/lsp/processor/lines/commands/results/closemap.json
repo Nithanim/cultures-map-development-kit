@@ -1,0 +1,15 @@
+{
+  "name": "CloseMap",
+  "category": "<dummy>",
+  "documentation": "Removes the given map from the campaign selection.",
+  "parameters": [
+    {
+      "name": "CampaignId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "MapId",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "AttachHumanToVehicle",
+  "category": "<dummy>",
+  "documentation": "Commands all humans with the given id to enter the given vehicle. Also allows assignment of carrier and trader.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    }
+  ]
+}

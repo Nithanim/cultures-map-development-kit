@@ -1,0 +1,15 @@
+{
+  "name": "AllowMap",
+  "category": "<dummy>",
+  "documentation": "Adds the a new map to the campaign selection.",
+  "parameters": [
+    {
+      "name": "CampaignId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "MapId",
+      "type": "NUMBER"
+    }
+  ]
+}

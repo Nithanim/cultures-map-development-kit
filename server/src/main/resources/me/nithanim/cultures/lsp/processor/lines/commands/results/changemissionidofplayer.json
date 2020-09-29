@@ -1,0 +1,15 @@
+{
+  "name": "ChangeMissionIdOfPlayer",
+  "category": "<dummy>",
+  "documentation": "Changes the ids of all humans of the given player.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "AddGoodsToAnyStock",
+  "category": "<dummy>",
+  "documentation": "Adds the given good with the given quantity to the given player. Prefers the headquarters but also uses other warehouses if necessary.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    }
+  ]
+}

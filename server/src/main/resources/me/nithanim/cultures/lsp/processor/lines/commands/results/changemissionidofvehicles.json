@@ -1,0 +1,15 @@
+{
+  "name": "ChangeMissionIdOfVehicles",
+  "category": "<dummy>",
+  "documentation": "Changes the id of all vehicles with the given id A to the given other id B.",
+  "parameters": [
+    {
+      "name": "VehicleIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "VehicleIdB",
+      "type": "NUMBER"
+    }
+  ]
+}

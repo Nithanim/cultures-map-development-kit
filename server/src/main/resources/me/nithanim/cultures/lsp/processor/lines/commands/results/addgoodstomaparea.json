@@ -1,0 +1,35 @@
+{
+  "name": "AddGoodsToMapArea",
+  "category": "<dummy>",
+  "documentation": "Adds the given good with the given quantity in the given area.",
+  "parameters": [
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "AllowPutInHouses",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    }
+  ]
+}

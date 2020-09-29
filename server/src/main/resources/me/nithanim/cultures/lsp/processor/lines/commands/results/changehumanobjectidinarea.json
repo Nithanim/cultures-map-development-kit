@@ -1,0 +1,27 @@
+{
+  "name": "ChangeHumanObjectIdInArea",
+  "category": "<dummy>",
+  "documentation": "TODO Difference to `ChangeMissionIdOfHumanInRange`?",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    }
+  ]
+}

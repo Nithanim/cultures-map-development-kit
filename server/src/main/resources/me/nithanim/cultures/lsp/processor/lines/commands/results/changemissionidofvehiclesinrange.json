@@ -1,0 +1,27 @@
+{
+  "name": "ChangeMissionIdOfVehiclesInRange",
+  "category": "<dummy>",
+  "documentation": "Changes the id of all vehicles of the given player to the given id if they are in the given area.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

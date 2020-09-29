@@ -1,0 +1,15 @@
+{
+  "name": "ChangeHumanPlayerId",
+  "category": "<dummy>",
+  "documentation": "Changes the PlayerId of the given human.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    }
+  ]
+}

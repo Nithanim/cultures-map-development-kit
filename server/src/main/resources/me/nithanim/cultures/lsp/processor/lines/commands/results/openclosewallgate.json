@@ -1,0 +1,32 @@
+{
+  "name": "1 Open/0 CloseWallGate",
+  "category": "<dummy>",
+  "documentation": "Opens or closes the landscape gates 'gate_01', 'gate_02' and 'gate_03' of category  'misc_walls' on the given position of the given player.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "documentation": "TODO How can a player own landscapes?",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "IsOpen",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHints": [
+        "close",
+        "open"
+      ]
+    }
+  ]
+}

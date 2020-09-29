@@ -1,0 +1,27 @@
+{
+  "name": "ChangePlayerIdInArea",
+  "category": "<dummy>",
+  "documentation": "Changes the owner of all humans of the given player A to the given player B if they are in the given area.",
+  "parameters": [
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

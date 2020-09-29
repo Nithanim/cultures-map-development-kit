@@ -1,0 +1,19 @@
+{
+  "name": "AllowGood",
+  "category": "<dummy>",
+  "documentation": "Allows production for the given good for the given player.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "TYPE"
+    },
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    }
+  ]
+}

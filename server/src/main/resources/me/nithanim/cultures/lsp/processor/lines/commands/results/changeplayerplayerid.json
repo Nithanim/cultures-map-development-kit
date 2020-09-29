@@ -1,0 +1,27 @@
+{
+  "name": "ChangePlayerPlayerId",
+  "category": "<dummy>",
+  "documentation": "Gives *everything* of the given player A to the given player B.",
+  "parameters": [
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

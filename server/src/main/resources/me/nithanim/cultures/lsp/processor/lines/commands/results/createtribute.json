@@ -1,0 +1,24 @@
+{
+  "name": "CreateTribute",
+  "category": "<dummy>",
+  "documentation": "Creates a tribute with the given id that given player A must play to given player B showing the given description.",
+  "parameters": [
+    {
+      "name": "TributeId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    },
+    {
+      "name": "DescriptionId",
+      "documentation": "Entry in strings.ini",
+      "type": "NUMBER"
+    }
+  ]
+}
