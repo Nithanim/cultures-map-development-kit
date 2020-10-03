@@ -1,7 +1,7 @@
 {
   "name": "MapCampaignId",
   "category": "misc_maptype",
-  "documentation": "Defines this map as part of a campaign. Needs `maptype 1`.",
+  "documentation": "Defines this map as part of a campaign. Needs `maptype 1` (to hide it from direct selection). It is ALSO used for sub-missions in ordinary maps. In this case, the CampaignId is '0', but then the MapId MUST be UNIQUE! Schnucki of the german community keeps track for all maps released by the german community.",
   "parameters": [
     {
       "name": "CampaignId",
@@ -10,7 +10,7 @@
     },
     {
       "name": "MapId",
-      "documentation": "Usually, the ids for main maps are ascending with a step size of 10 and starting at 10. E.g. 10 for the first map, 20 for the second, ... => Major number.\n\nThe submaps of a main map have the \"unit position\", e.g. for main map 10, the first submap would be 11, the second 12, ...",
+      "documentation": "For the original campaign, the ids for main maps are ascending with a step size of 10, starting at 10. E.g. 10 for the first map, 20 for the second, ... => Major number.\n\nThe submaps of a main map have the \"unit position\", e.g. for main map 10, the first submap would be 11, the second 12, ...",
       "type": "NUMBER"
     }
   ]
