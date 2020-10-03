@@ -83,7 +83,7 @@ public enum CulturesMissionGoalType implements CommandInformationHolder {
       var m = new HashMap<String, CulturesMissionGoalType>();
       for (CulturesMissionGoalType goal : values()) {
         try {
-          m.put(convertNiceNameToShortForm(goal), goal);
+          m.put(goal.getCommandInformation().getName(), goal);
         } catch (Exception ex) {
           throw new IllegalStateException("Unable to load definition for command goal " + goal);
         }
@@ -95,12 +95,12 @@ public enum CulturesMissionGoalType implements CommandInformationHolder {
     }
   }
 
-  private static String convertNiceNameToShortForm(CulturesMissionGoalType goal) {
+  private static String convertEnumNameToFileName(CulturesMissionGoalType goal) {
     return goal.name().toLowerCase().replace("_", "");
   }
 
   public static CulturesMissionGoalType find(String s) {
-    return LOOKUP_MAP.get(s.toLowerCase());
+    return LOOKUP_MAP.get(s);
   }
 
   @Getter private final CommandInformation commandInformation;
@@ -108,7 +108,7 @@ public enum CulturesMissionGoalType implements CommandInformationHolder {
   CulturesMissionGoalType() {
     try {
       String fileName =
-          "commands/goals/" + convertNiceNameToShortForm(CulturesMissionGoalType.this) + ".json";
+          "commands/goals/" + convertEnumNameToFileName(CulturesMissionGoalType.this) + ".json";
       InputStream in = CulturesMissionGoalType.class.getResourceAsStream(fileName);
       if (in == null) {
         throw new IllegalStateException(

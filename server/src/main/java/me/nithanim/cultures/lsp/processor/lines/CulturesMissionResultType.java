@@ -128,7 +128,7 @@ public enum CulturesMissionResultType implements CommandInformationHolder {
       var m = new HashMap<String, CulturesMissionResultType>();
       for (CulturesMissionResultType goal : values()) {
         try {
-          m.put(goal.commandInformation.getName(), goal);
+          m.put(goal.getCommandInformation().getName(), goal);
         } catch (Exception ex) {
           throw new IllegalStateException("Unable to load definition for command goal " + goal);
         }
