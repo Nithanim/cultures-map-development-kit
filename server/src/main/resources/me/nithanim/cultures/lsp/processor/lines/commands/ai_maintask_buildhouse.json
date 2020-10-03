@@ -23,8 +23,8 @@
       "type": "TYPE"
     },
     {
-      "name": "HouseLevel",
-      "documentation": "Specifies the upgrade level of the building. E.g. `1` for level 2 viking tower.",
+      "name": "ExtensionLevel",
+      "documentation": "Specifies the extension level of the building. E.g. `1` for level 2 viking tower.",
       "type": "NUMBER"
     },
     {

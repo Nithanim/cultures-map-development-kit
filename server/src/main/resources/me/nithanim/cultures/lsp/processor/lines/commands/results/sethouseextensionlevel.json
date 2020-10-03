@@ -1,6 +1,6 @@
 {
   "name": "SetHouseExtensionLevel",
-  "documentation": "Sets the UpgradeLevel of the given house. (Only for wonders? TODO)",
+  "documentation": "Sets the ExtensionLevel of the given house. (Only for wonders? TODO)",
   "category": "<dummy>",
   "parameters": [
     {

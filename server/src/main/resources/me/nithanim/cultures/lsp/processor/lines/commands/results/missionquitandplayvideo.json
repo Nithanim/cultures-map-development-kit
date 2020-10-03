@@ -1,11 +1,11 @@
 {
-  "name": "MissionQuitAndStartVideo",
+  "name": "Mission quit and play video",
   "category": "<dummy>",
   "documentation": "Quits the current mission/map and plays the given video.",
   "parameters": [
     {
       "name": "VideoId",
-      "documentation": "Created the file name 'seq_XXXX.bik'",
+      "documentation": "Number will be resolved to '$gameroot$/dataX/FMV/(Ger/Eng,...)/seq_XXXX.mpg'",
       "type": "NUMBER"
     }
   ]

@@ -1,0 +1,12 @@
+{
+  "name": "Result",
+  "category": "missiondata",
+  "documentation": "Sets the action that happens when goals ar satisfied. Changes based on the result type.",
+  "parameters": [
+    {
+      "name": "ResultType",
+      "documentation": "Defines the type of the result.",
+      "type": "TYPE"
+    }
+  ]
+}

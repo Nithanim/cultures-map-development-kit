@@ -2,9 +2,11 @@ package me.nithanim.cultures.lsp.processor.services.lsp.helper;
 
 import java.util.ArrayList;
 import java.util.List;
+import me.nithanim.cultures.lsp.processor.lines.CommandInformationHolder;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommandType;
 import me.nithanim.cultures.lsp.processor.lines.CulturesMissionGoalType;
+import me.nithanim.cultures.lsp.processor.lines.CulturesMissionResultType;
 import me.nithanim.cultures.lsp.processor.lines.commands.CommandInformation;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,8 @@ public class ParameterService {
    * command information augmented with the parameters that the selected subcommand needs.
    */
   public CommandInformation getCraftedCommandInformation(CulturesIniCommand cmd) {
-    if (cmd.getCommandType() == CulturesIniCommandType.GOAL) {
+    if (cmd.getCommandType() == CulturesIniCommandType.GOAL
+        || cmd.getCommandType() == CulturesIniCommandType.RESULT) {
       int parametersMinimum;
       int parametersMaximum;
       List<CommandInformation.ParameterInformation> parametersInformation;
@@ -28,18 +31,26 @@ public class ParameterService {
         parametersMaximum = 1;
         parametersInformation = baseInfo.getParameters();
       } else {
-        CulturesIniCommand.Parameter goalTypeParam = actualParameters.get(0);
-        CulturesMissionGoalType goalType = CulturesMissionGoalType.find(goalTypeParam.getValue());
-        if (goalType == null) {
+        CulturesIniCommand.Parameter typeParam = actualParameters.get(0);
+        CommandInformationHolder commandInformationHolder;
+        if (cmd.getCommandType() == CulturesIniCommandType.GOAL) {
+          commandInformationHolder = CulturesMissionGoalType.find(typeParam.getValue());
+        } else {
+          commandInformationHolder = CulturesMissionResultType.find(typeParam.getValue());
+        }
+        CommandInformation commandInformation;
+        if (commandInformationHolder == null) {
           return cmd.getCommandType().getCommandInformation();
+        } else {
+          commandInformation = commandInformationHolder.getCommandInformation();
         }
 
-        parametersMinimum = 1 + goalType.getCommandInformation().getParametersMinimum();
-        parametersMaximum = 1 + goalType.getCommandInformation().getParametersMaximum();
+        parametersMinimum = 1 + commandInformation.getParametersMinimum();
+        parametersMaximum = 1 + commandInformation.getParametersMaximum();
 
         parametersInformation = new ArrayList<>();
         var originalParameter = baseInfo.getParameters().get(0);
-        var subcommandCommandInformation = goalType.getCommandInformation();
+        var subcommandCommandInformation = commandInformation;
         var interpolatedParameter =
             new CommandInformation.ParameterInformation(
                 originalParameter.getName(),
@@ -49,7 +60,7 @@ public class ParameterService {
                 originalParameter.getNumberHints(),
                 originalParameter.getNumberHintsBitfield());
         parametersInformation.add(interpolatedParameter);
-        parametersInformation.addAll(goalType.getCommandInformation().getParameters());
+        parametersInformation.addAll(commandInformation.getParameters());
       }
 
       return new CommandInformation(

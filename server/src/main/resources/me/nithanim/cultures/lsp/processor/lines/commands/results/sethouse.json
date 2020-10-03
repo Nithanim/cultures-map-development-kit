@@ -13,8 +13,8 @@
       "type": "TYPE"
     },
     {
-      "name": "UpgradeLevel",
-      "documentation": "The upgrade level of the house.",
+      "name": "ExtensionLevel",
+      "documentation": "The extension level of the house.",
       "type": "NUMBER"
     },
     {

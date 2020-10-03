@@ -24,7 +24,7 @@ import org.h2.util.IOUtils;
 /**
  * Definitions of all commands available. Parameter names, types and basic validation are in place.
  */
-public enum CulturesIniCommandType {
+public enum CulturesIniCommandType implements CommandInformationHolder {
   VERSION(),
   MAPSIZE(),
   MAPGUID(),
@@ -89,7 +89,7 @@ public enum CulturesIniCommandType {
   DEBUGINFO(),
   SUCCESSFULLIF(),
   GOAL(),
-  RESULT(MISSIONDATA),
+  RESULT(),
   // aidata
   AI_DISABLE(),
   HAI_DISABLE(),

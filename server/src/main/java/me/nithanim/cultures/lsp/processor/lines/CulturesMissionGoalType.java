@@ -14,7 +14,7 @@ import me.nithanim.cultures.lsp.processor.lines.commands.JsonCommandInformation;
 import org.h2.util.IOUtils;
 
 @Slf4j
-public enum CulturesMissionGoalType {
+public enum CulturesMissionGoalType implements CommandInformationHolder {
   ANIMALS_DIED,
   BUILD_HOUSE_ON_CONTINENT,
   BUILD_HOUSES,
