@@ -5,8 +5,8 @@
   "parameters": [
     {
       "name": "StringId",
-      "documentation": "The string to display in the UI.",
-      "type": "NUMBER"
+      "documentation": "The string to display in the UI of the internal editor.",
+      "type": "TYPE"
     }
   ]
 }

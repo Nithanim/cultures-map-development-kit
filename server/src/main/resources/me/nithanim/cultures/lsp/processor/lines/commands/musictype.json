@@ -51,11 +51,6 @@
         "#DM_MUSIC_TYPE_ADDON_MISSION_UNDERWORLD",
         "#DM_MUSIC_TYPE_ADDON_MISSION_ASGARD"
       ]
-    },
-    {
-      "name": "HouseType",
-      "documentation": "E.g. 1 (#HOUSE_TYPE_HEADQUARTERS)",
-      "type": "NUMBER"
     }
   ]
 }

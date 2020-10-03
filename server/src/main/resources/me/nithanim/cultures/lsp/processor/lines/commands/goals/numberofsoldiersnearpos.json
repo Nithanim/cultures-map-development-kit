@@ -1,5 +1,5 @@
 {
-  "name": "NumberOfSoldiers",
+  "name": "NumberOfSoldiersNearPos",
   "category": "<dummy>",
   "documentation": "Satisfied if the given player has given number of soldiers in the given area.",
   "parameters": [

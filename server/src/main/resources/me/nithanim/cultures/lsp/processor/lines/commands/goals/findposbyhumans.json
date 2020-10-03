@@ -1,5 +1,5 @@
 {
-  "name": "FindPosByHuman",
+  "name": "FindPosByHumans",
   "category": "<dummy>",
   "documentation": "Satisfied if the given human is inside the given area.",
   "parameters": [

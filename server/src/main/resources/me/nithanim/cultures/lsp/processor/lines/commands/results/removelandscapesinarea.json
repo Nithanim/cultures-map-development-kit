@@ -1,5 +1,5 @@
 {
-  "name": "RemoveLandscapeInArea",
+  "name": "RemoveLandscapesInArea",
   "category": "<dummy>",
   "documentation": "Removes all landscapes in the given area.",
   "parameters": [

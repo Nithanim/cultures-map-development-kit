@@ -10,18 +10,6 @@
     {
       "name": "PlayerIdB",
       "type": "NUMBER"
-    },
-    {
-      "name": "PosX",
-      "type": "NUMBER"
-    },
-    {
-      "name": "PosY",
-      "type": "NUMBER"
-    },
-    {
-      "name": "Radius",
-      "type": "NUMBER"
     }
   ]
 }

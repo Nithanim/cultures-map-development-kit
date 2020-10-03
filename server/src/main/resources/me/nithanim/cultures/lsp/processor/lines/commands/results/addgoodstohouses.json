@@ -1,5 +1,5 @@
 {
-  "name": "AddGoodsToHouse",
+  "name": "AddGoodsToHouses",
   "category": "<dummy>",
   "documentation": "Adds the given good with the given quantity to the given house. Works on any house type, but only accepts supported goods.\n\n*Note*: A request to add goods to a house that are not supported is silently ignored.",
   "parameters": [

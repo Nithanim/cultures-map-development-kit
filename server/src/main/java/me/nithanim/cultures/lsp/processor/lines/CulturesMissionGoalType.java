@@ -52,6 +52,7 @@ public enum CulturesMissionGoalType implements CommandInformationHolder {
   IF_MISSION_IS_ACTIVE,
   IS_ANY_LANDSCAPE_ON_POINT,
   IS_HUMAN_IN_VEHICLE,
+  IS_MISSION_DONE,
   JOB_ENABLED,
   NUMBER_OF_ANIMALS,
   NUMBER_OF_ANIMALS_IN_AREA,
