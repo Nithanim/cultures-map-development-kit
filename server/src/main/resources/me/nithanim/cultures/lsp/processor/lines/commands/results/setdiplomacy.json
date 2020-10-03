@@ -1,0 +1,24 @@
+{
+  "name": "SetDiplomacy",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "PlayerIdA",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PlayerIdB",
+      "type": "NUMBER"
+    },
+    {
+      "name": "State",
+      "documentation": "This parameter is not a number but a string!",
+      "type": "TYPE",
+      "stringHints": {
+        "enemy": {},
+        "neutral":  {},
+        "friend": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "EnableGood",
+  "category": "<dummy>",
+  "documentation": "Enables the given good that the given player was unable to produce because of missing experience.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "NUMBER"
+    },
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    }
+  ]
+}

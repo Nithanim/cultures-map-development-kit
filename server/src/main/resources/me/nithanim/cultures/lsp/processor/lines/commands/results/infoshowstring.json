@@ -1,0 +1,20 @@
+{
+  "name": "InfoShowString",
+  "category": "<dummy>",
+  "documentation": "Shows a fixed string in the top right of the screen for the given player.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "LineId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "StringId",
+      "documentation": "Place '%d' where the counted number should appear and another where the comparison number should appear.",
+      "type": "NUMBER"
+    }
+  ]
+}

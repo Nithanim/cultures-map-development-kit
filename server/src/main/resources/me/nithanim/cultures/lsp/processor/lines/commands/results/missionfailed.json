@@ -1,0 +1,10 @@
+{
+  "name": "MissionFailed",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    }
+  ]
+}

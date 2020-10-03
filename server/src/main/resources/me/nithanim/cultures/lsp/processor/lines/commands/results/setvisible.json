@@ -1,0 +1,19 @@
+{
+  "name": "SetVisible",
+  "category": "<dummy>",
+  "documentation": "Makes the short-briefing visible, meaning that it is displayed in the checklist in the same menu where the briefings are located.",
+  "parameters": [
+    {
+      "name": "MissionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "IsVisible",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

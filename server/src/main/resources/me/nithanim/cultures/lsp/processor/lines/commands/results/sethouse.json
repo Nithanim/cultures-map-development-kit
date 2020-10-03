@@ -1,7 +1,6 @@
 {
   "name": "SetHouse",
-  "category": "StaticObjects",
-  "documentation": "Places a house/building.",
+  "category": "<dummy>",
   "parameters": [
     {
       "name": "PlayerId",

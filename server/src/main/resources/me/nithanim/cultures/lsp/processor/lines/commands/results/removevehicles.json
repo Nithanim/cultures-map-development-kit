@@ -1,0 +1,11 @@
+{
+  "name": "RemoveVehicles",
+  "category": "<dummy>",
+  "documentation": "Removes all vehicles with the given id.",
+  "parameters": [
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    }
+  ]
+}

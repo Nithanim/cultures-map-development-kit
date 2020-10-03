@@ -1,0 +1,31 @@
+{
+  "name": "MoveUnitsInArea",
+  "category": "<dummy>",
+  "documentation": "Teleports the given human to the given position.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "SourcePosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "SourcePosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "SourceRadius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TargetPosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TargetPosY",
+      "type": "NUMBER"
+    }
+  ]
+}

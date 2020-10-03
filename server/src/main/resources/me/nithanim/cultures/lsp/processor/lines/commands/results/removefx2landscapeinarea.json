@@ -1,0 +1,19 @@
+{
+  "name": "RemoveFX2LandscapeInArea",
+  "category": "<dummy>",
+  "documentation": "Removes landscapes 'fx fire', 'fx fire2', 'fx fire house0', 'fx fire house1', 'fx fire house2', 'fx fire small' and 'fx smoke' from the given area.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

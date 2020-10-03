@@ -1,0 +1,26 @@
+{
+  "name": "SetHouseBehaviourFlag",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "HouseId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Unknown",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "name": "IsIndestructible",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

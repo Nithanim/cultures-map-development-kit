@@ -1,0 +1,31 @@
+{
+  "name": "RemoveHPsOfHousesInAreaX",
+  "category": "<dummy>",
+  "documentation": "Removes the given amount of health points from all houses in the given area of the given player except the one with the given id.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HouseId",
+      "type": "NUMBER"
+    }
+  ]
+}

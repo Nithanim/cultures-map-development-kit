@@ -1,0 +1,10 @@
+{
+  "name": "MissionWon",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    }
+  ]
+}

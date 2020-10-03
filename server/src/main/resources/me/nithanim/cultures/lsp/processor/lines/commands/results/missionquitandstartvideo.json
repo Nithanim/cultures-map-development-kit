@@ -1,0 +1,12 @@
+{
+  "name": "MissionQuitAndStartVideo",
+  "category": "<dummy>",
+  "documentation": "Quits the current mission/map and plays the given video.",
+  "parameters": [
+    {
+      "name": "VideoId",
+      "documentation": "Created the file name 'seq_XXXX.bik'",
+      "type": "NUMBER"
+    }
+  ]
+}

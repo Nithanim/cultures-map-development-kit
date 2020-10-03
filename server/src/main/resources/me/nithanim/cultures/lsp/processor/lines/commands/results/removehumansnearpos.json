@@ -1,0 +1,19 @@
+{
+  "name": "RemoveHumansNearPos",
+  "category": "<dummy>",
+  "documentation": "Removes all humans in the given area.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "SetHumanName",
+  "category": "<dummy>",
+  "documentation": "Sets the name of the given human.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "documentation": "The player the human belongs to.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "StringId",
+      "type": "NUMBER"
+    }
+  ]
+}

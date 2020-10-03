@@ -1,0 +1,7 @@
+{
+  "name": "Exit",
+  "category": "<dummy>",
+  "documentation": "Exits the map and returns to the map selection.",
+  "parameters": [
+  ]
+}

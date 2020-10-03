@@ -1,0 +1,11 @@
+{
+  "name": "RemoveAnimals",
+  "category": "<dummy>",
+  "documentation": "Removes animals with the given id.",
+  "parameters": [
+    {
+      "name": "ObjectId",
+      "type": "NUMBER"
+    }
+  ]
+}

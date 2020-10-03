@@ -1,0 +1,19 @@
+{
+  "name": "SetGuiMarker",
+  "category": "<dummy>",
+  "documentation": "Places an arrow on the given position with the given id.\n\n*Note: Allows 'deletion' by placing an arrow with the same if on [0, 0].",
+  "parameters": [
+    {
+      "name": "ObjectId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    }
+  ]
+}

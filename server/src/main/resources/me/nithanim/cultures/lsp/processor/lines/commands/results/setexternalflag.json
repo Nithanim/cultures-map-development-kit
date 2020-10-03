@@ -1,0 +1,23 @@
+{
+  "name": "SetExternalFlag",
+  "category": "<dummy>",
+  "documentation": "Controls if the given condition of the AI commands is true or false.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ConditionId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "IsEnabled",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

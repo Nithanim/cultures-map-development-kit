@@ -1,0 +1,19 @@
+{
+  "name": "DockVehicle",
+  "category": "<dummy>",
+  "documentation": "Commands a ship to dock at the given position near the shore.",
+  "parameters": [
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    }
+  ]
+}

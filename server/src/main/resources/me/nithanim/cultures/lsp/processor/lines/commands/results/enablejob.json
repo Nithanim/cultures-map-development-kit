@@ -1,0 +1,19 @@
+{
+  "name": "EnableJob",
+  "category": "<dummy>",
+  "documentation": "Enables the given job that the given player was unable to assign because of missing experience.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "NUMBER"
+    },
+    {
+      "name": "JobType",
+      "type": "TYPE"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "RemoveFXSmokeLandscapeInArea",
+  "category": "<dummy>",
+  "documentation": "Removes landscapes 'fx fire', 'fx fire2', 'fx fire incense', 'fx fog', 'fx fog waterfall', 'fx fog waterfall00', 'fx waterfall' and 'fx smoke' from the given area.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

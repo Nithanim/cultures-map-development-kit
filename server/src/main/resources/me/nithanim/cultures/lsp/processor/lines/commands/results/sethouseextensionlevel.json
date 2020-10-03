@@ -1,0 +1,27 @@
+{
+  "name": "SetHouseExtensionLevel",
+  "documentation": "Sets the UpgradeLevel of the given house. (Only for wonders? TODO)",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "IsConstructionAllowed",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

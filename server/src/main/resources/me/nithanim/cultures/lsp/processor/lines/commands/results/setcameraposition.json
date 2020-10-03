@@ -1,0 +1,14 @@
+{
+  "name": "SetCameraPosition",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    }
+  ]
+}

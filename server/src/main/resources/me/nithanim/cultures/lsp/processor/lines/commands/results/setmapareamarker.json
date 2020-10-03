@@ -1,0 +1,32 @@
+{
+  "name": "SetMapAreaMarker",
+  "category": "<dummy>",
+  "documentation": "Marks the given area with small flags.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "IsEnabled",
+      "documentation": "Call with '0' to remove a previously placed markers.",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    {
+      "name": "DistanceBetweenFlags",
+      "type": "NUMBER"
+    }
+  ]
+}

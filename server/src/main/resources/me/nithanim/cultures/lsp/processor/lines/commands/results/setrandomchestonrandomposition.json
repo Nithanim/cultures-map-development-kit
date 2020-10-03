@@ -1,0 +1,23 @@
+{
+  "name": "SetRandomChestOnRandomPosition",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "Variant",
+      "type": "NUMBER",
+      "numberHintsBitfield": [
+        "Soldiers",
+        "LetterTower",
+        "Catapult",
+        "Goods",
+        "LetterHouse",
+        "cMapChestRandomTypeJobs (broken)",
+        "Potions (small and big)",
+        "Amulets",
+        "Wolves",
+        "Armor",
+        "Lions"
+      ]
+    }
+  ]
+}

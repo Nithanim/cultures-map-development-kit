@@ -1,0 +1,19 @@
+{
+  "name": "RemoveFX1LandscapeInArea",
+  "category": "<dummy>",
+  "documentation": "Removes landscapes 'fx fire small', 'fx smoke', 'fx fog', 'fx fog waterfall', 'fx fog waterfall00' and 'fx fog waterfall00' from the given area.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "SetVertexColorOnLand",
+  "category": "<dummy>",
+  "documentation": "Sets the given vertex color in the given area, but only on land.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "VertexColor",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "InfoCountHousesInArea",
+  "category": "<dummy>",
+  "documentation": "Shows the number of houses in the given area in the top right of the screen for the given player.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "LineId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "StringId",
+      "documentation": "Place '%d' where the counted number should appear and another where the comparison number should appear.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HouseType",
+      "type": "TYPE"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Comparison",
+      "documentation": "Allows to add a target (like '10/15 warehouses') in the command rather than in the string.",
+      "type": "NUMBER"
+    }
+  ]
+}

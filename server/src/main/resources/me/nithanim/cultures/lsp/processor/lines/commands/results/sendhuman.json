@@ -1,0 +1,19 @@
+{
+  "name": "SendHuman",
+  "category": "<dummy>",
+  "documentation": "Commands the given human to move to the given position (same as on right click).\n\n*Note*: It might be a good idea to pair it with a periodic loop to ensure actual arrival if distractions occur.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    }
+  ]
+}

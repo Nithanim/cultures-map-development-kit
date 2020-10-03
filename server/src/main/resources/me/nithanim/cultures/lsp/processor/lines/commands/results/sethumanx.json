@@ -1,0 +1,65 @@
+{
+  "name": "SetHumanX",
+  "category": "<dummy>",
+  "documentation": "Places multiple humans.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "documentation": "The player the human belongs to.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "documentation": "The type of the tribe this human belongs to. E.g. `\"viking\"`",
+      "type": "TYPE"
+    },
+    {
+      "name": "JobType",
+      "documentation": "The job the human has. E.g. `\"civilist\"` or `\"child_male\"`",
+      "type": "TYPE"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Behaviour",
+      "documentation": "Defines special behaviours of the human. E.g. No needs, immortal or not controllable. Number interpreted as bitfield.",
+      "type": "NUMBER",
+      "numberHintsBitfield": [
+        "DisableNeeds",
+        "DisableJob",
+        "DisableFight",
+        "Immortal",
+        "DisableMessages",
+        "DisableControl",
+        "DisableJobChange",
+        "Important",
+        "UserSectorMove",
+        "SlowMovement",
+        "DoNoChangePalette",
+        "NoExperienceGain",
+        "NoShoeToolDrain",
+        "AnimalsIgnoreHuman",
+        "Ghost",
+        "DontCryForHelp",
+        "DefendMode",
+        "FastMovement",
+        "NeverGrowUp",
+        "ActsLikeAHero"
+      ]
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    }
+  ]
+}

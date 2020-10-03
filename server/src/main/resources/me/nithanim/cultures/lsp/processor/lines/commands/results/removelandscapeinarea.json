@@ -1,0 +1,19 @@
+{
+  "name": "RemoveLandscapeInArea",
+  "category": "<dummy>",
+  "documentation": "Removes all landscapes in the given area.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

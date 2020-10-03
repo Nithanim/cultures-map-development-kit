@@ -1,0 +1,35 @@
+{
+  "name": "SetHouseOverlayState",
+  "documentation": "Sets the decoration on top of a wonder:\n\n*Fire in the lighthouse\n*Garden becomes green and colorful\n*8th wonder gets its crytals:\n    *orange\n    *red\n    *purple\n    *blue\n    *cyan\n    *green\n    *yellow",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "ObjectId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "OverlayId",
+      "type": "NUMBER","numberRange": {
+      "min": 0,
+      "max": 6
+    },
+      "numberHints": [
+        "Lighthouse fire, garden green, orange crystal",
+        "red crystal",
+        "purple crystal",
+        "blue crystal",
+        "cyan crystal",
+        "green crystal",
+        "yellow crystal"
+      ]
+    },
+    {
+      "name": "Enabled? TODO",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

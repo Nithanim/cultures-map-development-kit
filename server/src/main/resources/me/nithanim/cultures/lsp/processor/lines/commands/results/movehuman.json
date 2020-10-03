@@ -1,0 +1,19 @@
+{
+  "name": "MoveHuman",
+  "category": "<dummy>",
+  "documentation": "Teleports the given human to the given position.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    }
+  ]
+}

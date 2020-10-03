@@ -1,0 +1,23 @@
+{
+  "name": "ExploreArea",
+  "category": "<dummy>",
+  "documentation": "Reveals the given map area to the given player.\n\n*Note*: [0, 0, 0] reveals the whole map.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "SetPlayerBehaviourFlag",
+  "category": "<dummy>",
+  "documentation": "Changes the behaviour flag of all humans of the given player.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Behaviour",
+      "type": "NUMBER",
+      "numberHintsBitfield": [
+        "DisableNeeds",
+        "DisableJob",
+        "DisableFight",
+        "Immortal",
+        "DisableMessages",
+        "DisableControl",
+        "DisableJobChange",
+        "Important",
+        "UserSectorMove",
+        "SlowMovement",
+        "DoNoChangePalette",
+        "NoExperienceGain",
+        "NoShoeToolDrain",
+        "AnimalsIgnoreHuman",
+        "Ghost",
+        "DontCryForHelp",
+        "DefendMode",
+        "FastMovement",
+        "NeverGrowUp",
+        "ActsLikeAHero"
+      ]
+    },
+    {
+      "name": "IsEnabled",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

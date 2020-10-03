@@ -1,0 +1,19 @@
+{
+  "name": "RemoveFXWaveLandscapeInArea",
+  "category": "<dummy>",
+  "documentation": "Removes landscapes 'fx wave' and 'fx wave land' from the given area.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "SetImportHumanFlag",
+  "category": "<dummy>",
+  "documentation": "Changes the 'important' behaviour flag. Shortcut for 'SetHumanBehaviourFlag' with corresponding behaviour id.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "documentation": "The player the human belongs to.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "IsEnabled",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

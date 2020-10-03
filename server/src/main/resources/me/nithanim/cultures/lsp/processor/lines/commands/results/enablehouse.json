@@ -1,0 +1,19 @@
+{
+  "name": "EnableHouse",
+  "category": "<dummy>",
+  "documentation": "Enables the given house that the given player was unable to build because of missing experience.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HouseType",
+      "type": "TYPE"
+    }
+  ]
+}

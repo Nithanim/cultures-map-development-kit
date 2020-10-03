@@ -1,0 +1,7 @@
+{
+  "name": "EndSubMission",
+  "category": "<dummy>",
+  "documentation": "Ends the current submission and resumes playing on the main map.",
+  "parameters": [
+  ]
+}

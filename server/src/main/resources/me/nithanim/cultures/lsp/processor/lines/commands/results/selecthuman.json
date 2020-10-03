@@ -1,0 +1,16 @@
+{
+  "name": "SelectHuman",
+  "category": "<dummy>",
+  "documentation": "Selects and follows the given human.\n\n*Note*: It is the same as if the player selected follow in the UI, so they can easily break out. Might be paired with a loop to stay focused on the human.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Flag",
+      "documentation": "Most of the time its '1' except when it isn't.",
+      "type": "NUMBER"
+    }
+  ]
+}

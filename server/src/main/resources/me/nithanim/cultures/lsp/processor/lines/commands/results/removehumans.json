@@ -1,0 +1,11 @@
+{
+  "name": "RemoveHumans",
+  "category": "<dummy>",
+  "documentation": "Removes all humans with the given id.",
+  "parameters": [
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    }
+  ]
+}

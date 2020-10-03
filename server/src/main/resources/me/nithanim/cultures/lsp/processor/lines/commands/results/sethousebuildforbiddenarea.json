@@ -1,0 +1,27 @@
+{
+  "name": "SetHouseBuildForbiddenArea",
+  "documentation": "Allows or disallows construction of new houses in the given area.",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "IsConstructionAllowed",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

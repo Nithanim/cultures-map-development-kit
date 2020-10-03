@@ -1,0 +1,27 @@
+{
+  "name": "RemoveHPsOfHousesInArea",
+  "category": "<dummy>",
+  "documentation": "Removes the given amount of health points from the houses in the given area that do not have an id assigned.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    }
+  ]
+}

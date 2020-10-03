@@ -1,0 +1,40 @@
+{
+  "name": "RemoveGoodsFromMapArea",
+  "category": "<dummy>",
+  "documentation": "Removes the given goods from the given area. Optionally also removes from houses.",
+  "parameters": [
+    {
+      "name": "GoodType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Quantity",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TakeFromHouses",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    {
+      "name": "PlayerId",
+      "documentation": "Probably takes goods from houses of the given player. TODO",
+      "type": "NUMBER"
+    }
+  ]
+}

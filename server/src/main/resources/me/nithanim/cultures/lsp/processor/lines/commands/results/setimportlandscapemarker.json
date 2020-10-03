@@ -1,0 +1,23 @@
+{
+  "name": "SetImportLandscapeMarker",
+  "category": "<dummy>",
+  "documentation": "Displays an important-marker for a specific landscape.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "IsEnabled",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

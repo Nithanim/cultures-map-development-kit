@@ -1,0 +1,10 @@
+{
+  "name": "StartEarthQuake",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "Seconds",
+      "type": "NUMBER"
+    }
+  ]
+}

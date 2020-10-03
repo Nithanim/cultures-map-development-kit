@@ -1,0 +1,58 @@
+{
+  "name": "SetHuman",
+  "category": "<dummy>",
+  "documentation": "Places a human.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "TYPE"
+    },
+    {
+      "name": "JobType",
+      "type": "TYPE"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "HumanId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Behaviour",
+      "documentation": "Defines special behaviours of the human. E.g. No needs, immortal or not controllable. Number interpreted as bitfield.",
+      "type": "NUMBER",
+      "numberHintsBitfield": [
+        "DisableNeeds",
+        "DisableJob",
+        "DisableFight",
+        "Immortal",
+        "DisableMessages",
+        "DisableControl",
+        "DisableJobChange",
+        "Important",
+        "UserSectorMove",
+        "SlowMovement",
+        "DoNoChangePalette",
+        "NoExperienceGain",
+        "NoShoeToolDrain",
+        "AnimalsIgnoreHuman",
+        "Ghost",
+        "DontCryForHelp",
+        "DefendMode",
+        "FastMovement",
+        "NeverGrowUp",
+        "ActsLikeAHero"
+      ]
+    }
+  ]
+}

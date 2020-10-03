@@ -1,0 +1,32 @@
+{
+  "name": "SetLandscape",
+  "category": "<dummy>",
+  "documentation": "Sets the given landscape on the given position.",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "LandscapeType",
+      "type": "TYPE"
+    },
+    {
+      "name": "Variant",
+      "documentation": "E.g. for goods it is the quantity, for chests it defines the contents.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Unknown",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 1,
+        "max": 1
+      }
+    }
+  ]
+}

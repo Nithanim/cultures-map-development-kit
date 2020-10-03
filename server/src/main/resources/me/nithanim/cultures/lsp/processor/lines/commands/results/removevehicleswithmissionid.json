@@ -1,0 +1,19 @@
+{
+  "name": "RemoveVehiclesWithMissionId",
+  "category": "<dummy>",
+  "documentation": "Removes all vehicles with the given id (too???). But allows deletion of all humans inside optionally.",
+  "parameters": [
+    {
+      "name": "VehicleId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "DeletePassengers",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      }
+    }
+  ]
+}

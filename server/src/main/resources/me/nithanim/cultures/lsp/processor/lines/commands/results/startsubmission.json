@@ -1,0 +1,15 @@
+{
+  "name": "StartSubmission",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "CampaignId",
+      "documentation": "'0' for normal submission.",
+      "type": "NUMBER"
+    },
+    {
+      "name": "MapId",
+      "type": "NUMBER"
+    }
+  ]
+}

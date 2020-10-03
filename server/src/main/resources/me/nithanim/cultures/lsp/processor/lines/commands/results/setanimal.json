@@ -1,0 +1,35 @@
+{
+  "name": "SetAnimal",
+  "category": "<dummy>",
+  "documentation": "Places a new animal.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "TribeType",
+      "type": "TYPE"
+    },
+    {
+      "name": "JobType",
+      "type": "TYPE"
+    },
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "ObjectId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Behaviour",
+      "type": "NUMBER"
+    }
+  ]
+}

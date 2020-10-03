@@ -1,0 +1,11 @@
+{
+  "name": "StopHumanByPlayerId",
+  "category": "<dummy>",
+  "documentation": "Stops the movement of all humans of the given player fo a brief moment. Probably the same as sending them to their current location.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "InfoClear",
+  "category": "<dummy>",
+  "documentation": "Clears the info text in the top right corner.",
+  "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
+    {
+      "name": "LineId",
+      "type": "NUMBER"
+    }
+  ]
+}

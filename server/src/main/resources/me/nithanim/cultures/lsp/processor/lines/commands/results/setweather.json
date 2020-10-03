@@ -1,0 +1,35 @@
+{
+  "name": "SetWeather",
+  "category": "<dummy>",
+  "parameters": [
+    {
+      "name": "PosX",
+      "type": "NUMBER"
+    },
+    {
+      "name": "PosY",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Radius",
+      "type": "NUMBER"
+    },
+    {
+      "name": "IsSnow",
+      "type": "NUMBER",
+      "numberRange": {
+        "min": 0,
+        "max": 1
+      },
+      "numberHints": [
+        "rain",
+        "snow"
+      ]
+    },
+    {
+      "name": "Quantity",
+      "documentation": "In percent; 0 disables the weather",
+      "type": "NUMBER"
+    }
+  ]
+}
