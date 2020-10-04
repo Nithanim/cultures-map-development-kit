@@ -2,9 +2,13 @@
   "name": "Add",
   "category": "specialItems",
   "documentation": "Adds \"letters\" to a player to place buildings immediately.",
-  "parametersMin": 1,
-  "parametersMax": 2,
+  "parametersMin": 2,
+  "parametersMax": 3,
   "parameters": [
+    {
+      "name": "PlayerId",
+      "type": "NUMBER"
+    },
     {
       "name": "LetterType",
       "type": "NUMBER",
