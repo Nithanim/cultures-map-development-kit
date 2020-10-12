@@ -1,7 +1,7 @@
 {
   "name": "Visible",
   "category": "MissionData",
-  "documentation": "Relevant for command `description`.",
+  "documentation": "States if this mission is visible at the beginning. Relevant for command `description`.",
   "parameters": [
     {
       "name": "IsVisible",

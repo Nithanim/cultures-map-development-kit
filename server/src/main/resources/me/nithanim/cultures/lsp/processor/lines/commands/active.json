@@ -1,5 +1,5 @@
 {
-  "name": "Visible",
+  "name": "Active",
   "category": "MissionData",
   "documentation": "Defines if the mission is active at the beginning and checking for its goals.",
   "parameters": [
