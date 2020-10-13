@@ -10,6 +10,7 @@ import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommandType;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniConstant;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniInclude;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniLine;
+import me.nithanim.cultures.lsp.processor.lines.UnknownCulturesIniLine;
 import me.nithanim.cultures.lsp.processor.util.DiagnosticsCollector;
 import me.nithanim.cultures.lsp.processor.util.Origin;
 import me.nithanim.cultures.lsp.processor.util.SourceFile;
@@ -25,6 +26,9 @@ public class CulturesIniParserListener extends CulturesIniBaseListener {
   private final SourceFile sourceFile;
   private final DiagnosticsCollector diagnostics;
   private CulturesIniCommand.Parameter.Type parameterType;
+  private CulturesIniCommand.ParsedCulturesIniCommandBuilder commandBuilder;
+  private CulturesIniConstant.CulturesIniConstantBuilder constantBuilder;
+  private String invalidCommandName;
 
   private final List<CulturesIniLine> lines = new ArrayList<>();
 
@@ -37,9 +41,6 @@ public class CulturesIniParserListener extends CulturesIniBaseListener {
     this.sourceFile = sourceFile;
     this.diagnostics = diagnostics;
   }
-
-  private CulturesIniCommand.ParsedCulturesIniCommandBuilder commandBuilder;
-  private CulturesIniConstant.CulturesIniConstantBuilder constantBuilder;
 
   @Override
   public void enterCategoryname(CulturesIniParser.CategorynameContext ctx) {
@@ -58,10 +59,11 @@ public class CulturesIniParserListener extends CulturesIniBaseListener {
 
   @Override
   public void enterCommandname(CulturesIniParser.CommandnameContext ctx) {
-    CulturesIniCommandType type = CulturesIniCommandType.find(ctx.getChild(0).getText());
+    String commandName = ctx.getChild(0).getText();
+    CulturesIniCommandType type = CulturesIniCommandType.find(commandName);
     if (type == null) {
       diagnostics.addError(getOrigin(ctx), "Unknown command!");
-      return;
+      invalidCommandName = commandName;
     }
     commandBuilder.type(type).originBaseCommand(getOrigin(ctx));
   }
@@ -108,11 +110,14 @@ public class CulturesIniParserListener extends CulturesIniBaseListener {
   @Override
   public void exitCommandline(CulturesIniParser.CommandlineContext ctx) {
     if (commandBuilder.getCommandType() == null) {
-      return;
-    } else if (commandBuilder
-        .getCommandType()
-        .getCommandInformation()
-        .isSpecial()) {
+      lines.add(
+          new UnknownCulturesIniLine(
+              invalidCommandName,
+              commandBuilder.getOriginAll(),
+              commandBuilder.getOriginBaseCommand(),
+              commandBuilder.getParameters()));
+      invalidCommandName = null;
+    } else if (commandBuilder.getCommandType().getCommandInformation().isSpecial()) {
       lines.add(commandBuilder.build());
     } else {
       lines.add(commandBuilder.build());

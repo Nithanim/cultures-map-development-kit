@@ -10,6 +10,7 @@ import me.nithanim.cultures.lsp.processor.lines.CulturesIniCategory;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand;
 import me.nithanim.cultures.lsp.processor.lines.CulturesIniLine;
+import me.nithanim.cultures.lsp.processor.lines.UnknownCulturesIniLine;
 import me.nithanim.cultures.lsp.processor.model.DefinitionEnvironment;
 import me.nithanim.cultures.lsp.processor.util.MyPosition;
 import org.jooq.DSLContext;
@@ -43,6 +44,10 @@ public class SourceCodeIntelligenceService {
     var numberOccurrences =
         new EnumMap<CulturesIniCategoryType, Integer>(CulturesIniCategoryType.class);
     for (CulturesIniLine line : lines) {
+      String uri = line.getOriginAll().getSourceFile().getUri().toString();
+      int lineNumber = line.getOriginAll().getRange().getStart().getLine();
+      String lineType = line.getLineType().name();
+
       if (line instanceof CulturesIniCommand) {
         CulturesIniCommand command = (CulturesIniCommand) line;
 
@@ -50,26 +55,18 @@ public class SourceCodeIntelligenceService {
             command.getCommandType().getCommandInformation().getCategory();
         Integer categoryNumber = numberOccurrences.getOrDefault(categoryType, 0);
         insertStatement.values(
-            command.getOriginAll().getSourceFile().getUri().toString(),
-            command.getOriginAll().getRange().getStart().getLine(),
-            command.getLineType().name(),
-            categoryType.name(),
-            categoryNumber,
-            line);
+            uri, lineNumber, lineType, categoryType.name(), categoryNumber, line);
       } else if (line instanceof CulturesIniCategory) {
         CulturesIniCategory cat = (CulturesIniCategory) line;
-        if (cat.getCategoryType() != null) { // When invalid category parsed
+        if (cat.getCategoryType() != null) { // an invalid category has no type
           Integer categoryNumber =
               numberOccurrences.compute(cat.getCategoryType(), (k, v) -> (v == null) ? 0 : v + 1);
 
           insertStatement.values(
-              cat.getOriginAll().getSourceFile().getUri().toString(),
-              cat.getOriginAll().getRange().getStart().getLine(),
-              cat.getLineType().name(),
-              cat.getCategoryType().name(),
-              categoryNumber,
-              line);
+              uri, lineNumber, lineType, cat.getCategoryType().name(), categoryNumber, line);
         }
+      } else if (line instanceof UnknownCulturesIniLine) {
+        insertStatement.values(uri, lineNumber, lineType, "", 0, line);
       }
     }
     insertStatement.execute();

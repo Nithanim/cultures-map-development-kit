@@ -13,6 +13,7 @@ public interface CulturesIniLine {
     CATEGORY,
     COMMAND,
     CONSTANT,
-    INCLUDE;
+    INCLUDE,
+    UNKNOWN
   }
 }
