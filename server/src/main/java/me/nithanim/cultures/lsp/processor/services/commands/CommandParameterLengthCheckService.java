@@ -74,7 +74,7 @@ public class CommandParameterLengthCheckService {
     if (actualParameters.size() > commandInformation.getParametersMaximum()
         && commandInformation.getParametersMaximum() != -1) {
       for (int i = commandInformation.getParametersMaximum(); i < actualParameters.size(); i++) {
-        dc.addError(actualParameters.get(i).getOrigin(), "Excess parameter!");
+        dc.addError(actualParameters.get(i).getOriginAll(), "Excess parameter!");
         // valid = false;
       }
     }

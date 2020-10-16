@@ -32,6 +32,7 @@ public class CommandInformation {
   @NoArgsConstructor(force = true)
   public static class ParameterInformation {
     String name;
+    int index;
     Type type;
     String documentation;
     Range range;

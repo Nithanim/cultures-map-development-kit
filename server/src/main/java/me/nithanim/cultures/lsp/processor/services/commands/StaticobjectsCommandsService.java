@@ -46,7 +46,7 @@ public class StaticobjectsCommandsService {
     c(0b10000000000000000000, behaviour, "Hero", trans);
 
     return MyCodeLense.of(
-        cmd.getParameter(6).getOrigin(), "Behaviours: [" + String.join(", ", trans) + "]");
+        cmd.getParameter(6).getOriginValue(), "Behaviours: [" + String.join(", ", trans) + "]");
   }
 
   private void c(int b, int behaviour, String s, List<String> trans) {

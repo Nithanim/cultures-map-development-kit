@@ -59,7 +59,7 @@ public class SignatureHelpService {
   private int getActiveParameter(CulturesIniCommand command, Position position) {
     int activeParameter = 0;
     for (var parameter : command.getParameters()) {
-      var range = parameter.getOrigin().getRange();
+      var range = parameter.getOriginAll().getRange();
       if (range.getStart().getCharacter() <= position.getCharacter()
           && position.getCharacter() <= range.getEnd().getCharacter()) {
         return activeParameter;

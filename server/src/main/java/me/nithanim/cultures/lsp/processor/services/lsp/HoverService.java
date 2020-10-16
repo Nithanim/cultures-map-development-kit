@@ -58,7 +58,7 @@ public class HoverService {
     MarkupContent contents =
         documentationService.createParameterDocumentation(commandInformation, parameterPair);
     return CompletableFuture.completedFuture(
-        new Hover(contents, parameterPair.getParameterActual().getOrigin().getRange()));
+        new Hover(contents, parameterPair.getParameterActual().getOriginAll().getRange()));
   }
 
   private ActualParameterPair isHoverOnParameter(
@@ -68,7 +68,7 @@ public class HoverService {
     List<ActualParameterPair> pairs =
         ActualParameterPair.of(actualParameters, parameterInformation);
     for (ActualParameterPair pair : pairs) {
-      Range commandRange = pair.getParameterActual().getOrigin().getRange();
+      Range commandRange = pair.getParameterActual().getOriginAll().getRange();
       int hoverPosition = hover.getPosition().getCharacter();
 
       if (isHoverTarget(commandRange, hoverPosition)) {

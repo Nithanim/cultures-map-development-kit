@@ -23,34 +23,36 @@ public class PlayerdataCommandsService {
   private void handleDiplomacy(CulturesIniCommand cmd, DiagnosticsCollector dc) {
     int p1 = cmd.getParameter(0).getValueAsInt();
     if (p1 < 0 || p1 > 19) {
-      dc.addError(cmd.getParameter(0).getOrigin(), "Id must be in range (0,19)!");
+      dc.addError(cmd.getParameter(0).getOriginValue(), "Id must be in range (0,19)!");
       return;
     }
     if (!playerExists(p1)) {
-      dc.addError(cmd.getParameter(0).getOrigin(), "Player does not exist!");
+      dc.addError(cmd.getParameter(0).getOriginValue(), "Player does not exist!");
     }
 
     int p2 = cmd.getParameter(1).getValueAsInt();
     if (p2 < 0 || p2 > 19) {
-      dc.addError(cmd.getParameter(1).getOrigin(), "Id must be in range (0,19)!");
+      dc.addError(cmd.getParameter(1).getOriginValue(), "Id must be in range (0,19)!");
       return;
     }
     if (!playerExists(p2)) {
-      dc.addError(cmd.getParameter(1).getOrigin(), "Player does not exist!");
+      dc.addError(cmd.getParameter(1).getOriginValue(), "Player does not exist!");
     }
 
     if (p1 == p2) {
-      dc.addError(cmd.getParameter(1).getOrigin(), "Relation to oneself does not make any sense!");
+      dc.addError(
+          cmd.getParameter(1).getOriginValue(), "Relation to oneself does not make any sense!");
     }
 
     int relation = cmd.getParameter(2).getValueAsInt();
     if (relation < 1 || relation > 3) {
-      dc.addError(cmd.getParameter(2).getOrigin(), "Relation must be in range (1,3)!");
+      dc.addError(cmd.getParameter(2).getOriginValue(), "Relation must be in range (1,3)!");
     }
 
     byte existing = players[p1].getRelation()[p2];
     if (existing != 0) {
-      dc.addError(cmd.getParameter(0).getOrigin(), "Relation already defined as " + existing + "!");
+      dc.addError(
+          cmd.getParameter(0).getOriginValue(), "Relation already defined as " + existing + "!");
     }
     players[p1].getRelation()[p2] = (byte) relation;
   }
@@ -58,30 +60,30 @@ public class PlayerdataCommandsService {
   private void handlePlayer(CulturesIniCommand cmd, DiagnosticsCollector dc) {
     int id = cmd.getParameter(0).getValueAsInt();
     if (id < 0 || id > 19) {
-      dc.addError(cmd.getParameter(0).getOrigin(), "Id must be in range (0,19)!");
+      dc.addError(cmd.getParameter(0).getOriginValue(), "Id must be in range (0,19)!");
       return;
     }
     if (playerExists(id)) {
-      dc.addError(cmd.getParameter(0).getOrigin(), "Player already defined!");
+      dc.addError(cmd.getParameter(0).getOriginValue(), "Player already defined!");
     }
 
     int type = cmd.getParameter(1).getValueAsInt();
     if (type < 1 || type > 2) {
-      dc.addError(cmd.getParameter(2).getOrigin(), "Type must be in range (1,2)!");
+      dc.addError(cmd.getParameter(2).getOriginValue(), "Type must be in range (1,2)!");
     }
 
     int tribe = cmd.getParameter(2).getValueAsInt();
     if (tribe < 1 || tribe > 41) {
-      dc.addError(cmd.getParameter(2).getOrigin(), "Tribe must be in range (1,41)!");
+      dc.addError(cmd.getParameter(2).getOriginValue(), "Tribe must be in range (1,41)!");
     }
     if (tribe > 7 && tribe <= 41) {
       dc.addWarning(
-          cmd.getParameter(2).getOrigin(), "Only tribes in range of (1,7) are ever used!");
+          cmd.getParameter(2).getOriginValue(), "Only tribes in range of (1,7) are ever used!");
     }
 
     int color = cmd.getParameter(3).getValueAsInt();
     if (color < 0 || color > 9) {
-      dc.addError(cmd.getParameter(2).getOrigin(), "Color must be in range (0,9)!");
+      dc.addError(cmd.getParameter(2).getOriginValue(), "Color must be in range (0,9)!");
     }
     players[id] = new Player(cmd.getOriginBaseCommand(), id, type, tribe, color, new byte[20]);
   }

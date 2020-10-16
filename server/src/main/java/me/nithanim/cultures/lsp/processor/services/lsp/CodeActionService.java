@@ -54,7 +54,7 @@ public class CodeActionService {
             parameterService.getCraftedCommandInformation(command).getParameters());
     for (ActualParameterPair parameterPair : parameterPairs) {
 
-      Range parameterRange = parameterPair.getParameterActual().getOrigin().getRange();
+      Range parameterRange = parameterPair.getParameterActual().getOriginAll().getRange();
       if (contains(parameterRange, selection.getStart().getCharacter())) {
         if (parameterPair.getParameterInformation().getNumberHintsBitfield() != null) {
 
@@ -97,7 +97,7 @@ public class CodeActionService {
         updatedValue = currentValue & (~(1 << i));
       }
       codeAction.setKind(CodeActionKind.QuickFix);
-      Range parameterActualRange = parameterActual.getOrigin().getRange();
+      Range parameterActualRange = parameterActual.getOriginAll().getRange();
       codeAction.setEdit(
           singleEdit(documentUri, String.valueOf(updatedValue), parameterActualRange));
       actions.add(Either.forRight(codeAction));

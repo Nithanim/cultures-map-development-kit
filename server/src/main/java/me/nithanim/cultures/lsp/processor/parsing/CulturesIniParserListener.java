@@ -100,8 +100,10 @@ public class CulturesIniParserListener extends CulturesIniBaseListener {
       } else {
         value = ctx.getText();
       }
+      Origin originAll = getOrigin(ctx);
+      Origin originValue = getOriginWithCutQuotes(ctx);
       commandBuilder.addParameter(
-          new CulturesIniCommand.Parameter(value, parameterType, getOrigin(ctx)));
+          new CulturesIniCommand.Parameter(value, parameterType, originAll, originValue));
     } else {
       diagnostics.addError(getOrigin(ctx), "Unknown parameter type!");
     }

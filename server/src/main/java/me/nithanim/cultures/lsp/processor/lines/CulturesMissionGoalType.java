@@ -116,7 +116,7 @@ public enum CulturesMissionGoalType implements CommandInformationHolder {
             "Unable to find definition for command " + name(), new FileNotFoundException(fileName));
       }
       this.commandInformation =
-          new CommandInformationMapper()
+          new CommandInformationMapper(1)
               .map(new Gson().fromJson(IOUtils.getReader(in), JsonCommandInformation.class));
 
     } catch (Exception ex) {

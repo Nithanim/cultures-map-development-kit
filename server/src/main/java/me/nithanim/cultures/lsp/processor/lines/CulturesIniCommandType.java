@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.ToString;
 import lombok.Value;
-import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.MISSIONDATA;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCategoryType.TEXT;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand.Parameter.Type.NUMBER;
 import static me.nithanim.cultures.lsp.processor.lines.CulturesIniCommand.Parameter.Type.STRING;
@@ -150,7 +149,7 @@ public enum CulturesIniCommandType implements CommandInformationHolder {
             "Unable to find definition for command " + name(), new FileNotFoundException(fileName));
       }
       this.commandInformation =
-          new CommandInformationMapper()
+          new CommandInformationMapper(0)
               .map(new Gson().fromJson(IOUtils.getReader(in), JsonCommandInformation.class));
 
     } catch (Exception ex) {
@@ -181,7 +180,7 @@ public enum CulturesIniCommandType implements CommandInformationHolder {
       int paramMax,
       ParameterInfo<?>... parameterTypes) {
     this.commandInformation =
-        new CommandInformationMapper()
+        new CommandInformationMapper(0)
             .map(name(), special, category, paramMin, paramMax, parameterTypes);
   }
 

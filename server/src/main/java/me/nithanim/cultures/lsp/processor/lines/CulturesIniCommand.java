@@ -66,7 +66,8 @@ public class CulturesIniCommand implements CulturesIniLine {
   public static class Parameter {
     String value;
     Type type;
-    Origin origin;
+    Origin originAll;
+    Origin originValue;
 
     public int getValueAsInt() {
       return Integer.parseInt(value);

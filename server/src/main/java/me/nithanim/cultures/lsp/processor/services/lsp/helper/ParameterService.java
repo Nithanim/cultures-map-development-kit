@@ -54,6 +54,7 @@ public class ParameterService {
         var interpolatedParameter =
             new CommandInformation.ParameterInformation(
                 originalParameter.getName(),
+                0,
                 originalParameter.getType(),
                 subcommandCommandInformation.getDocumentation(),
                 originalParameter.getRange(),
