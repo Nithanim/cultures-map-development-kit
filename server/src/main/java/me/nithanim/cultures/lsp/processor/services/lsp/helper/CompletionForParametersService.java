@@ -42,21 +42,11 @@ public class CompletionForParametersService {
         && paramPair.getValue().getIndex() == 0) {
       String currentText = (paramPair.getKey() == null) ? "" : paramPair.getKey().getValue();
       int cursorPositionRelativeParamStart =
-          (paramPair.getKey() == null)
-              ? 0
-              : getCursorPositionOnParamValue(cursorPosition, paramPair);
+          getCursorPositionOnParamValue(cursorPosition, paramPair);
       String searchString = getSearchString(currentText, cursorPositionRelativeParamStart);
-      List<Enum<? extends CommandInformationHolder>> possibleCommandTypes =
-          Arrays.stream(
-                  (CulturesIniCommandType.GOAL == cmd.getCommandType()
-                      ? CulturesMissionGoalType.values()
-                      : CulturesMissionResultType.values()))
-              .filter(
-                  t ->
-                      t.getCommandInformation()
-                          .getDisplayName()
-                          .toUpperCase()
-                          .startsWith(searchString))
+      List<CommandInformationHolder> possibleCommandTypes =
+          Arrays.stream(getAllGoalsOrResults(cmd))
+              .filter(t -> autocompleteValueFilter(t, searchString))
               .collect(Collectors.toList());
       List<CompletionItem> completionItems = new ArrayList<>();
       for (var subCommandType : possibleCommandTypes) {
@@ -66,7 +56,7 @@ public class CompletionForParametersService {
         // silently
         Range paramRange =
             (paramPair.getKey() == null)
-                ? new Range(cursorPosition.getPosition(), cursorPosition.getPosition())
+                ? createEmptyRange(cursorPosition)
                 : paramPair.getKey().getOriginValue().getRange();
         var completionItem =
             createCompletionItemParameterSpecial(
@@ -78,6 +68,29 @@ public class CompletionForParametersService {
     } else {
       return CompletableFuture.completedFuture(null);
     }
+  }
+
+  private Range createEmptyRange(MyPosition cursorPosition) {
+    return createEmptyRange(cursorPosition.getPosition());
+  }
+
+  private Range createEmptyRange(Position cursorPosition) {
+    return new Range(cursorPosition, cursorPosition);
+  }
+
+  private boolean autocompleteValueFilter(
+      CommandInformationHolder commandInformationHolder, String searchString) {
+    return commandInformationHolder
+        .getCommandInformation()
+        .getDisplayName()
+        .toUpperCase()
+        .startsWith(searchString);
+  }
+
+  private CommandInformationHolder[] getAllGoalsOrResults(CulturesIniCommand cmd) {
+    return CulturesIniCommandType.GOAL == cmd.getCommandType()
+        ? CulturesMissionGoalType.values()
+        : CulturesMissionResultType.values();
   }
 
   private Pair<CulturesIniCommand.Parameter, CommandInformation.ParameterInformation>
@@ -123,6 +136,10 @@ public class CompletionForParametersService {
   private int getCursorPositionOnParamValue(
       MyPosition cursorPosition,
       Pair<CulturesIniCommand.Parameter, CommandInformation.ParameterInformation> paramPair) {
+    if (paramPair.getKey() == null) {
+      // In case param is missing completely
+      return 0;
+    }
     return Math.max(
         0,
         cursorPosition.getPosition().getCharacter()
