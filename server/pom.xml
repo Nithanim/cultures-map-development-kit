@@ -253,5 +253,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <db.url>jdbc:h2:file:./target/tmpdb</db.url>
+        <db.driver>org.h2.Driver</db.driver>
+        <db.username>user</db.username>
+        <db.password>pass</db.password>
+        <jooq.version>3.13.4</jooq.version>
     </properties>
 </project>
