@@ -97,7 +97,7 @@ function startServerExecutable(serverSocket: net.Server, extensionPath: string, 
         pathExecutable = pathNativeImageExecutable;
         args = [
             "--languageserver.port=" + serverSocket.address()["port"],
-            "--languageserver.logfile=" + path.resolve(storagePath, "cultures-server.log")
+            "--languageserver.storagepath=" + storagePath
         ];
     } else if (fs.existsSync(pathJvmExecutable)) {
         pathExecutable = pathJvmExecutable;
