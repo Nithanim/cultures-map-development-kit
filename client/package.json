@@ -46,11 +46,11 @@
     "commands": [
       {
         "command": "culures-ini.extract-c2m",
-        "title": "Extract c2m"
+        "title": "Cultures: Extract c2m"
       },
       {
-        "command": "cultures-ini.package-map-external",
-        "title": "Export the map to external format"
+        "command": "cultures-ini.open-logs",
+        "title": "Cultures: Open logs"
       }
     ],
     "configuration": {
