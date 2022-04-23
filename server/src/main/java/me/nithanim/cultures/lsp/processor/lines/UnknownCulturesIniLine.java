@@ -2,10 +2,15 @@ package me.nithanim.cultures.lsp.processor.lines;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import me.nithanim.cultures.lsp.processor.util.Origin;
 
 @Value
+@RequiredArgsConstructor
+@NoArgsConstructor(force = true, access = AccessLevel.PACKAGE)
 public class UnknownCulturesIniLine implements CulturesIniLine {
   String name;
   Origin originAll;

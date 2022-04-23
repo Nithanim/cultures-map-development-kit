@@ -2,11 +2,15 @@ package me.nithanim.cultures.lsp.processor.lines;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import me.nithanim.cultures.lsp.processor.util.Origin;
 
 @Value
+@NoArgsConstructor(force = true, access = AccessLevel.PACKAGE)
 public class CulturesIniCommand implements CulturesIniLine {
   Type lineType = Type.COMMAND;
   CulturesIniCommandType commandType;
@@ -63,6 +67,8 @@ public class CulturesIniCommand implements CulturesIniLine {
   }
 
   @Value
+  @RequiredArgsConstructor
+  @NoArgsConstructor(force = true, access = AccessLevel.PACKAGE)
   public static class Parameter {
     String value;
     Type type;

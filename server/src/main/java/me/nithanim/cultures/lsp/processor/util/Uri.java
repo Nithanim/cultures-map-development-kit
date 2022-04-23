@@ -5,12 +5,17 @@ import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.annotation.ParametersAreNonnullByDefault;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.Value;
 
 @Value
 @ReturnValuesAreNonnullByDefault
 @ParametersAreNonnullByDefault
+@RequiredArgsConstructor
+@NoArgsConstructor(force = true, access = AccessLevel.PACKAGE)
 public class Uri {
   Path path;
 

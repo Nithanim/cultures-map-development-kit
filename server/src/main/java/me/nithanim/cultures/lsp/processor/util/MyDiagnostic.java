@@ -1,8 +1,10 @@
 package me.nithanim.cultures.lsp.processor.util;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 import me.nithanim.cultures.lsp.processor.services.clientpersistent.Origination;
@@ -12,6 +14,7 @@ import org.eclipse.lsp4j.DiagnosticSeverity;
 @Getter
 @EqualsAndHashCode
 @ToString
+@NoArgsConstructor(force = true, access = AccessLevel.PACKAGE)
 public class MyDiagnostic implements Origination {
   @NonNull final Origin origin;
   final DiagnosticSeverity severity;

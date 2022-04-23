@@ -72,7 +72,7 @@ public class CompletionForCommandsService {
     CompletionItem ci = new CompletionItem();
     ci.setKind(CompletionItemKind.Function);
     ci.setLabel(commandInformation.getDisplayName());
-    ci.setTextEdit(getTextEditCommand(commandRange, commandInformation));
+    ci.setTextEdit(Either.forLeft(getTextEditCommand(commandRange, commandInformation)));
     ci.setDocumentation(documentationService.createCommandDocumentation(commandInformation));
     return ci;
   }

@@ -128,7 +128,7 @@ public class CompletionForParametersService {
     CompletionItem ci = new CompletionItem();
     ci.setKind(CompletionItemKind.EnumMember);
     ci.setLabel(commandInformation.getDisplayName());
-    ci.setTextEdit(getTextEditParameterString(commandRange, commandInformation, addQuotes));
+    ci.setTextEdit(Either.forLeft(getTextEditParameterString(commandRange, commandInformation, addQuotes)));
     ci.setDocumentation(documentationService.createCommandDocumentation(commandInformation));
     return ci;
   }

@@ -1,13 +1,16 @@
 package me.nithanim.cultures.lsp.processor.lines;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 import me.nithanim.cultures.lsp.processor.util.Origin;
 
 @Value
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor(force = true, access = AccessLevel.PACKAGE)
 public class CulturesIniConstant implements CulturesIniLine {
   Type lineType = Type.CONSTANT;
   Origin originAll;
