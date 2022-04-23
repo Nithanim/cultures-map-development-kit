@@ -28,7 +28,6 @@ package me.nithanim.cultures.format.newlib.io.reading;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.SeekableByteChannel;
 import java.nio.charset.StandardCharsets;
@@ -47,7 +46,6 @@ import java.nio.file.attribute.FileAttribute;
 import java.nio.file.attribute.UserPrincipalLookupService;
 import java.nio.file.spi.FileSystemProvider;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -99,8 +97,10 @@ public class LibFileFileSystem extends FileSystem {
     }
 
     public InputStream newInputStream(Path path, OpenOption[] options) throws IOException {
-        if ((options.length == 1 && options[0] != StandardOpenOption.READ) || options.length > 1) {
-            throw new IllegalArgumentException("Only \"READ\" is supported as open option!");
+        if(options != null && options.length > 0) {
+            if ((options.length == 1 && options[0] != StandardOpenOption.READ) || options.length > 1) {
+                throw new IllegalArgumentException("Only \"READ\" is supported as open option!");
+            }
         }
         FileMeta fileMeta = fileTree.getFile(path);
         SeekableByteChannel ch = Files.newByteChannel(pathToFile, StandardOpenOption.READ);
@@ -273,7 +273,13 @@ public class LibFileFileSystem extends FileSystem {
     }
 
     public <A extends BasicFileAttributes> SeekableByteChannel newByteChannel(Path path, Set<? extends OpenOption> options, FileAttribute<?>[] attrs) throws IOException {
-        throw new UnsupportedOperationException();
+        try (InputStream in = newInputStream(path, options == null ? null : options.toArray(new OpenOption[0]))) {
+            // This is a simple "quickfix" just loading everything in memory.
+            // Seems like the official zipfs does something similar too (but also using temp files).
+            // It would be better to use a constrained channel but everything about that is horse crap.
+            byte[] bytes = in.readAllBytes();
+            return new ReadonlyByteArraySeekableByteChannel(bytes);
+        }
     }
 
     public <A extends BasicFileAttributes> A readAttributes(Path path, Class<A> clazz, LinkOption... options) throws IOException {
