@@ -53,12 +53,12 @@ public class ExtractCommand {
       byte[] iniBytes = Files.readAllBytes(libRoot.resolve(MapFileUtil.FILENAME_INI));
       mapIniLines = MapFileUtil.decodeCif(iniBytes);
     } catch (IOException ex) {
-      throw new IOException("Unable to read map.ini from c2m");
+      throw new IOException("Unable to read map.ini from c2m", ex);
     }
     try {
       Files.write(maproot.resolve("extracted.ini"), mapIniLines, StandardCharsets.ISO_8859_1);
     } catch (IOException ex) {
-      throw new IOException("Unable to write extracted.ini");
+      throw new IOException("Unable to write extracted.ini", ex);
     }
   }
 
@@ -67,7 +67,7 @@ public class ExtractCommand {
         OutputStream out = Files.newOutputStream(maproot.resolve("map.dat"))) {
       in.transferTo(out);
     } catch (IOException ex) {
-      throw new IOException("Unable to extract map.dat");
+      throw new IOException("Unable to extract map.dat", ex);
     }
   }
 }
