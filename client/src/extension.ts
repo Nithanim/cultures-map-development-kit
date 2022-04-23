@@ -110,7 +110,7 @@ function startServerExecutable(serverSocket: net.Server, extensionPath: string, 
             '-jar',
             jarPath,
             "--languageserver.port=" + serverSocket.address()["port"],
-            "--languageserver.logfile=" + path.resolve(storagePath, "cultures-server.log")
+            "--languageserver.storagepath=" + storagePath
         ]
     } else {
         throw new Error("No lsp server executable could be found! " + pathJvmExecutable);
