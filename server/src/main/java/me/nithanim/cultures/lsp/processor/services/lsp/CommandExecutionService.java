@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -82,10 +83,19 @@ public class CommandExecutionService {
       pb.inheritIO();
       try {
         Process pr = pb.start();
-        if (pr.exitValue() != 0) {
-          throw new IOException("Exit code was " + pr.exitValue());
+        try {
+          if (pr.waitFor(10, TimeUnit.SECONDS)) {
+            if (pr.exitValue() != 1) { // Exit code in windows guis is wonky
+              throw new IOException("Exit code was " + pr.exitValue());
+            }
+          } else {
+            pr.destroy();
+          }
+        } catch (InterruptedException ex) {
+          Thread.currentThread().interrupt();
+          throw new IOException("Interrupted wait", ex);
         }
-      } catch (IOException ex) {
+      } catch (Exception ex) {
         log.error("Unable to open explorer for logs", ex);
       }
     }
